@@ -1,5 +1,5 @@
-/* Service worker de la Guía del taller · versión 6.1 */
-const CACHE='guia-taller-v6.1';
+/* Service worker de la Guía del taller · versión 6.2 */
+const CACHE='guia-taller-v6.2';
 const ARCHIVOS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png'];
 self.addEventListener('install',e=>{ e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ARCHIVOS)).then(()=>self.skipWaiting())); });
 self.addEventListener('activate',e=>{ e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))).then(()=>self.clients.claim())); });

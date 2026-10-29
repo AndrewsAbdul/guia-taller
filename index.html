@@ -685,6 +685,19 @@ html.moderno .home-mod .qk-b{position:relative;padding-left:1.4rem}
 html.moderno .home-mod .qk-b:before{content:"";position:absolute;left:.6rem;top:50%;width:.4rem;height:.4rem;margin-top:-.2rem;border-radius:50%;background:var(--yellow);box-shadow:0 0 8px var(--yellow)}
 html.moderno .home-mod .tile b{font-size:.86rem;overflow-wrap:anywhere;hyphens:auto;line-height:1.15}
 .rd-line img{display:block}
+
+.ibtn-out{background:rgba(255,255,255,.22);color:var(--yellow);box-shadow:inset 0 0 0 2px var(--yellow)}
+.ibtn-out[hidden]{display:none}
+.dr-out{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;margin-top:.5rem;border:2px solid var(--red,#C0392B);background:transparent;color:var(--red,#C0392B);border-radius:12px;padding:.6rem .5rem;font-weight:800;font-size:.95rem;min-height:3rem;cursor:pointer}
+.dt-close{width:100%;margin-top:.8rem;min-height:3rem;font-weight:800}
+details.item[open]>summary{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hh,4.6rem));z-index:3}
+.pf-tw{overflow-x:auto;margin:.7rem 0}
+.pf-t{width:100%;border-collapse:collapse;font-size:.9rem}
+.pf-t th,.pf-t td{border:1px solid var(--line);padding:.4rem .5rem;text-align:left;vertical-align:top}
+.pf-t thead th{background:var(--navy);color:var(--on-navy);font-size:.82rem}
+.pf-t tbody th{font-weight:700;background:var(--surface)}
+.pf-t td:last-child{font-style:italic;color:var(--muted);font-size:.84rem}
+.f input[readonly]{background:var(--surface);border-style:dashed}
 </style>
 </head>
 <body>
@@ -692,6 +705,7 @@ html.moderno .home-mod .tile b{font-size:.86rem;overflow-wrap:anywhere;hyphens:a
   <button class="ibtn" id="btnMenu" type="button" aria-label="Abrir menú" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
   <div class="ttl"><h1>Guía del taller</h1><p id="ttlSub">Panel del taller</p></div>
   <button class="ibtn" id="btnTema" type="button" aria-label="Cambiar tema"></button>
+  <button class="ibtn ibtn-out" id="btnOut" type="button" aria-label="Cerrar sesión" title="Cerrar sesión" hidden><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></button>
   <button class="ibtn ibtn-y" id="btnExp" type="button" aria-label="Exportar reporte"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span class="bdg" id="bdg"></span></button>
 </header>
 <main id="app"></main>
@@ -1326,7 +1340,9 @@ function num(id){
   const el = document.getElementById(id);
   if(!el) return NaN;
   const v = el.value.replace(',','.').trim();
-  return v==="" ? NaN : parseFloat(v);
+  let x = v==="" ? NaN : parseFloat(v);
+  if(el.dataset&&el.dataset.tu&&PREF.temp!=='c'&&isFinite(x)) x=tToC(x,PREF.temp);
+  return x;
 }
 const val = id => document.getElementById(id).value;
 const show = (id,on) => { document.getElementById(id).style.display = on ? '' : 'none'; };
@@ -1339,8 +1355,14 @@ function bind(ids, fn){
 }
 function verdict(cls, txt){ return '<div class="verdict '+cls+'">'+txt+'</div>'; }
 function lcd(t, sm){ return '<span class="lcd'+(sm?' sm':'')+'">'+t+'</span>'; }
+const TXT_FLD=/^pf_(sol|prov|fecha|ubic|medio|tol)$/;
 function fld(id,label,value,ph,full,extra){
-  return '<div class="f'+(full?' full':'')+'"'+(extra||'')+'><label for="'+id+'">'+label+'</label><input id="'+id+'" inputmode="decimal"'+(value!=null?' value="'+esc(value)+'"':'')+(ph?' placeholder="'+esc(ph)+'"':'')+'></div>';
+  const tu=/\(°C\)/.test(label);
+  if(tu&&PREF.temp!=='c'){
+    label=label.replace('(°C)',PREF.temp==='f'?'(°F)':'(K)');
+    if(value!=null&&value!==''&&isFinite(Number(value))) value=String(Math.round(tFromC(Number(value),PREF.temp)*10)/10).replace('.',PREF.dec);
+  }
+  return '<div class="f'+(full?' full':'')+'"'+(extra||'')+'><label for="'+id+'">'+label+'</label><input id="'+id+'" inputmode="'+(TXT_FLD.test(id)?'text':'decimal')+'"'+(tu?' data-tu="1"':'')+(value!=null?' value="'+esc(value)+'"':'')+(ph?' placeholder="'+esc(ph)+'"':'')+'></div>';
 }
 function sel(id,label,opts,selIdx,full,extra){
   return '<div class="f'+(full?' full':'')+'"'+(extra||'')+'><label for="'+id+'">'+label+'</label><select id="'+id+'">'+
@@ -1505,7 +1527,7 @@ function efAt(L,ef){ const e=efTip(L); return isNaN(e) ? NaN : Math.min(0.99,e/0
 /* ---------------- CALEFACCIÓN: CALCULADORAS ---------------- */
 
 const DENS = [
- ['bmica','Banda de mica',4,6],
+ ['bmica','Banda de mica',3,6],
  ['bcer','Banda cerámica',5,8],
  ['fund','Resistencia fundida (aluminio o bronce)',null,null],
  ['cart','Cartucho',null,15],
@@ -7146,7 +7168,7 @@ function vMantExp(v){
 
 
 /* ---------------- VERSIÓN DE LA GUÍA ---------------- */
-const APP_VER = '6.1';
+const APP_VER = '6.2';
 const APP_FECHA = '2026-10-28';
 const fechaCorta = iso => { const p=String(iso).split('-'); return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:iso; };
 function appVerHTML(){
@@ -7154,6 +7176,11 @@ function appVerHTML(){
 }
 const rdFoot = () => '<p class="rd-foot">Generado con la Guía del taller · versión '+APP_VER+' · '+fechaCorta(APP_FECHA)+'</p>';
 const CAMBIOS = [
+ {t:'Versión 6.2', lcd:fechaCorta(APP_FECHA), sub:'Pedido de resistencias automático, °F en toda la guía y cierre de sesión a la mano',
+  pasos:['Pedir a fabricar: la potencia ahora se calcula sola. Escribe el diámetro (o el perímetro en las bandas), el ancho y la densidad de potencia en W/cm², más la tensión, y la guía entrega perímetro, superficie, potencia en W y kW, corriente y resistencia, con la fórmula de cada resultado. También puedes escribir la potencia si ya la conoces.',
+         'Teclado: los campos de texto del pedido (quién solicita, proveedor, fecha, destino, medio y tolerancia) ya abren el teclado normal y no solo el numérico.',
+         'Temperatura: al elegir °F o K en Ajustes, los campos de temperatura de las calculadoras y los valores escritos en toda la guía cambian a esa unidad. Los gráficos de temperatura y los conversores siguen en °C.',
+         'Cerrar sesión: botón visible en la barra de arriba y en el menú (cuando hay control de acceso). Además, cada sección abierta tiene su título fijo arriba y un botón Cerrar sección al final.']},
  {t:'Versión 6.1', lcd:fechaCorta(APP_FECHA), sub:'Capacitación y firma en reportes',
   pasos:['Nuevo módulo Capacitación (en Aprender): 72 preguntas en 9 temas (seguridad y LOTO, multímetro, instrumentación, PLC, motores, redes, neumática e hidráulica, mantenimiento y calidad de energía), con explicación de cada respuesta.',
          'Resultado con porcentaje, repaso de errores, constancia de autoevaluación para imprimir y tabla Mis resultados guardada en el teléfono.',
@@ -11530,6 +11557,64 @@ function firmaEventos(v){
   v.querySelector('#fm_us').addEventListener('change',e=>{ FIRMA.usar=e.target.checked; guardaFirma(); });
 }
 
+/* ===== v6.2 · temperatura global, cerrar sesión, cerrar sección ===== */
+function tToC(x,u){ return u==='f'?(x-32)*5/9:(u==='k'?x-273.15:x); }
+function tFromC(c,u){ return u==='f'?c*9/5+32:(u==='k'?c+273.15:c); }
+function tSym(u){ return u==='f'?'°F':(u==='k'?'K':'°C'); }
+const TEMP_RE=/(±\s*)?(?<![\w.,])([−-])?(\d+(?:[.,]\d+)?)(?:(\s*[–—-]\s*|\s+(?:a|y|to|and)\s+)([+−-])?(\d+(?:[.,]\d+)?))?(\s*)°C(?![\w\/·⁻²])/g;
+function tReemp(str){
+  const u=PREF.temp; if(u==='c'||str.indexOf('°C')<0) return str;
+  return str.replace(TEMP_RE,(m,pm,s1,n1,sep,s2,n2,sp,off)=>{
+    const pre=str.slice(Math.max(0,off-6),off);
+    const delta=!!pm||/Δ\s*T?\s*$/.test(pre);
+    const cv=(n,sg)=>{
+      const orig=n; let x=parseFloat(n.replace(',','.')); if(sg&&/[−-]/.test(sg)) x=-x;
+      const v=delta?(u==='f'?x*9/5:x):tFromC(x,u);
+      const s=u==='f'?(/[.,]/.test(orig)?Math.round(v*10)/10:Math.round(v)):Math.round(v*100)/100;
+      return String(s).replace('.',PREF.dec);
+    };
+    return (pm||'')+cv(n1,s1)+(sep?sep+cv(n2,s2):'')+(u==='k'?(sp||' ')+'K':sp+'°F');
+  });
+}
+function tcSkip(n){
+  const e=n.nodeType===1?n:n.parentElement; if(!e) return true;
+  return !!e.closest('script,style,textarea,input,select,option,[data-notemp],#t_out,#t_ch,#un_o,#un_c,#m_ch,#p_ch,#mt_rc,#mt_ic,#hq_ch,#px_o');
+}
+function tcWalk(root){
+  if(PREF.temp==='c'||!root||tcSkip(root)) return;
+  if(root.nodeType===3){ const t=root.nodeValue; if(t.indexOf('°C')>=0){ const r=tReemp(t); if(r!==t) root.nodeValue=r; } return; }
+  if(root.nodeType!==1) return;
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>(n.nodeValue.indexOf('°C')>=0&&!tcSkip(n))?1:2});
+  const L=[]; let n; while((n=w.nextNode())) L.push(n);
+  L.forEach(n=>{ const r=tReemp(n.nodeValue); if(r!==n.nodeValue) n.nodeValue=r; });
+}
+let tcObs=null;
+function tcInicia(){
+  const app=document.getElementById('app'); if(!app||tcObs) return;
+  const op={childList:true,subtree:true,characterData:true};
+  tcObs=new MutationObserver(ms=>{
+    if(PREF.temp==='c') return;
+    tcObs.disconnect();
+    try{ ms.forEach(m=>{ if(m.type==='characterData') tcWalk(m.target); else m.addedNodes.forEach(n=>tcWalk(n)); }); }catch(e){}
+    tcObs.observe(app,op);
+  });
+  tcObs.observe(app,op);
+  tcWalk(app);
+}
+function pintaSalir(){
+  const b=document.getElementById('btnOut'); if(!b) return;
+  b.hidden=!(typeof SES!=='undefined'&&SES&&ajSt&&ajSt.usr&&ajSt.usr.adm);
+}
+function salirSesion(){ cierraSesionLocal(); location.reload(); }
+function medidaHdr(){ const h=document.querySelector('header.top'); if(h) document.documentElement.style.setProperty('--hh',h.offsetHeight+'px'); }
+document.addEventListener('toggle',e=>{
+  const d=e.target; if(!d||!d.matches||!d.matches('details.item')) return;
+  const body=d.querySelector(':scope>.body'); if(!body) return;
+  const ex=body.querySelector(':scope>.dt-close');
+  if(d.open&&!ex){ const b=document.createElement('button'); b.type='button'; b.className='btn sec dt-close'; b.textContent='▲ Cerrar sección'; b.addEventListener('click',()=>{ const s=d.querySelector(':scope>summary'); d.open=false; if(s) s.scrollIntoView({block:'center'}); }); body.appendChild(b); }
+},true);
+window.addEventListener('resize',medidaHdr);
+
 const KEY_HMI='taller-hmi-v1';
 let hmiSt={chk:{},nom:'',a:false};
 function cargarHmi(){ try{ const r=localStorage.getItem(KEY_HMI); if(r){ const o=JSON.parse(r); if(o&&typeof o==='object') hmiSt=Object.assign(hmiSt,o); } }catch(e){} if(!hmiSt.chk||typeof hmiSt.chk!=='object') hmiSt.chk={}; }
@@ -12965,7 +13050,7 @@ function vAjustes(v){
   }));
   v.querySelectorAll('[data-pal]').forEach(b=>b.addEventListener('click',()=>{ PREF.pal=b.getAttribute('data-pal'); guardaPref(); aplicaPaleta(); vAjustes(v); }));
   v.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{ PREF.lang=b.getAttribute('data-lang'); guardaPref(); toast(PREF.lang==='en'?'Language changed. Reloading…':'Idioma cambiado. Recargando…'); setTimeout(()=>location.reload(),500); }));
-  const sp=(id,k)=>{ const e=document.getElementById(id); e.addEventListener('change',()=>{ PREF[k]=e.value; guardaPref(); toast(L('Guardado.','Saved.')); }); };
+  const sp=(id,k)=>{ const e=document.getElementById(id); e.addEventListener('change',()=>{ PREF[k]=e.value; guardaPref(); toast(k==='temp'?L('Guardado. La temperatura se muestra en esa unidad en toda la guía.','Saved. Temperatures show in that unit across the guide.'):L('Guardado.','Saved.')); }); };
   sp('un_dec','dec'); sp('un_t','temp'); sp('un_p','pres');
   const px=()=>{ const x=num('px_v'),a=PREFIJOS[+document.getElementById('px_a').value][1],b=PREFIJOS[+document.getElementById('px_b').value][1]; const o=document.getElementById('px_o'); if(isNaN(x)){ o.innerHTML=''; return; } o.innerHTML=lcd(fmtSig(x*Math.pow(10,a-b),8),1); };
   ['px_v','px_a','px_b'].forEach(id=>document.getElementById(id).addEventListener('input',px)); px();
@@ -12978,7 +13063,7 @@ function vAjustes(v){
       if(!n){ um(L('Escribe el nombre del administrador.','Enter the administrator name.')); return; }
       if(!pinOk(p)){ um(L('El PIN debe tener de 4 a 12 caracteres.','The PIN must be 4 to 12 characters.')); return; }
       if(p!==p2){ um(L('Los dos PIN no coinciden.','The two PINs do not match.')); return; }
-      u.adm=await creaCred(n,p); u.vis=u.vis||[]; guardarAj(); guardaSesion('admin','adm'); resuelveSesion(); toast(L('Control de acceso activado.','Access control enabled.')); vAjustes(v);
+      u.adm=await creaCred(n,p); u.vis=u.vis||[]; guardarAj(); guardaSesion('admin','adm'); resuelveSesion(); pintaSalir(); toast(L('Control de acceso activado.','Access control enabled.')); vAjustes(v);
     }else if(a==='v_add'){
       const n=val('uv_n').trim(), p=val('uv_p');
       if(!n){ um(L('Escribe el nombre de la visita.','Enter the guest name.')); return; }
@@ -12993,7 +13078,7 @@ function vAjustes(v){
       u.adm=await creaCred(u.adm.n,n); guardarAj(); toast(L('PIN cambiado.','PIN changed.')); vAjustes(v);
     }else if(a==='a_off'){
       if(!(await verificaPin(u.adm,val('ao_p')))){ um(L('El PIN no es correcto.','The PIN is wrong.')); return; }
-      ajSt.usr={adm:null,vis:[]}; guardarAj(); cierraSesionLocal(); resuelveSesion(); toast(L('Control de acceso desactivado.','Access control disabled.')); vAjustes(v);
+      ajSt.usr={adm:null,vis:[]}; guardarAj(); cierraSesionLocal(); resuelveSesion(); pintaSalir(); toast(L('Control de acceso desactivado.','Access control disabled.')); vAjustes(v);
     }else if(a==='logout'){
       cierraSesionLocal(); location.reload();
     }else if(a==='reset'){
@@ -13258,12 +13343,12 @@ const ADV_TIT={medir:['Multímetro avanzado','True RMS, variadores, aislamiento,
 /* ===== v4.3 · Calefacción: pedido de fabricación de resistencias ===== */
 const KEY_PED='taller-pedido-res-v1';
 let ped={cur:null,hist:[],seq:0};
-const PED_VACIO=()=>({tipo:'cart',P:'',V:'',fase:'mono',con:'y',qty:'1',d1:'',d2:'',d3:'',funda:'Acero inoxidable AISI 304',term:'Cable con aislamiento de fibra de vidrio',cable:'',sensor:'Ninguno',tmax:'',medio:'',tol:'±10 % en la resistencia',fecha:'',prov:'',sol:'',ubic:'',obs:'',nro:''});
+const PED_VACIO=()=>({tipo:'cart',modo:'auto',dens:'',per:'',tmaxU:'c',P:'',V:'',fase:'mono',con:'y',qty:'1',d1:'',d2:'',d3:'',funda:'Acero inoxidable AISI 304',term:'Cable con aislamiento de fibra de vidrio',cable:'',sensor:'Ninguno',tmax:'',medio:'',tol:'±10 % en la resistencia',fecha:'',prov:'',sol:'',ubic:'',obs:'',nro:''});
 function cargarPed(){ try{ const r=localStorage.getItem(KEY_PED); if(r){ const o=JSON.parse(r); if(o&&typeof o==='object'){ ped=Object.assign(ped,o); } } }catch(e){} if(!ped.cur) ped.cur=PED_VACIO(); if(!Array.isArray(ped.hist)) ped.hist=[]; }
 function guardaPed(){ try{ localStorage.setItem(KEY_PED,JSON.stringify(ped)); }catch(e){} }
 const PED_TIPOS=[
  {k:'cart',n:'Cartucho',dens:'cart',d:[['d1','Diámetro (mm)'],['d2','Largo calentado (mm)'],['d3','Largo total (mm)']],area:(a,b)=>Math.PI*a*b/100},
- {k:'banda',n:'Banda (abrazadera)',dens:'bmica',d:[['d1','Diámetro interior (mm)'],['d2','Ancho (mm)'],['d3','Espesor (mm), opcional']],area:(a,b)=>Math.PI*a*b/100},
+ {k:'banda',n:'Banda (abrazadera)',dens:'bmica',d:[['d1','Diámetro interior (mm)'],['per','Perímetro (mm), solo si no conoces el diámetro'],['d2','Ancho (mm)'],['d3','Espesor (mm), opcional']],area:(a,b)=>Math.PI*a*b/100},
  {k:'tub',n:'Tubular (recta, en U o doblada)',dens:'tagua',d:[['d1','Diámetro del tubo (mm)'],['d2','Largo calentado (mm)'],['d3','Largo total desarrollado (mm)']],area:(a,b)=>Math.PI*a*b/100},
  {k:'alet',n:'Aleteada (para aire)',dens:'alet',d:[['d1','Diámetro del tubo (mm)'],['d2','Largo calentado (mm)'],['d3','Alto de aleta (mm)']],area:(a,b)=>Math.PI*a*b/100},
  {k:'plana',n:'Plana o de placa',dens:'plana',d:[['d1','Largo (mm)'],['d2','Ancho (mm)'],['d3','Espesor (mm)']],area:(a,b)=>a*b/100},
@@ -13277,9 +13362,24 @@ const PED_VOLT=[110,115,120,127,208,220,230,240,277,380,400,415,440,460,480,575,
 const PED_BRK=[6,10,16,20,25,32,40,50,63,80,100,125,160,200];
 function pedTipo(k){ return PED_TIPOS.filter(t=>t.k===k)[0]||PED_TIPOS[0]; }
 const pedN=x=>{ const n=parseFloat(String(x==null?'':x).replace(',','.')); return isFinite(n)?n:NaN; };
+function pedDensSug(t){
+  const d=DENS.filter(x=>x[0]===t.dens)[0]; if(!d) return null;
+  const lo=d[2], hi=d[3]; if(lo==null&&hi==null) return null;
+  const mid=(lo!=null&&hi!=null)?(lo+hi)/2:hi*0.6;
+  return {lo:lo,hi:hi,mid:Math.round(mid*100)/100};
+}
+const pedComa=x=>String(x).replace('.',',');
+function pedDensTxt(s){ if(!s) return ''; return (s.lo!=null&&s.hi!=null)?pedComa(s.lo)+' a '+pedComa(s.hi)+' W/cm²':'hasta '+pedComa(s.hi)+' W/cm²'; }
 function pedCalc(c){
-  const t=pedTipo(c.tipo), P=pedN(c.P), V=pedN(c.V), a=pedN(c.d1), b=pedN(c.d2), q=Math.max(1,Math.round(pedN(c.qty))||1);
+  const t=pedTipo(c.tipo), V=pedN(c.V), a=pedN(c.d1), b=pedN(c.d2), q=Math.max(1,Math.round(pedN(c.qty))||1);
   const r={t:t,qty:q,avisos:[]};
+  let per=null, area=null;
+  if(c.tipo==='banda'){ const pr=pedN(c.per); per=a>0?Math.PI*a:(pr>0?pr:null); if(per&&b>0) area=per*b/100; }
+  else if(a>0&&b>0){ area=t.area(a,b); if(['cart','tub','alet','inm'].indexOf(c.tipo)>=0) per=Math.PI*a; }
+  r.per=per; r.area=area;
+  let P=pedN(c.P);
+  if(c.modo==='auto'){ const dn=pedN(c.dens); if(area>0&&dn>0){ P=Math.round(area*dn*10)/10; r.auto=true; } else P=NaN; }
+  if(P>0) r.P=P;
   if(!(P>0)||!(V>0)) return r;
   const tri=c.fase==='tri';
   r.tri=tri; r.P=P; r.V=V;
@@ -13290,20 +13390,34 @@ function pedCalc(c){
   const secs=[[10,1.5],[16,2.5],[24,4],[32,6],[41,10],[57,16]];
   r.cable=null; for(const s of secs){ if(r.IL<=s[0]){ r.cable=s[1]; break; } }
   r.brk=null; for(const x of PED_BRK){ if(x>=1.25*r.IL){ r.brk=x; break; } }
-  if(a>0&&b>0){
-    r.area=t.area(a,b); r.dens=P/r.area;
+  if(area>0){
+    r.dens=P/area;
     const d=DENS.filter(x=>x[0]===t.dens)[0];
     r.rmin=d?d[2]:null; r.rmax=d?d[3]:null;
     r.estado=(r.rmax!=null&&r.dens>r.rmax)?'bad':((r.rmin!=null&&r.dens<r.rmin)?'warn':((r.rmax==null&&r.rmin==null)?'warn':'ok'));
-    r.maxP=r.rmax!=null?r.rmax*r.area:null;
+    r.maxP=r.rmax!=null?r.rmax*area:null;
   }
   if(PED_VOLT.indexOf(V)<0) r.avisos.push('La tensión de '+V+' V no es una de las más comunes: confirma con la placa o la red de la planta.');
-  if(c.tipo==='sil'&&pedN(c.tmax)>200) r.avisos.push('Las resistencias flexibles de silicona suelen limitarse a unos 200 °C: confirma con el fabricante.');
+  if(c.tipo==='sil'&&tToC(pedN(c.tmax),c.tmaxU||'c')>200) r.avisos.push('Las resistencias flexibles de silicona suelen limitarse a unos 200 °C: confirma con el fabricante.');
   if(tri&&c.con==='y') r.avisos.push('Trifásica en estrella: cada elemento trabaja a '+fmt(r.Ve,1)+' V (la tensión de línea dividida entre √3).');
   return r;
 }
+function pedTabla(c,r){
+  const rows=[];
+  const fAre=c.tipo==='banda'?'Perímetro × ancho ÷ 100':(['plana','sil'].indexOf(c.tipo)>=0?'Largo × ancho ÷ 100':'π × Ø × largo ÷ 100');
+  if(r.per) rows.push(['Perímetro definitivo',fmt(r.per,1)+' mm',(c.tipo==='banda'&&!(pedN(c.d1)>0))?'Perímetro escrito':'π × Ø']);
+  if(r.area) rows.push(['Superficie de transferencia',fmt(r.area,1)+' cm²',fAre]);
+  if(r.P>0){ rows.push(['Potencia total'+(r.qty>1?' por unidad':''),fmt(r.P,1)+' W',r.auto?'Superficie × densidad':'Valor escrito']); rows.push(['Potencia en kilovatios',fmt(r.P/1000,3)+' kW','W ÷ 1000']); }
+  if(r.Re){
+    rows.push(['Corriente eléctrica estimada',fmt(r.IL,2)+' A',r.tri?'P ÷ (√3 × V)':'P ÷ V']);
+    rows.push(['Resistencia eléctrica requerida',fmt(r.Re,2)+' Ω',r.tri?'Ve² ÷ Pe (por elemento)':'V² ÷ P']);
+    if(r.dens!=null) rows.push(['Densidad de potencia',fmt(r.dens,2)+' W/cm²','P ÷ superficie']);
+  }
+  if(!rows.length) return '';
+  return '<div class="pf-tw"><table class="pf-t"><thead><tr><th>Parámetro</th><th>Resultado</th><th>Fórmula</th></tr></thead><tbody>'+rows.map(x=>'<tr><th scope="row">'+esc(x[0])+'</th><td><b>'+esc(x[1])+'</b></td><td>'+esc(x[2])+'</td></tr>').join('')+'</tbody></table></div>';
+}
 function pedSVG(c){
-  const t=c.tipo, d1=c.d1||'?', d2=c.d2||'?', d3=c.d3||'?';
+  const t=c.tipo, d1=c.d1||((pedN(c.per)>0)?fmt(pedN(c.per)/Math.PI,1):'?'), d2=c.d2||'?', d3=c.d3||'?';
   const S='#223', F='#C9D3DD', H='#E8943A';
   const dimH=(x1,x2,y,tx)=>'<line x1="'+x1+'" y1="'+y+'" x2="'+x2+'" y2="'+y+'" stroke="'+S+'" stroke-width="1"/><line x1="'+x1+'" y1="'+(y-4)+'" x2="'+x1+'" y2="'+(y+4)+'" stroke="'+S+'"/><line x1="'+x2+'" y1="'+(y-4)+'" x2="'+x2+'" y2="'+(y+4)+'" stroke="'+S+'"/><text x="'+((x1+x2)/2)+'" y="'+(y-5)+'" text-anchor="middle" font-size="11" fill="'+S+'">'+esc(tx)+'</text>';
   const dimV=(x,y1,y2,tx)=>'<line x1="'+x+'" y1="'+y1+'" x2="'+x+'" y2="'+y2+'" stroke="'+S+'"/><line x1="'+(x-4)+'" y1="'+y1+'" x2="'+(x+4)+'" y2="'+y1+'" stroke="'+S+'"/><line x1="'+(x-4)+'" y1="'+y2+'" x2="'+(x+4)+'" y2="'+y2+'" stroke="'+S+'"/><text x="'+(x+6)+'" y="'+((y1+y2)/2+4)+'" font-size="11" fill="'+S+'">'+esc(tx)+'</text>';
@@ -13340,7 +13454,7 @@ function pedFilas(c,r){
   f.push(['Cantidad de piezas',String(r.qty||c.qty)]);
   f.push(['Material de la funda',c.funda]); f.push(['Conexión eléctrica',c.term+(c.cable?' · '+c.cable+' mm':'')]);
   f.push(['Sensor de temperatura integrado',c.sensor]);
-  if(c.tmax) f.push(['Temperatura de trabajo',c.tmax+' °C']);
+  if(c.tmax) f.push(['Temperatura de trabajo',c.tmax+' '+tSym(c.tmaxU||'c')]);
   if(c.medio) f.push(['Medio o aplicación',c.medio]);
   f.push(['Tolerancia solicitada',c.tol]);
   return f;
@@ -13348,6 +13462,8 @@ function pedFilas(c,r){
 function pedCalcFilas(r){
   if(!r.Re) return [];
   const f=[];
+  if(r.auto) f.push(['Potencia calculada con la densidad',fmt(r.P,1)+' W ('+fmt(r.P/1000,3)+' kW) con '+pedComa(ped.cur&&ped.cur.dens||'')+' W/cm²']);
+  if(r.per) f.push(['Perímetro definitivo',fmt(r.per,1)+' mm']);
   if(r.area){ f.push(['Superficie calentada',fmt(r.area,1)+' cm²']); f.push(['Densidad de potencia',fmt(r.dens,2)+' W/cm² ('+fmt(r.dens*6.4516,1)+' W/in²)']); }
   f.push(['Resistencia por elemento (en caliente)',fmt(r.Re,2)+' Ω  (rango ±10 %: '+fmt(r.RmenosTol,2)+' a '+fmt(r.RmasTol,2)+' Ω)']);
   f.push(['Tensión sobre cada elemento',fmt(r.Ve,1)+' V']); f.push(['Corriente por elemento',fmt(r.Ie,2)+' A']);
@@ -13395,22 +13511,30 @@ function pedXlsx(c,r){
 function vPedidoRes(v){
   const c=ped.cur, t0=pedTipo(c.tipo);
   const ro=ROL==='visita';
+  if(!c.modo) c.modo=c.P?'manual':'auto';
+  if(c.dens==null) c.dens=''; if(c.per==null) c.per='';
+  if(c.tmax!==''&&c.tmax!=null){ const u0=c.tmaxU||'c'; if(u0!==PREF.temp){ const x=pedN(c.tmax); if(isFinite(x)) c.tmax=pedComa(Math.round(tFromC(tToC(x,u0),PREF.temp)*10)/10); } }
+  c.tmaxU=PREF.temp;
+  const sug0=pedDensSug(t0);
   v.innerHTML=
-   '<h2 class="vt">Pedir a fabricar una resistencia</h2><p class="intro">Escribe las medidas y la potencia: la guía calcula la resistencia, la corriente y la densidad de potencia, revisa que se pueda fabricar y arma la hoja de pedido para el fabricante.</p>'+
+   '<h2 class="vt">Pedir a fabricar una resistencia</h2><p class="intro">Escribe las medidas, la densidad de potencia y la tensión: la guía calcula el perímetro, la superficie, la potencia, la corriente y la resistencia, revisa que se pueda fabricar y arma la hoja de pedido para el fabricante.</p>'+
    '<div class="safety" style="border-left-color:var(--blue)"><h3>1. Tipo y medidas</h3><div class="grid">'+
    sel('pf_tipo','Tipo de resistencia',PED_TIPOS.map(t=>[t.k,t.n]),Math.max(0,PED_TIPOS.indexOf(t0)),true)+
    '<div id="pf_dims" class="grid" style="grid-column:1/-1">'+t0.d.map(d=>fld('pf_'+d[0],d[1],c[d[0]])).join('')+'</div></div></div>'+
-   '<div class="safety" style="border-left-color:var(--amber);margin-top:1rem"><h3>2. Datos eléctricos</h3><div class="grid">'+
+   '<div class="safety" style="border-left-color:var(--amber);margin-top:1rem"><h3>2. Potencia y datos eléctricos</h3><div class="grid">'+
+   sel('pf_modo','¿Cómo se define la potencia?',[['auto','Calcular con la densidad (W/cm²)'],['manual','Ya conozco la potencia (W)']],c.modo==='manual'?1:0,true)+
+   fld('pf_dens','Densidad de potencia (W/cm²)',c.dens,sug0?'ej. '+pedComa(sug0.mid):'',true,' id="pf_densw"')+
+   '<div class="f full" id="pf_dtw"><button class="btn sec" type="button" id="pf_dtip" style="width:100%"></button><p class="note" id="pf_dnote" style="margin:.3rem 0 0"></p></div>'+
    fld('pf_P','Potencia por unidad (W)',c.P)+fld('pf_V','Tensión (V)',c.V)+
    sel('pf_fase','Sistema',[['mono','Monofásico'],['tri','Trifásico']],c.fase==='tri'?1:0)+
    sel('pf_con','Conexión de los 3 elementos',[['y','Estrella (Y)'],['d','Triángulo (Δ)']],c.con==='d'?1:0,false,' id="pf_conw"'+(c.fase==='tri'?'':' style="display:none"'))+
-   fld('pf_qty','Cantidad de piezas',c.qty)+'</div><div class="out" id="pf_out"></div><div id="pf_vd"></div></div>'+
+   fld('pf_qty','Cantidad de piezas',c.qty)+'</div><div class="out" id="pf_out"></div><div id="pf_tab"></div><div id="pf_vd"></div></div>'+
    '<div class="safety" style="border-left-color:var(--green);margin-top:1rem"><h3>3. Construcción</h3><div class="grid">'+
    sel('pf_funda','Material de la funda',PED_FUNDA.map(x=>[x,x]),Math.max(0,PED_FUNDA.indexOf(c.funda)),true)+
    sel('pf_term','Conexión eléctrica',PED_TERM.map(x=>[x,x]),Math.max(0,PED_TERM.indexOf(c.term)),true)+
    fld('pf_cable','Largo de los cables (mm), si aplica',c.cable)+
    sel('pf_sensor','Sensor de temperatura integrado',PED_SENS.map(x=>[x,x]),Math.max(0,PED_SENS.indexOf(c.sensor)))+
-   fld('pf_tmax','Temperatura de trabajo (°C)',c.tmax)+fld('pf_medio','Medio o aplicación (agua, aceite, aire, molde…)',c.medio)+
+   fld('pf_tmax','Temperatura de trabajo ('+tSym(PREF.temp)+')',c.tmax)+fld('pf_medio','Medio o aplicación (agua, aceite, aire, molde…)',c.medio)+
    fld('pf_tol','Tolerancia solicitada',c.tol,'',true)+'</div></div>'+
    '<div class="safety" style="border-left-color:var(--blue);margin-top:1rem"><h3>4. Pedido</h3><div class="grid">'+
    fld('pf_sol','Quién solicita',c.sol||repCfg.nombre||'')+fld('pf_prov','Proveedor o fabricante',c.prov)+
@@ -13422,23 +13546,35 @@ function vPedidoRes(v){
    '<h3 class="sec">Pedidos guardados</h3><div id="pf_hist"></div>'+
    '<p class="note">Los cálculos son una verificación previa con valores típicos de la guía. El fabricante confirma la viabilidad final: material, densidad de potencia máxima y tolerancias dependen de su proceso.</p>';
   const $=id=>document.getElementById(id);
-  const map={pf_P:'P',pf_V:'V',pf_qty:'qty',pf_cable:'cable',pf_tmax:'tmax',pf_medio:'medio',pf_tol:'tol',pf_sol:'sol',pf_prov:'prov',pf_fecha:'fecha',pf_ubic:'ubic',pf_obs:'obs',pf_funda:'funda',pf_term:'term',pf_sensor:'sensor',pf_fase:'fase',pf_con:'con'};
+  const map={pf_modo:'modo',pf_dens:'dens',pf_P:'P',pf_V:'V',pf_qty:'qty',pf_cable:'cable',pf_tmax:'tmax',pf_medio:'medio',pf_tol:'tol',pf_sol:'sol',pf_prov:'prov',pf_fecha:'fecha',pf_ubic:'ubic',pf_obs:'obs',pf_funda:'funda',pf_term:'term',pf_sensor:'sensor',pf_fase:'fase',pf_con:'con'};
   function lee(){
     Object.keys(map).forEach(id=>{ const e=$(id); if(e) c[map[id]]=e.value; });
+    c.tmaxU=PREF.temp;
     ped.cur.tipo=$('pf_tipo').value;
     pedTipo(c.tipo).d.forEach(d=>{ const e=$('pf_'+d[0]); if(e) c[d[0]]=e.value; });
   }
   function pinta(){
-    lee(); const r=pedCalc(c); $('pf_conw').style.display=c.fase==='tri'?'':'none';
+    lee(); const r=pedCalc(c); const auto=c.modo==='auto';
+    $('pf_conw').style.display=c.fase==='tri'?'':'none';
+    $('pf_densw').style.display=auto?'':'none'; $('pf_dtw').style.display=auto?'':'none';
+    const pe=$('pf_P'); pe.readOnly=auto;
+    const lb=document.querySelector('label[for="pf_P"]'); if(lb) lb.textContent=auto?'Potencia por unidad (W), calculada':'Potencia por unidad (W)';
+    if(auto){ c.P=r.P>0?pedComa(r.P):''; pe.value=c.P; }
+    const t=pedTipo(c.tipo), sug=pedDensSug(t), bt=$('pf_dtip'), nt=$('pf_dnote');
+    if(sug){ bt.style.display=''; bt.setAttribute('data-v',sug.mid); bt.textContent='Usar el valor típico: '+pedComa(sug.mid)+' W/cm²'; nt.textContent='Rango habitual para este tipo: '+pedDensTxt(sug)+'.'+(c.tipo==='banda'?' En extrusión de plásticos se usa con frecuencia de 3 a 5 W/cm².':''); }
+    else{ bt.style.display='none'; nt.textContent='Para este tipo no hay un rango de referencia: pide la densidad máxima al fabricante.'; }
+    const dn=$('pf_dens'); if(dn) dn.placeholder=sug?'ej. '+pedComa(sug.mid):'';
     const out=$('pf_out'), vd=$('pf_vd'); out.innerHTML=''; vd.innerHTML='';
+    if(r.P>0&&!r.Re) out.innerHTML=lcd(fmt(r.P,1)+' W')+lcd(fmt(r.P/1000,3)+' kW',1)+lcd('falta la tensión',1);
     if(r.Re){
-      out.innerHTML=lcd(fmt(r.Re,2)+' Ω por elemento')+lcd(fmt(r.Ie,2)+' A por elemento',1)+lcd(fmt(r.IL,2)+' A de línea',1)+(r.dens!=null?lcd(fmt(r.dens,2)+' W/cm²',1):'');
+      out.innerHTML=(r.auto?lcd(fmt(r.P,1)+' W calculados'):'')+lcd(fmt(r.Re,2)+' Ω por elemento')+lcd(fmt(r.Ie,2)+' A por elemento',1)+lcd(fmt(r.IL,2)+' A de línea',1)+(r.dens!=null?lcd(fmt(r.dens,2)+' W/cm²',1):'');
       if(r.estado==='bad') vd.innerHTML+=verdict('bad','Densidad de potencia por encima del rango típico ('+(r.rmax!=null?'máx. '+r.rmax+' W/cm²':'')+'). Aumenta el largo o el diámetro, o baja la potencia'+(r.maxP?' (con esta superficie, hasta ≈ '+fmt(r.maxP,0)+' W)':'')+'.');
       else if(r.estado==='warn') vd.innerHTML+=verdict('warn','La densidad de potencia está '+(r.rmin!=null&&r.dens<r.rmin?'por debajo del rango típico (queda sobredimensionada en tamaño).':'sin rango de referencia: confirma con el fabricante.'));
       else if(r.estado==='ok') vd.innerHTML+=verdict('ok','Densidad de potencia dentro del rango típico para este tipo.');
       else vd.innerHTML+=verdict('warn','Completa las medidas para verificar la densidad de potencia.');
       r.avisos.forEach(a=>{ vd.innerHTML+=verdict('warn',a); });
     }
+    $('pf_tab').innerHTML=pedTabla(c,r);
     $('pf_dib').innerHTML='<h3 class="sec">Croquis</h3>'+pedSVG(c);
     guardaPed();
   }
@@ -13446,6 +13582,7 @@ function vPedidoRes(v){
   $('pf_tipo').addEventListener('change',pintaDims);
   Object.keys(map).forEach(id=>{ const e=$(id); if(e){ e.addEventListener('input',pinta); e.addEventListener('change',pinta); } });
   $('pf_dims').querySelectorAll('input').forEach(e=>e.addEventListener('input',pinta));
+  $('pf_dtip').addEventListener('click',()=>{ $('pf_dens').value=pedComa($('pf_dtip').getAttribute('data-v')); pinta(); });
   function histo(){
     const h=$('pf_hist');
     h.innerHTML=ped.hist.length?ped.hist.map((x,i)=>'<details class="item"><summary><span class="tt">'+esc(x.nro)+' · '+esc(pedTipo(x.tipo).n)+'<small>'+esc((x.P||'?')+' W · '+(x.V||'?')+' V · '+(x.sol||'')+' · '+(x.guardado||''))+'</small></span></summary><div class="body"><div class="row"><button class="btn sec" type="button" data-pa="abrir" data-i="'+i+'">Abrir</button><button class="btn sec" type="button" data-pa="dup" data-i="'+i+'">Duplicar</button><button class="btn dng" type="button" data-pa="del" data-i="'+i+'">Eliminar</button></div></div></details>').join(''):'<p class="note">Todavía no hay pedidos guardados.</p>';
@@ -13456,7 +13593,7 @@ function vPedidoRes(v){
       else if(a==='del'){ ped.hist.splice(i,1); guardaPed(); histo(); }
     }));
   }
-  const act=()=>{ lee(); const r=pedCalc(c); if(!r.Re){ toast('Escribe al menos la potencia y la tensión.'); return null; } return r; };
+  const act=()=>{ lee(); const r=pedCalc(c); if(!r.Re){ toast('Escribe al menos la potencia (o la densidad y las medidas) y la tensión.'); return null; } return r; };
   $('pf_pdf').addEventListener('click',()=>{ const r=act(); if(r) imprimirMant(pedDoc(c,r)); });
   $('pf_wa').addEventListener('click',()=>{ const r=act(); if(r) abrirWhatsApp(pedTexto(c,r)); });
   $('pf_cp').addEventListener('click',()=>{ const r=act(); if(r) copiarTexto(pedTexto(c,r)); });
@@ -13471,7 +13608,7 @@ document.addEventListener('click',e=>{
   const b=e.target.closest('#h_fab'); if(!b) return;
   const g=id=>{ const x=document.getElementById(id); return x?x.value:''; };
   let P=pedN(g('h_p')); if(isFinite(P)&&g('h_pu')==='kw') P*=1000;
-  ped.cur=Object.assign(PED_VACIO(),ped.cur||{});
+  ped.cur=Object.assign(PED_VACIO(),ped.cur||{}); ped.cur.modo='manual';
   if(isFinite(P)) ped.cur.P=String(Math.round(P*100)/100).replace('.',',');
   if(g('h_v')) ped.cur.V=g('h_v'); ped.cur.fase=g('h_sis')==='tri'?'tri':'mono'; ped.cur.con=g('h_con')==='d'?'d':'y';
   guardaPed(); irA('cal','fab');
@@ -14241,6 +14378,7 @@ const ICON={
   moon:'<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
   doc:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
   x:'<path d="M6 6l12 12M18 6L6 18"/>',
+  out:'<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>',
   chev:'<path d="M9 6l6 6-6 6"/>',
   bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
   fluid:'<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M9 15a3 3 0 0 0 3 3"/>',
@@ -14481,7 +14619,7 @@ function construyeDrawer(){
     '<div class="dr-search"><div class="sbox sm">'+ico('search')+'<input id="dQ" type="search" placeholder="Buscar en la guía" autocomplete="off"></div></div>'+
     '<div class="dr-scroll" id="dScroll">'+drawerMenuHTML()+'</div>'+
     '<div class="dr-foot"><div class="dr-user"><span class="dr-av">'+esc(iniciales(repCfg.nombre))+'</span><div class="dr-un"><b>'+esc(repCfg.nombre||'Sin nombre')+'</b><small>'+esc(repCfg.cargo||'Sin cargo')+(repCfg.responsable?' · Resp.: '+esc(repCfg.responsable):'')+'</small></div></div>'+
-    '<div class="dr-btns"><button class="dr-b" type="button" id="drTema" data-act="tema">'+ico(osc?'sun':'moon')+'<span>'+(osc?'Tema claro':'Tema oscuro')+'</span></button><button class="dr-b" type="button" data-act="exp">'+ico('doc')+'<span>Exportar</span></button></div></div>';
+    '<div class="dr-btns"><button class="dr-b" type="button" id="drTema" data-act="tema">'+ico(osc?'sun':'moon')+'<span>'+(osc?'Tema claro':'Tema oscuro')+'</span></button><button class="dr-b" type="button" data-act="exp">'+ico('doc')+'<span>Exportar</span></button></div>'+((typeof SES!=='undefined'&&SES&&ajSt.usr&&ajSt.usr.adm)?'<button class="dr-out" type="button" data-act="salir">'+ico('out')+'<span>Cerrar sesión · '+esc(SES.n)+'</span></button>':'')+'</div>';
 }
 function abreDrawer(){
   construyeDrawer();
@@ -14522,7 +14660,7 @@ function actualizaCromo(){
     const on=g ? g===state.mod : (!enDock && b.id==='dockMenu');
     if(on) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current');
   });
-  pintaBtnTema(); actBadge();
+  pintaBtnTema(); actBadge(); pintaSalir();
 }
 function render(){
   const m=MODS[state.mod];
@@ -14556,7 +14694,7 @@ document.addEventListener('click',e=>{
   const t=e.target.closest('[data-tog]');
   if(t){ const k=t.getAttribute('data-tog'); const open=t.getAttribute('aria-expanded')!=='true'; drOpen[k]=open; t.setAttribute('aria-expanded',open?'true':'false'); const sb=t.parentNode.querySelector('.dr-subs'); if(sb) sb.hidden=!open; return; }
   const a=e.target.closest('[data-act]');
-  if(a){ const act=a.getAttribute('data-act'); if(act==='tema') alternaTema(); else if(act==='exp'){ cierraDrawer(); openExp('wa'); } return; }
+  if(a){ const act=a.getAttribute('data-act'); if(act==='tema') alternaTema(); else if(act==='exp'){ cierraDrawer(); openExp('wa'); } else if(act==='salir'){ salirSesion(); } return; }
   if(e.target.id==='dBack'||e.target.closest('#dClose')){ cierraDrawer(); return; }
 });
 app.addEventListener('click',e=>{
@@ -14574,6 +14712,7 @@ document.getElementById('drawer').addEventListener('input',e=>{
 });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') cierraDrawer(); });
 document.getElementById('btnMenu').addEventListener('click',abreDrawer);
+document.getElementById('btnOut').addEventListener('click',salirSesion);
 document.getElementById('dockMenu').addEventListener('click',abreDrawer);
 document.getElementById('btnTema').addEventListener('click',alternaTema);
 
@@ -14582,7 +14721,7 @@ cargarLineas();
 cargarMant();
 cargarDic();
 cargarAj();
-cargarPed(); cargarRuta(); cargarHmi(); cargarPrg(); cargarRedChk(); cargarLogo(); logoFavicon(); cargarFav(); aplicaUi(); iniNav(); setTimeout(abreHashEq,120); window.addEventListener('hashchange',abreHashEq);
+cargarPed(); cargarRuta(); cargarHmi(); cargarPrg(); cargarRedChk(); cargarLogo(); logoFavicon(); cargarFav(); aplicaUi(); iniNav(); tcInicia(); medidaHdr(); pintaSalir(); setTimeout(abreHashEq,120); window.addEventListener('hashchange',abreHashEq);
 const SES_OK=resuelveSesion();
 document.addEventListener('click',e=>{ const b=e.target.closest('[data-dgo]'); if(b){ dicUI.q=b.getAttribute('data-dgo'); dicUI.cat=''; dicUI.let=''; dicUI.fav=false; irA('dic','dic',b.getAttribute('data-dgo')); } });
 cargarRep();
