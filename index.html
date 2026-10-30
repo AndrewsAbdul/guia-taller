@@ -807,6 +807,7 @@ html.moderno header.top{background:color-mix(in srgb,var(--navy) 94%,transparent
 .btn[data-sel="1"]::before{content:"✓ ";font-weight:800}
 html[data-theme="dark"] .btn[data-sel="1"]{color:#06121D!important}
 @media (prefers-color-scheme: dark){html:not([data-theme="light"]) .btn[data-sel="1"]{color:#06121D!important}}
+.appver .copy{font-size:.78rem;line-height:1.35;max-width:30rem;margin-top:.15rem}
 </style>
 </head>
 <body>
@@ -7280,15 +7281,15 @@ function vMantExp(v){
 
 
 /* ---------------- VERSIÓN DE LA GUÍA ---------------- */
-const APP_VER = '6.6';
-const APP_FECHA = '2026-10-28';
+const APP_VER = '1.1';
+const APP_FECHA = '2026-10-29';
 const fechaCorta = iso => { const p=String(iso).split('-'); return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:iso; };
 function appVerHTML(){
-  return '<footer class="appver"><span>Guía del taller · Versión '+APP_VER+' · Actualizada el '+fechaCorta(APP_FECHA)+'</span><button type="button" data-go="acerca">Novedades de la versión</button></footer>';
+  return '<footer class="appver"><span>Guía del taller · Versión '+APP_VER+' · Actualizada el '+fechaCorta(APP_FECHA)+'</span><span class="copy">© '+new Date().getFullYear()+' Andrews A. Hernández · Guía del taller. Todos los derechos reservados.</span><button type="button" data-go="acerca">Novedades de la versión</button></footer>';
 }
 const rdFoot = () => '<p class="rd-foot">Generado con la Guía del taller · versión '+APP_VER+' · '+fechaCorta(APP_FECHA)+'</p>';
 const CAMBIOS = [
- {t:'Versión 6.6', lcd:fechaCorta(APP_FECHA), sub:'Fórmulas, programación y automatización, y Siemens junto a Rockwell',
+ {t:'Versión 1.1', lcd:fechaCorta(APP_FECHA), sub:'Fórmulas, programación y automatización, y Siemens junto a Rockwell',
   pasos:['Nuevo módulo «Fórmulas»: 146 fórmulas de todos los temas de la guía, agrupadas por tema, cada una con qué significa, para qué se usa y un ejemplo. Tiene buscador y filtro por grupo.',
          'Nuevo módulo «Programación y automatización»: fundamentos (ciclo de scan, lenguajes IEC 61131-3, tipos de datos, estructura de un programa), Siemens TIA Portal y S7-300/400, Rockwell (RSLogix 500 y Studio 5000) y una comparativa Siemens–Rockwell.',
          'Ejemplos de código en texto estructurado (arranque con sello, escalado, alarmas, bombas, máquina de estados, PI y más) con botón para copiar.',
@@ -7301,6 +7302,7 @@ const CAMBIOS = [
          'Estilo Moderno: el panel de inicio y el encabezado del menú ahora usan un degradado sobrio, con textos blancos de mejor lectura y sin brillos fuertes.',
          'Ajustes: la opción elegida de Automático / Claro / Oscuro (y de Clásico / Moderno) ahora se marca con color y una palomita, y se actualiza también al cambiar el tema con el botón de la barra superior.',
          'El estilo Moderno es ahora el predeterminado. Quien ya haya elegido otro en Ajustes conserva su elección.',
+         'Aviso de derechos de autor en el pie de cada pantalla: © con el año automático, el nombre del autor y «Todos los derechos reservados». A partir de esta entrega la numeración de versiones empieza en 1.1.',
          'Importante: parámetros, códigos de falla y nombres de menús de Siemens y Rockwell son orientativos y cambian según modelo y versión; confirma en el manual del equipo.']},
  {t:'Versión 6.5', lcd:fechaCorta(APP_FECHA), sub:'Deslizar entre pantallas, despliegue corregido, dashboard renovado y 1000 preguntas de capacitación',
   pasos:['Gestos: desliza hacia la izquierda para pasar a la sección siguiente del módulo y hacia la derecha para volver a la anterior. Deslizar hacia la derecha en la pantalla de inicio (o en la primera sección de un módulo) abre el menú con todo el contenido. No actúa sobre tablas, campos de texto ni controles.',
