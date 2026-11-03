@@ -964,6 +964,47 @@ details.ixa .ixa-b .care{background:#fde8e8;border:2px solid #d83a3a;border-radi
 details.ixa .ixa-b .care strong{color:#a32020}
 details.ixa .ixa-b .care li::before{content:"✕";background:#e24a4a;color:#fff}
 </style>
+<style>
+/* v3.1 · módulo Cotización */
+.cot-ig,.cot-e{color:#e3ecfa}.cot-ig h3,.cot-e h3{color:#fff}
+.cot-seg{display:flex;flex-wrap:nowrap;overflow-x:auto;max-width:100%}
+.cot-ig{display:grid;grid-template-columns:3.6rem minmax(0,1fr);gap:.8rem;align-items:center}
+.cot-ig h3{margin:0}.cot-ig p{margin:.2rem 0 0;opacity:.85}
+.cot-igi svg{width:3.4rem;height:3.4rem;color:#F2C94C}
+.cot-list.scr{max-height:24rem;overflow-y:auto;overscroll-behavior:contain}
+.cot-list{display:flex;flex-direction:column;border:2px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);margin:.6rem 0}
+.cot-it{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.6rem;align-items:center;padding:.6rem .75rem;border-top:1px solid var(--line)}
+.cot-it:first-child{border-top:0}
+.cot-in{min-width:0;display:flex;flex-direction:column;gap:.15rem}
+.cot-in b{font-weight:700;line-height:1.25;color:var(--ink)}
+.cot-in small{color:var(--muted);font-size:.85rem;line-height:1.35}
+.cot-tg{font-style:normal;font-size:.72rem;font-weight:700;padding:.05rem .45rem;border-radius:999px;margin-right:.3rem;background:var(--line);color:var(--ink)}
+.cot-tg.pdf{background:#4DAF7C;color:#06301B}.cot-tg.ref{background:#F2C94C;color:#3A2A00}.cot-tg.mine{background:#78B0EE;color:#0B2A4A}.cot-tg.ed{background:#E0554B;color:#fff}
+.cot-add{width:2.6rem;height:2.6rem;border-radius:10px;border:0;background:var(--yellow);color:#2A1C00;font-size:1.4rem;font-weight:700;cursor:pointer}
+.cot-q{display:flex;align-items:center;gap:.3rem;margin-top:.35rem}
+.cot-q button{width:2.2rem;height:2.2rem;border-radius:8px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font-weight:700;cursor:pointer}
+.cot-q input{width:3.6rem;text-align:center;border:2px solid var(--line);border-radius:8px;padding:.3rem;background:var(--surface);color:var(--ink)}
+.cot-q span{color:var(--muted);font-size:.85rem}
+.cot-tt{display:flex;flex-direction:column;align-items:flex-end;gap:.3rem;text-align:right;font-variant-numeric:tabular-nums}
+.cot-rm{border:0;background:none;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:.85rem;padding:.2rem 0}
+.cot-chk{display:flex;flex-wrap:wrap;gap:.45rem}
+.cot-ch{display:flex;align-items:center;gap:.35rem;border:2px solid var(--line);border-radius:999px;padding:.35rem .75rem;font-size:.9rem;cursor:pointer;background:var(--surface);color:var(--ink)}
+.cot-ch.on{border-color:#E0554B;color:#E0554B}
+.cot-sw{display:flex;align-items:center;gap:.5rem;margin:.6rem 0 0;font-weight:600;color:var(--ink)}
+.cot-sw input{width:1.2rem;height:1.2rem}
+.cot-tot{background:var(--navy);color:var(--on-navy);border-radius:14px;padding:.8rem .9rem;font-variant-numeric:tabular-nums}
+.cot-tot>div{display:flex;justify-content:space-between;gap:.8rem;padding:.15rem 0}
+.cot-tot>div span{opacity:.8}
+.cot-tot .big{font-size:1.35rem;font-weight:800;border-top:1px solid rgba(255,255,255,.2);margin-top:.35rem;padding-top:.5rem}
+.cot-tot .big span{opacity:1}
+.cot-tot .usd{color:#7FE0A8;font-weight:700}.cot-tot .usd span{opacity:1}
+.cot-bar{display:flex;height:.8rem;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.15);margin-top:.7rem}
+.cot-bar i{display:block;height:100%}
+.cot-leg{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.45rem;font-size:.8rem;opacity:.9}
+.cot-leg i{display:inline-block;width:.65rem;height:.65rem;border-radius:2px;margin-right:.3rem;vertical-align:-1px}
+.kcard .cot-kb{font-size:1.5rem}
+.kcard small{font-size:.75rem;opacity:.8}
+.cot-cd{display:flex;gap:.5rem;align-items:center;margin:.4rem 0}.cot-cd>input[type=checkbox]{width:1.3rem;height:1.3rem;flex:none}.cot-cd .f{flex:1;margin:0}.cot-cdx{flex:none;border:0;background:transparent;color:#C0392B;font-size:1.1rem;font-weight:800;padding:.3rem .5rem;cursor:pointer}.cot-nton{display:flex;gap:.5rem;align-items:center;margin:.3rem 0 .5rem}.f textarea{width:100%;font:inherit;padding:.55rem .65rem;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);box-sizing:border-box}</style>
 </head>
 <body>
 <header class="top">
@@ -7436,14 +7477,27 @@ function vMantExp(v){
 
 
 /* ---------------- VERSIÓN DE LA GUÍA ---------------- */
-const APP_VER = '3.0';
-const APP_FECHA = '2026-10-30';
+const APP_VER = '3.3';
+const APP_FECHA = '2026-11-02';
 const fechaCorta = iso => { const p=String(iso).split('-'); return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:iso; };
 function appVerHTML(){
   return '<footer class="appver"><span>Guía del taller · Versión '+APP_VER+' · Actualizada el '+fechaCorta(APP_FECHA)+'</span><span class="copy">© '+new Date().getFullYear()+' Andrews A. De los Santos Hernández · Guía del taller. Todos los derechos reservados.</span><button type="button" data-go="acerca">Novedades de la versión</button></footer>';
 }
 const rdFoot = () => '<p class="rd-foot">Generado con la Guía del taller · versión '+APP_VER+' · '+fechaCorta(APP_FECHA)+'</p>';
 const CAMBIOS = [
+ {t:'Versión 3.3', lcd:'Condiciones editables y notas del cliente',
+  pasos:['En la cotización, cada condición del documento se puede marcar, editar o quitar, y puedes agregar condiciones propias.',
+         'Nuevo cuadro opcional de notas del cliente: sale en el Excel (recuadro antes de las firmas) y en el texto de WhatsApp.',
+         'Las condiciones y notas se guardan en el historial de cotizaciones y vuelven al reabrir una.']},
+ {t:'Versión 3.2', lcd:'Cotización exportada a Excel',
+  pasos:['Nuevo botón «Exportar a Excel (.xlsx)» en la cotización: archivo con banda de título, datos del cliente y del emisor, tabla de partidas con fórmulas, subtotal, ITBIS, total en RD$ y US$, condiciones y espacio para firmas. Listo para imprimir en una página.',
+         'Segunda hoja con tasa del dólar editable, ajuste por inflación, cargo mínimo, recargos y notas.',
+         'Nuevo bloque Emisor en la cotización: nombre y cargo elegido de una lista (o escrito por ti), que aparece debajo del nombre en el Excel.']},
+ {t:'Versión 3.1', lcd:'Cotización de servicio de mantenimiento',
+  pasos:['Nuevo módulo Cotización de servicio en el grupo Mantenimiento: '+'152 servicios de residencial a industrial, energía renovable, automatización y mantenimiento.',
+         'Calcula en RD$ y US$ con la tasa del día (se actualiza con internet), recargos por condición de trabajo, cargo mínimo, descuento e ITBIS.',
+         'Catálogo con precios editables, partidas propias y ajuste general por IPC. Historial de cotizaciones y errores típicos por categoría.',
+         'La cotización se envía al Centro de exportación o se copia lista para WhatsApp y Excel.']},
  {t:'Versión 3.0', lcd:'Infografía en todos los temas y más simuladores',
   pasos:['Los acordeones de PLC (lógica básica, temporizadores, contadores, comparar y calcular), HMI y los demás menús con acordeón usan ahora el mismo formato infografía con banner, figura y «Ojo» en rojo.',
          'Cada tema de biblioteca añade una autoevaluación de orden de pasos y el botón «Marcar como dominado» (se guarda en tu dispositivo).',
@@ -19031,6 +19085,485 @@ VIEWS['prog.cmp']=v=>vMarca(v,'Siemens y Rockwell','Equivalencias de conceptos p
  RUTA[RUTA.length-1].pasos.splice(6,0,['Variadores, servos y arrancadores suaves','Conceptos, fallas, mediciones, diagnóstico y calculadora.','vfd.conc']);
  RUTA.forEach(n=>{ const V={b:[['Variadores · Nivel 1 Básico','Motor trifásico, partes, placa y seguridad. Filtra por Nivel 1.','vfd.conc']],i:[['Variadores · Nivel 2 Intermedio','Guía de puesta en marcha y mediciones básicas. Filtra por Nivel 2.','vfd.guia']],a:[['Variadores · Nivel 3 Avanzado','Fallas por marca, diagnóstico guiado y calculadoras. Filtra por Nivel 3.','vfd.fallas']]}[n.id]; if(V) V.forEach(x=>n.pasos.push(x)); });
 })();
+/* ===== v3.1 · Cotización de servicio de mantenimiento ===== */
+(function(){
+ const COT_CATS=[
+
+ {k:'res',n:'Residencial',d:'Viviendas y apartamentos, 120/240 V monofásico.',
+  ic:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M10 30 32 12l22 18"/><path d="M16 26v26h32V26"/><rect x="27" y="36" width="10" height="16"/><path d="M40 33h5v6h-5z"/></svg>',
+  e:['Cotizar el punto sin definir distancia máxima: un punto a 15 m no cuesta lo mismo que uno a 4 m.','Usar cable #14 en tomacorrientes de 20 A; el mínimo para ese breaker es #12.','Olvidar el breaker y el espacio libre en el tablero al agregar circuitos de 220 V.','No incluir el conductor de tierra ni el GFCI en baños y cocina.']},
+ {k:'com',n:'Comercial',d:'Locales, oficinas y tiendas; 120/208 V trifásico.',
+  ic:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="12" y="14" width="40" height="38"/><path d="M12 24h40"/><path d="M20 32h8v8h-8zM36 32h8v8h-8z"/><path d="M28 52V44h8v8"/></svg>',
+  e:['Balancear mal las fases del tablero 208 V y sobrecargar una sola línea.','No contemplar iluminación de emergencia y señal de salida exigidas por bomberos.','Separar mal la canalización de datos y de fuerza: genera ruido en la red.']},
+ {k:'ind',n:'Industrial',d:'Naves y plantas; 240/480 V trifásico, tubería vista y bandeja.',
+  ic:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M8 52V30l12 8v-8l12 8v-8l12 8V14h10v38z"/><path d="M8 52h48"/><path d="M47 22h4"/></svg>',
+  e:['Calcular el conductor sólo por amperaje sin revisar caída de tensión en tramos largos (máx. 3 %).','Cotizar el transformador "instalado" sin aclarar si el equipo lo suministra el cliente.','Dimensionar el banco de capacitores sin medir FP real: riesgo de sobrecompensar y resonancia con armónicos de VFD.','Olvidar la grúa, andamio o permisos de la distribuidora en trabajos de transformador.']},
+ {k:'sol',n:'Energía renovable',d:'Solar fotovoltaica y térmica, eólica pequeña, bombeo solar, baterías, UPS y cargadores.',
+  ic:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="48" cy="14" r="6"/><path d="M48 3v3M48 22v3M37 14h3M56 14h3"/><path d="M8 50l8-22h30l8 22z"/><path d="M12 39h38M27 28l-3 22M37 28l3 22"/></svg>',
+  e:['Dimensionar el inversor sin revisar la corriente de arranque de bombas y motores.','No instalar protección contra sobretensiones (DPS) en el lado de corriente directa.','Ubicar paneles con sombra parcial: un panel sombreado baja el rendimiento de toda la cadena.','Olvidar el contrato de medición neta con la distribuidora en sistemas conectados a la red.','Mezclar conectores MC4 de distintas marcas: provoca puntos calientes y arcos en DC.','Lavar paneles al mediodía con agua fría: el choque térmico puede agrietar el vidrio.','Hacer mantenimiento sin abrir el seccionador DC: los paneles generan tensión con cualquier luz.']},
+ {k:'aut',n:'Automatización',d:'VFD, arrancadores suaves, PLC, HMI e instrumentación.',
+  ic:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="10" y="12" width="20" height="40" rx="2"/><path d="M15 20h10M15 26h10M15 32h10"/><circle cx="46" cy="32" r="10"/><path d="M30 32h6M46 22v-6M46 48v-6"/></svg>',
+  e:['Instalar el VFD sin cable apantallado al motor ni aterrizar la malla en ambos extremos.','Cobrar programación por proyecto sin definir cuántas pantallas o rutinas incluye.','No dejar respaldo del programa (.RSS / .ACD) ni de parámetros del variador al cliente.','Olvidar la reactancia de línea o filtro cuando hay muchos VFD en el mismo transformador.']},
+ {k:'man',n:'Mantenimiento',d:'Preventivo, predictivo y correctivo de equipos eléctricos.',
+  ic:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M40 12a10 10 0 0 0-9 14L12 45l7 7 19-19a10 10 0 0 0 14-9l-6 6-6-2-2-6z"/></svg>',
+  e:['Hacer termografía con la carga baja: los puntos calientes sólo aparecen sobre ~40 % de carga.','Megar el motor sin desconectar el VFD o el arrancador suave: se dañan los semiconductores.','No registrar valores de referencia (IR, temperatura, corriente) para comparar en la próxima visita.','Cotizar el preventivo sin incluir el paro de producción que el cliente debe coordinar.']}
+ ];
+ const COT_ORD=['man','sol','ind','aut','com','res'];
+ COT_CATS.sort((a,b)=>COT_ORD.indexOf(a.k)-COT_ORD.indexOf(b.k));
+ // [id, categoría, nombre, unidad, mano de obra, materiales, fuente, nota]
+ const COT_BASE=[
+
+ ['r1','res','Salida de iluminación (punto / centro de luz)','punto',1050,2200,'pdf','Hasta ~6 m de recorrido, cable #12'],
+ ['r2','res','Salida de tomacorriente general 110 V','punto',1150,2600,'pdf','Incluye caja y placa'],
+ ['r3','res','Salida de tomacorriente especial 220 V (A/A, secadora)','punto',1850,4800,'pdf','Circuito dedicado'],
+ ['r4','res','Salida de interruptor (simple, 3-way, 4-way)','punto',1050,2100,'pdf',''],
+ ['r5','res','Instalación de breaker en tablero existente','unidad',200,650,'pdf','Aplica cargo mínimo de visita'],
+ ['r6','res','Tablero de distribución residencial (hasta 12 circuitos)','unidad',3500,8500,'pdf',''],
+ ['r7','res','Tablero de distribución residencial (16 a 24 circuitos)','unidad',5500,14000,'pdf',''],
+ ['r8','res','Acometida eléctrica residencial monofásica','global',7500,18000,'pdf',''],
+ ['r9','res','Instalación de abanico de techo o lámpara','unidad',900,0,'ref','Sin salida nueva'],
+ ['r10','res','Salida para calentador eléctrico 220 V','punto',1850,4200,'ref',''],
+ ['r11','res','Recableado por metro (THHN #12)','metro',85,95,'ref',''],
+ ['r12','res','Instalación de inversor y baterías residencial','unidad',6500,0,'ref','Equipo del cliente'],
+ ['r13','res','Puesta a tierra residencial (varilla + conexión)','global',2500,3800,'ref',''],
+ ['c1','com','Salida de datos / red Cat 6','punto',900,1600,'ref',''],
+ ['c2','com','Luminaria panel LED 2×2 (instalación)','unidad',650,0,'ref','Luminaria del cliente'],
+ ['c3','com','Tablero trifásico comercial 208 V (hasta 24 circuitos)','unidad',9500,26000,'ref',''],
+ ['c4','com','Acometida comercial trifásica','global',14000,42000,'ref',''],
+ ['c5','com','Alimentación eléctrica A/A split hasta 24k BTU','unidad',2500,3500,'ref',''],
+ ['c6','com','Luz de emergencia / señal de salida','unidad',750,2800,'ref',''],
+ ['c7','com','Transferencia manual (planta / red)','unidad',6500,18000,'ref',''],
+ ['i1','ind','Salida eléctrica en tubería vista (EMT / conduit industrial)','punto',1450,3500,'pdf',''],
+ ['i2','ind','Tablero de distribución trifásico (hasta 24 polos)','unidad',12500,32000,'pdf',''],
+ ['i3','ind','Tablero de distribución / autotransformador grande','unidad',24000,75000,'pdf','Separar tablero y autotransformador si aplica'],
+ ['i4','ind','Banco de capacitores (corrección de FP)','unidad',15000,65000,'pdf','Precio según kVAR'],
+ ['i5','ind','Transformador poste / padmounted (hasta 150 kVA)','unidad',45000,180000,'pdf','Materiales: accesorios; confirmar si incluye el equipo'],
+ ['i6','ind','Canalización en bandeja portacables','metro',450,1800,'pdf','Indicar ancho de bandeja'],
+ ['i7','ind','Instalación eléctrica de motor / máquina (hasta 50 HP)','unidad',18000,42000,'pdf',''],
+ ['i8','ind','Instalación eléctrica de motor / máquina (más de 50 HP)','unidad',32000,85000,'pdf',''],
+ ['i9','ind','Sistema de puesta a tierra industrial (malla / electrodos)','global',22000,55000,'pdf','Objetivo ≤ 5 Ω'],
+ ['i10','ind','Cableado de fuerza por metro (#2 a 4/0 AWG)','metro',180,950,'ref','Ajustar según calibre'],
+ ['i11','ind','Luminaria industrial high bay LED','unidad',1800,0,'ref','En altura; ver recargo'],
+ ['i12','ind','Transferencia automática (ATS) con generador','unidad',35000,0,'ref','Equipo del cliente'],
+ ['i13','ind','Sistema de pararrayos','global',28000,90000,'ref',''],
+ ['i14','ind','Instalación de cubículo en CCM','unidad',9500,0,'ref',''],
+ ['a1','aut','Instalación de variador de frecuencia (hasta 30 HP)','unidad',12000,6500,'ref','Materiales: cable apantallado, accesorios'],
+ ['a2','aut','Instalación de variador de frecuencia (más de 30 HP)','unidad',22000,12000,'ref',''],
+ ['a3','aut','Instalación de arrancador suave','unidad',10000,5500,'ref',''],
+ ['a4','aut','Armado de tablero de control con PLC','unidad',35000,45000,'ref','PLC y HMI aparte'],
+ ['a5','aut','Programación de PLC','hora',2500,0,'ref',''],
+ ['a6','aut','Diseño / programación de pantalla HMI','pantalla',4500,0,'ref',''],
+ ['a7','aut','Instalación de instrumento (transmisor, sensor)','unidad',3500,1500,'ref','Incluye lazo 4-20 mA'],
+ ['a8','aut','Comisionamiento y puesta en marcha','día',12000,0,'ref',''],
+ ['m1','man','Mantenimiento preventivo de VFD (hasta 50 HP)','unidad',6500,600,'ref','Limpieza, ventiladores, apriete, parámetros'],
+ ['m2','man','Mantenimiento preventivo de VFD (más de 50 HP)','unidad',9500,900,'ref',''],
+ ['m3','man','Mantenimiento preventivo de arrancador suave','unidad',5500,500,'ref',''],
+ ['m4','man','Mantenimiento de tablero de distribución','unidad',4500,500,'ref','Limpieza, apriete, inspección'],
+ ['m5','man','Termografía de tablero','tablero',3200,0,'ref','Con informe'],
+ ['m6','man','Prueba de aislamiento (megado) motor hasta 50 HP','unidad',2800,0,'ref',''],
+ ['m7','man','Prueba de aislamiento (megado) motor más de 50 HP','unidad',4800,0,'ref',''],
+ ['m8','man','Medición de resistencia de puesta a tierra','global',3500,0,'ref',''],
+ ['m9','man','Análisis de calidad de energía (armónicos, FP)','día',18000,0,'ref','Con informe'],
+ ['m10','man','Mantenimiento de banco de capacitores','unidad',6000,800,'ref',''],
+ ['m11','man','Mantenimiento de transformador seco','unidad',15000,1500,'ref',''],
+ ['m12','man','Hora técnico (correctivo)','hora',1200,0,'ref',''],
+ ['m13','man','Hora ayudante','hora',600,0,'ref',''],
+ ['m14','man','Diagnóstico / visita técnica','visita',2000,0,'ref',''],
+ ['r14','res','Salida para estufa eléctrica 220 V / 50 A','punto',2200,6500,'ref','Cable #6'],
+ ['r15','res','Instalación de tomacorriente GFCI (baño, cocina)','unidad',600,1400,'ref',''],
+ ['r16','res','Cambio de tomacorriente o interruptor existente','unidad',350,0,'ref','Accesorio del cliente'],
+ ['r17','res','Salida de timbre','punto',900,1200,'ref',''],
+ ['r18','res','Iluminación empotrada LED en plafón (downlight)','punto',750,900,'ref',''],
+ ['r19','res','Reflector LED exterior','unidad',800,0,'ref','Equipo del cliente'],
+ ['r20','res','Alimentación eléctrica de bomba de agua / cisterna','unidad',3500,4500,'ref','Con control de nivel'],
+ ['r21','res','Supresor de picos en tablero','unidad',1500,3500,'ref',''],
+ ['r22','res','Base de contador / medidor','unidad',2500,5500,'ref',''],
+ ['r23','res','Energizador de cerca eléctrica perimetral','global',4500,0,'ref','Equipo del cliente'],
+ ['r24','res','Localización de cortocircuito o falla','visita',1800,0,'ref',''],
+ ['c8','com','Salida de iluminación comercial en plafón','punto',1200,2600,'ref',''],
+ ['c9','com','Alimentación de letrero luminoso','unidad',2500,3000,'ref',''],
+ ['c10','com','Cableado de cámara CCTV','punto',1200,1800,'ref',''],
+ ['c11','com','Detector de humo / alarma contra incendio','punto',1100,2500,'ref',''],
+ ['c12','com','Circuito dedicado para cuarto de servidores','punto',2000,5200,'ref','Con tierra aislada'],
+ ['c13','com','Tomacorriente de piso','punto',1600,4500,'ref',''],
+ ['c14','com','Desmonte de instalación existente','punto',350,0,'ref',''],
+ ['i15','ind','Tomacorriente industrial trifásico 32 A (pin y manga)','unidad',2500,7500,'ref',''],
+ ['i16','ind','Interruptor de seguridad (desconectivo) hasta 100 A','unidad',3500,9500,'ref',''],
+ ['i17','ind','Interruptor de seguridad (desconectivo) 200 a 400 A','unidad',7500,28000,'ref',''],
+ ['i18','ind','Tubería EMT hasta 1 1/4" por metro','metro',280,650,'ref',''],
+ ['i19','ind','Tubería rígida galvanizada mayor de 2" por metro','metro',450,1600,'ref',''],
+ ['i20','ind','Terminal ponchado en cable de fuerza','terminal',350,450,'ref','Calibre #2 en adelante'],
+ ['i21','ind','Empalme o terminal de media tensión','unidad',9500,18000,'ref',''],
+ ['i22','ind','Alimentación eléctrica de compresor de aire','unidad',12000,18000,'ref',''],
+ ['i23','ind','Instalación de resistencias de calefacción','zona',3500,2500,'ref','Por zona de temperatura'],
+ ['i24','ind','Medidor de energía multifunción','unidad',4500,2000,'ref','Equipo aparte'],
+ ['i25','ind','Desmonte de tablero o equipo existente','unidad',4500,0,'ref',''],
+ ['i26','ind','Hora ingeniero de supervisión','hora',2500,0,'ref',''],
+ ['s1','sol','Sistema fotovoltaico conectado a la red','kWp',9000,4500,'ref','Paneles e inversor del cliente'],
+ ['s2','sol','Sistema fotovoltaico híbrido o aislado','kWp',11000,5500,'ref',''],
+ ['s3','sol','Instalación de inversor híbrido','unidad',7500,3500,'ref',''],
+ ['s4','sol','Instalación de batería en banco','batería',1200,800,'ref',''],
+ ['s5','sol','Protección DC y puesta a tierra para fotovoltaico','global',5500,9500,'ref','DPS, fusibles, tierra'],
+ ['s6','sol','Limpieza e inspección de paneles','panel',250,0,'ref',''],
+ ['s7','sol','Instalación de UPS hasta 10 kVA','unidad',4500,2500,'ref',''],
+ ['s8','sol','Cargador de vehículo eléctrico nivel 2','unidad',6500,14000,'ref','Circuito dedicado 40 A'],
+ ['s9','sol','Estructura de montaje en techo de concreto','panel',600,1800,'ref','Aluminio anodizado, anclajes'],
+ ['s10','sol','Estructura de montaje en techo de zinc o aluzinc','panel',500,1500,'ref','Con sellado de perforaciones'],
+ ['s11','sol','Estructura en suelo o carport solar','kWp',3500,9000,'ref',''],
+ ['s12','sol','Instalación de microinversor u optimizador','unidad',900,0,'ref','Equipo del cliente'],
+ ['s13','sol','Tablero combinador DC (string box)','unidad',3500,8500,'ref','Fusibles, DPS y seccionador'],
+ ['s14','sol','Cableado solar DC 4 a 6 mm²','metro',60,120,'ref','Cable fotovoltaico con protección UV'],
+ ['s15','sol','Interconexión AC al tablero principal','global',4500,6500,'ref',''],
+ ['s16','sol','Expediente técnico para medición neta (planos y trámite)','global',15000,0,'ref','Sin tasas de la distribuidora'],
+ ['s17','sol','Monitoreo remoto del sistema (wifi / datalogger)','unidad',2500,1500,'ref',''],
+ ['s18','sol','Bombeo solar (bomba sumergible y controlador)','HP',6000,3500,'ref','Bomba y paneles aparte'],
+ ['s19','sol','Calentador solar de agua','unidad',4500,2500,'ref','Conexión hidráulica y eléctrica'],
+ ['s20','sol','Aerogenerador pequeño hasta 3 kW','unidad',18000,12000,'ref','Mástil y controlador de carga'],
+ ['s21','sol','Luminaria solar autónoma en poste','unidad',2500,1500,'ref',''],
+ ['s22','sol','Batería de litio en rack','módulo',1500,900,'ref','Comunicación BMS con inversor'],
+ ['s23','sol','Ampliación de sistema fotovoltaico existente','kWp',7500,4000,'ref',''],
+ ['s24','sol','Desmonte y reinstalación de paneles','panel',650,0,'ref','Para reparar o impermeabilizar techo'],
+ ['s25','sol','Mantenimiento preventivo fotovoltaico (hasta 10 kWp)','visita',6500,500,'ref','Limpieza, apriete, mediciones, informe'],
+ ['s26','sol','Mantenimiento preventivo fotovoltaico (sistemas grandes)','kWp',650,50,'ref',''],
+ ['s27','sol','Termografía de paneles solares','kWp',450,0,'ref','Detecta celdas y diodos dañados'],
+ ['s28','sol','Prueba de curva I-V','string',1500,0,'ref',''],
+ ['s29','sol','Medición de aislamiento DC (Riso)','string',900,0,'ref',''],
+ ['s30','sol','Revisión y reapriete de conectores MC4','string',1200,400,'ref',''],
+ ['s31','sol','Mantenimiento de banco de baterías (medición, bornes, ecualización)','batería',350,100,'ref',''],
+ ['s32','sol','Actualización y ajuste de inversor (firmware, parámetros)','unidad',2500,0,'ref',''],
+ ['s33','sol','Diagnóstico de falla en sistema solar','visita',3000,0,'ref',''],
+ ['s34','sol','Mantenimiento de calentador solar','unidad',2500,500,'ref','Descalcificación y ánodo'],
+ ['s35','sol','Mantenimiento de aerogenerador pequeño','unidad',6500,1500,'ref',''],
+ ['a9','aut','Instalación de sensor inductivo o fotoeléctrico','unidad',1500,600,'ref',''],
+ ['a10','aut','Instalación de encoder','unidad',2500,800,'ref',''],
+ ['a11','aut','Instalación de electroválvula / válvula solenoide','unidad',2200,1200,'ref',''],
+ ['a12','aut','Pulsador, selector o luz piloto en tablero','unidad',450,650,'ref',''],
+ ['a13','aut','Instalación de PLC compacto (MicroLogix / Micro800)','unidad',8500,3500,'ref','PLC del cliente'],
+ ['a14','aut','Instalación de HMI en tablero','unidad',4500,1800,'ref',''],
+ ['a15','aut','Instalación de controlador de temperatura','unidad',2500,1000,'ref',''],
+ ['a16','aut','Nodo de red industrial (Ethernet/IP, Modbus)','nodo',2800,1800,'ref',''],
+ ['a17','aut','Sintonía de lazo PID','lazo',5500,0,'ref',''],
+ ['a18','aut','Parametrización de variador','unidad',3000,0,'ref',''],
+ ['a19','aut','Calibración de transmisor (presión, temperatura, nivel)','unidad',3500,0,'ref','Con certificado'],
+ ['a20','aut','Respaldo y documentación de programa PLC','equipo',3500,0,'ref',''],
+ ['a21','aut','Migración de PLC (SLC 500 a CompactLogix)','punto E/S',900,0,'ref',''],
+ ['a22','aut','Diagnóstico de variador en banco','unidad',4500,0,'ref',''],
+ ['m15','man','Mantenimiento preventivo de motor hasta 50 HP','unidad',5500,2500,'ref','Rodamientos, limpieza, pruebas'],
+ ['m16','man','Mantenimiento preventivo de motor más de 50 HP','unidad',9500,5500,'ref',''],
+ ['m17','man','Cambio de rodamientos de motor hasta 20 HP','unidad',3500,2200,'ref',''],
+ ['m18','man','Mantenimiento de CCM','cubículo',2500,300,'ref',''],
+ ['m19','man','Mantenimiento de transformador en aceite','unidad',22000,4500,'ref','Incluye muestra de aceite'],
+ ['m20','man','Prueba de relación de transformación (TTR)','unidad',8500,0,'ref',''],
+ ['m21','man','Mantenimiento eléctrico de planta / generador','unidad',7500,2500,'ref',''],
+ ['m22','man','Prueba de transferencia automática','unidad',4500,0,'ref',''],
+ ['m23','man','Mantenimiento de pararrayos y puesta a tierra','global',6500,1500,'ref',''],
+ ['m24','man','Mantenimiento de tablero de control con PLC','unidad',5500,500,'ref','Limpieza, E/S, respaldo'],
+ ['m25','man','Mantenimiento de HMI','unidad',2500,0,'ref',''],
+ ['m26','man','Cambio de contactor o relé térmico','unidad',1500,0,'ref','Repuesto del cliente'],
+ ['m27','man','Cambio de breaker industrial','unidad',2500,0,'ref','Repuesto del cliente'],
+ ['m28','man','Revisión de luminaria industrial','unidad',450,0,'ref',''],
+ ['m29','man','Medición de vibración en motor','unidad',3500,0,'ref',''],
+ ['m30','man','Medición de consumo y balance de cargas','tablero',3000,0,'ref',''],
+ ['m31','man','Visita de mantenimiento programado (contrato mensual)','visita',9500,0,'ref','']
+ ];
+ const COT_RECS=[['noct','Nocturno o fin de semana',15],['alt','Trabajo en altura',10],['oper','Planta en operación',10],['urg','Urgencia (menos de 24 h)',25],['ries','Zona peligrosa o confinada',20]];
+ const COT_KEY='taller-cot-v1';
+ let C={rate:63,rateDate:null,rateSrc:'manual',adj:0,itbis:true,mat:true,desc:0,rec:{},dist:0,minv:2500,cur:'DOP',cli:'',proy:'',ubi:'',val:30,pago:'50 % de anticipo y 50 % al entregar',lines:[],custom:[],over:{},hist:[]};
+ const cotUI={cat:'man',q:'',ccat:'man',conf:''};
+ try{ const r=localStorage.getItem(COT_KEY); if(r){ const o=JSON.parse(r); if(o&&typeof o==='object') C=Object.assign(C,o); } }catch(e){}
+ const cotSave=()=>{ try{ localStorage.setItem(COT_KEY,JSON.stringify(C)); }catch(e){} };
+ const f0=n=>Math.round(n).toLocaleString('es-DO');
+ const f2=n=>(Math.round(n*100)/100).toLocaleString('es-DO',{minimumFractionDigits:2,maximumFractionDigits:2});
+ const cotAll=()=>COT_BASE.map(b=>({id:b[0],c:b[1],n:b[2],u:b[3],mo:b[4],mt:b[5],src:b[6],nt:b[7]})).concat(C.custom.map(c=>Object.assign({src:'mine',nt:''},c)));
+ const cotFind=id=>cotAll().find(x=>x.id===id);
+ const cotPrecio=it=>{ const o=C.over[it.id], k=1+(+C.adj||0)/100; return {mo:(o?o.mo:it.mo)*k, mt:(o?o.mt:it.mt)*k}; };
+ const catDe=k=>COT_CATS.find(c=>c.k===k)||{n:'Propia',k:'',e:[],d:'',ic:''};
+ function cotCalc(){
+  let mo=0,mt=0; const rows=[];
+  C.lines.forEach(l=>{ const it=cotFind(l.id); if(!it) return; const p=cotPrecio(it); const a=p.mo*l.q, b=C.mat?p.mt*l.q:0; mo+=a; mt+=b; rows.push({it,q:l.q,pmo:p.mo,pmt:C.mat?p.mt:0,t:a+b}); });
+  const pct=COT_RECS.reduce((s,r)=>s+(C.rec[r[0]]?r[2]:0),0);
+  const rec=mo*pct/100+(+C.dist||0);
+  let sub=mo+mt+rec, minAdj=0;
+  if(rows.length&&sub<(+C.minv||0)){ minAdj=(+C.minv)-sub; sub=+C.minv; }
+  const desc=sub*(+C.desc||0)/100, base=sub-desc, tax=C.itbis?base*.18:0, tot=base+tax;
+  return {rows,mo,mt,rec,pct,minAdj,desc,base,tax,tot,usd:tot/(+C.rate||1)};
+ }
+ const cotM=v=>C.cur==='USD'?'US$ '+f2(v/(+C.rate||1)):'RD$ '+f0(v);
+ const tag=it=>C.over[it.id]?'<i class="cot-tg ed">Editado</i>':it.src==='pdf'?'<i class="cot-tg pdf">Lista base</i>':it.src==='mine'?'<i class="cot-tg mine">Propia</i>':'<i class="cot-tg ref">Ref.</i>';
+ const txtF=(id,label,val,ph,full,type)=>'<div class="f'+(full?' full':'')+'"><label for="'+id+'">'+esc(label)+'</label><input id="'+id+'" '+(type==='n'?'inputmode="decimal"':'type="text"')+' value="'+esc(val==null?'':val)+'"'+(ph?' placeholder="'+esc(ph)+'"':'')+'></div>';
+ const num=s=>{ const n=parseFloat(String(s).replace(/\s/g,'').replace(/,/g,'.')); return isFinite(n)?n:0; };
+
+ /* ---- tasa del dólar ---- */
+ async function cotTasa(manual,v){
+  const src=[['https://open.er-api.com/v6/latest/USD',j=>j.rates&&j.rates.DOP],['https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json',j=>j.usd&&j.usd.dop]];
+  for(const [u,g] of src){ try{ const ac=new AbortController(); setTimeout(()=>ac.abort(),6000); const r=await fetch(u,{signal:ac.signal}); if(!r.ok) continue; const x=+g(await r.json());
+   if(x>20&&x<200){ C.rate=Math.round(x*100)/100; C.rateDate=Date.now(); C.rateSrc='online'; cotSave(); if(manual) toast('Tasa actualizada: RD$ '+f2(C.rate)); if(v&&v.isConnected) vCotCot(v); return; } }catch(e){} }
+  if(manual) toast('Sin conexión con la fuente de la tasa. Se mantiene la última guardada.');
+ }
+ const tasaInfo=()=>{ const d=C.rateDate?new Date(C.rateDate):null; return C.rateSrc==='online'&&d?'En línea · '+d.toLocaleString('es-DO',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}):'Manual'+(d?' · '+d.toLocaleDateString('es-DO'):' · verifica la tasa del día'); };
+
+ /* ---- texto para el cliente ---- */
+ function cotTexto(){
+  const r=cotCalc(), LN='━━━━━━━━━━━━━━━━━━';
+  let t='⚡ *COTIZACIÓN DE SERVICIO DE MANTENIMIENTO*\n'+LN+'\n📅 Fecha: '+new Date().toLocaleDateString('es-DO')+'\n👤 Cliente: '+(C.cli||'—')+'\n🔧 Proyecto: '+(C.proy||'—')+'\n📍 Ubicación: '+(C.ubi||'—')+'\n'+LN+'\n*PARTIDAS*\n';
+  r.rows.forEach((x,i)=>{ t+=(i+1)+'. '+x.it.n+'\n   '+x.q+' '+x.it.u+' × RD$ '+f0(x.pmo+x.pmt)+' = *RD$ '+f0(x.t)+'*\n'; });
+  t+=LN+'\nMano de obra: RD$ '+f0(r.mo)+'\nMateriales: '+(C.mat?'RD$ '+f0(r.mt):'los suministra el cliente')+'\n';
+  if(r.rec) t+='Recargos: RD$ '+f0(r.rec)+'\n'; if(r.minAdj) t+='Ajuste al cargo mínimo: RD$ '+f0(r.minAdj)+'\n'; if(r.desc) t+='Descuento '+C.desc+' %: −RD$ '+f0(r.desc)+'\n';
+  t+='Subtotal: RD$ '+f0(r.base)+'\n'+(C.itbis?'ITBIS 18 %: RD$ '+f0(r.tax)+'\n':'Precios sin ITBIS\n')+LN+'\n💰 *TOTAL: RD$ '+f0(r.tot)+'*\n💵 *US$ '+f2(r.usd)+'* (tasa RD$ '+f2(C.rate)+')\n'+LN+'\n📌 Validez: '+(C.val||30)+' días\n📌 Forma de pago: '+(C.pago||'—')+'\n📌 No incluye permisos de la distribuidora ni obra civil\n'+(cotNotas()?'📝 *Notas:* '+cotNotas()+'\n':'')+'\n✍️ '+(quien()||'')+'\n_Guía del taller · Andrews A. De los Santos_';
+  return t;
+ }
+ function cotTSV(){
+  const r=cotCalc(); let t='Partida\tUnidad\tCantidad\tMano de obra unit. RD$\tMateriales unit. RD$\tTotal RD$\n';
+  r.rows.forEach(x=>{ t+=x.it.n+'\t'+x.it.u+'\t'+x.q+'\t'+Math.round(x.pmo)+'\t'+Math.round(x.pmt)+'\t'+Math.round(x.t)+'\n'; });
+  t+='\t\t\t\tSubtotal\t'+Math.round(r.base)+'\n\t\t\t\tITBIS\t'+Math.round(r.tax)+'\n\t\t\t\tTotal RD$\t'+Math.round(r.tot)+'\n\t\t\t\tTotal US$\t'+(Math.round(r.usd*100)/100)+'\n';
+  return t;
+ }
+ /* ---- condiciones editables y notas del cliente ---- */
+ const cotCondBase=()=>{ const a=[['pago','Forma de pago: '+(C.pago||'—')+'.'],['val','Validez de la oferta: '+(C.val||30)+' días a partir de la fecha de emisión.']]; if(+C.adj) a.push(['adj','Los precios incluyen un ajuste por inflación de '+C.adj+' % sobre la lista base.']); a.push(['mat',C.mat?'Materiales incluidos en la cotización.':'Los materiales los suministra el cliente.'],['itbis',C.itbis?'Los montos incluyen ITBIS 18 %.':'Los precios no incluyen ITBIS.'],['noinc','No incluye permisos de la distribuidora ni obra civil.']); return a; };
+ const cotConds=()=>{ const off=C.cdOff||{}, tx=C.cdTxt||{}; const o=cotCondBase().filter(c=>!off[c[0]]).map(c=>String(tx[c[0]]||c[1])); (C.cdX||[]).forEach(x=>{ if(x.on!==false&&String(x.t||'').trim()) o.push(String(x.t).trim()); }); return o; };
+ const cotNotas=()=>C.notasOn!==false?String(C.notas||'').trim():'';
+ function cotCondForm(){
+  const off=C.cdOff||{}, tx=C.cdTxt||{}, X=C.cdX||[];
+  const rw=(ck,tx2,att)=>'<div class="cot-cd">'+ck+'<div class="f"><textarea rows="2" '+att+'>'+esc(tx2)+'</textarea></div></div>';
+  return '<h3 class="sec">Condiciones del documento</h3><p class="hint">Marca las que saldrán en el Excel. Toca un texto para editarlo.</p>'+
+   cotCondBase().map(c=>rw('<input type="checkbox" data-cdk="'+c[0]+'"'+(off[c[0]]?'':' checked')+' aria-label="Incluir condición">',tx[c[0]]||c[1],'data-cdt="'+c[0]+'" aria-label="Texto de la condición"')).join('')+
+   X.map((x,i)=>'<div class="cot-cd"><input type="checkbox" data-cdxk="'+i+'"'+(x.on===false?'':' checked')+' aria-label="Incluir condición"><div class="f"><textarea rows="2" data-cdxt="'+i+'" placeholder="Escribe tu condición" aria-label="Condición propia">'+esc(x.t||'')+'</textarea></div><button type="button" class="cot-cdx" data-cdxd="'+i+'" aria-label="Borrar condición">✕</button></div>').join('')+
+   '<div class="row"><button class="btn sec" type="button" id="ct_cdadd">＋ Agregar condición</button></div>'+
+   '<h3 class="sec">Notas del cliente <small>(opcional)</small></h3><label class="cot-nton"><input type="checkbox" id="ct_nton"'+(C.notasOn===false?'':' checked')+'> Incluir las notas en el Excel y en el texto de WhatsApp</label>'+
+   '<div class="f full"><textarea id="ct_notas" rows="3" placeholder="Ej.: Requiere casco y chaleco. Coordinar el paro de línea con el supervisor." aria-label="Notas del cliente">'+esc(C.notas||'')+'</textarea></div>';
+ }
+ /* ---- exportar a Excel (.xlsx) con presentación profesional ---- */
+ const COT_CARGOS=[['aut','Ingeniero en automatización industrial'],['ele','Ingeniero eléctrico'],['tel','Técnico electricista'],['tau','Técnico en automatización'],['sup','Supervisor de mantenimiento'],['con','Contratista eléctrico'],['otro','Otro (escribir)']];
+ const cotCargoTxt=()=>{ const k=C.cargo||'aut'; if(k==='otro') return String(C.cargoOtro||'').trim(); const c=COT_CARGOS.find(x=>x[0]===k); return c?c[1]:''; };
+ function cotStyles(){
+  const fonts=['<font><sz val="11"/><color rgb="FF0F2A47"/><name val="Calibri"/></font>'],fills=['<fill><patternFill patternType="none"/></fill>','<fill><patternFill patternType="gray125"/></fill>'],borders=['<border><left/><right/><top/><bottom/><diagonal/></border>'],xfs=['<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>'],nfs=[],cache={};
+  const idx=(a,x)=>{ let i=a.indexOf(x); if(i<0){ a.push(x); i=a.length-1; } return i; };
+  const side=(n,b)=>b?'<'+n+' style="'+b[0]+'"><color rgb="FF'+b[1]+'"/></'+n+'>':'<'+n+'/>';
+  const get=o=>{ const k=JSON.stringify(o); if(cache[k]!=null) return cache[k];
+   const f=idx(fonts,'<font>'+(o.b?'<b/>':'')+(o.i?'<i/>':'')+'<sz val="'+(o.sz||11)+'"/><color rgb="FF'+(o.c||'0F2A47')+'"/><name val="Calibri"/></font>');
+   const fl=o.bg?idx(fills,'<fill><patternFill patternType="solid"><fgColor rgb="FF'+o.bg+'"/><bgColor indexed="64"/></patternFill></fill>'):0;
+   const bd=o.bd?idx(borders,'<border>'+side('left',o.bd.l)+side('right',o.bd.r)+side('top',o.bd.t)+side('bottom',o.bd.b)+'<diagonal/></border>'):0;
+   let nf=0; if(o.nf==='m') nf=4; else if(o.nf){ let j=nfs.indexOf(o.nf); if(j<0){ nfs.push(o.nf); j=nfs.length-1; } nf=164+j; }
+   const x='<xf numFmtId="'+nf+'" fontId="'+f+'" fillId="'+fl+'" borderId="'+bd+'" xfId="0"'+(nf?' applyNumberFormat="1"':'')+' applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="'+(o.al||'left')+'" vertical="'+(o.va||'center')+'"'+(o.wrap?' wrapText="1"':'')+(o.ind?' indent="'+o.ind+'"':'')+'/></xf>';
+   xfs.push(x); cache[k]=xfs.length-1; return cache[k]; };
+  const xml=()=>'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'+(nfs.length?'<numFmts count="'+nfs.length+'">'+nfs.map((n,i)=>'<numFmt numFmtId="'+(164+i)+'" formatCode="'+xe(n).replace(/"/g,'&quot;')+'"/>').join('')+'</numFmts>':'')+
+   '<fonts count="'+fonts.length+'">'+fonts.join('')+'</fonts><fills count="'+fills.length+'">'+fills.join('')+'</fills><borders count="'+borders.length+'">'+borders.join('')+'</borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="'+xfs.length+'">'+xfs.join('')+'</cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>';
+  return {get,xml};
+ }
+ function cotSheetXml(sh){
+  const rows={}; sh.cells.forEach(c=>{ (rows[c.r]=rows[c.r]||[]).push(c); });
+  let x='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetPr><pageSetUpPr fitToPage="1"/></sheetPr><sheetViews><sheetView showGridLines="0" workbookViewId="0"'+(sh.sel?' tabSelected="1"':'')+'/></sheetViews><sheetFormatPr defaultRowHeight="18"/><cols>'+sh.cols.map((w,i)=>'<col min="'+(i+1)+'" max="'+(i+1)+'" width="'+w+'" customWidth="1"/>').join('')+'</cols><sheetData>';
+  Object.keys(rows).map(Number).sort((a,b)=>a-b).forEach(rn=>{
+   x+='<row r="'+rn+'"'+(sh.h[rn]?' ht="'+sh.h[rn]+'" customHeight="1"':'')+'>';
+   rows[rn].sort((a,b)=>a.c-b.c).forEach(c=>{ const ref=colName(c.c)+rn;
+    if(c.f) x+='<c r="'+ref+'" s="'+c.s+'"><f>'+xe(c.f)+'</f>'+(typeof c.v==='number'?'<v>'+c.v+'</v>':'')+'</c>';
+    else if(typeof c.v==='number'&&isFinite(c.v)) x+='<c r="'+ref+'" s="'+c.s+'"><v>'+c.v+'</v></c>';
+    else if(c.v===''||c.v==null) x+='<c r="'+ref+'" s="'+c.s+'"/>';
+    else x+='<c r="'+ref+'" s="'+c.s+'" t="inlineStr"><is><t xml:space="preserve">'+xe(c.v)+'</t></is></c>'; });
+   x+='</row>'; });
+  x+='</sheetData>'+(sh.merges.length?'<mergeCells count="'+sh.merges.length+'">'+sh.merges.map(m=>'<mergeCell ref="'+m+'"/>').join('')+'</mergeCells>':'')+
+   '<printOptions horizontalCentered="1"/><pageMargins left="0.5" right="0.5" top="0.6" bottom="0.7" header="0.3" footer="0.3"/><pageSetup paperSize="1" orientation="portrait" fitToWidth="1" fitToHeight="0"/><headerFooter><oddFooter>&amp;L&amp;8Guía del taller&amp;R&amp;8Página &amp;P de &amp;N</oddFooter></headerFooter></worksheet>';
+  return x;
+ }
+ function cotXlsx(){
+  const r=cotCalc(), S=cotStyles(), NAVY='0F2A47',BLUE='1F5F99',AMB='F2A900',ICE='EAF1F9',ICE2='DCE9F6',ZEB='F4F8FC',LINE='DCE4EE',GRAY='6B7788',CREAM='FFF3CC',SUP='Condiciones y supuestos';
+  const no='COT-'+new Date().getFullYear()+'-'+String(C.hist.length+1).padStart(4,'0'), hoy=new Date().toLocaleDateString('es-DO');
+  const emNom=String(C.emNom!=null?C.emNom:(repCfg.nombre||'')).trim(), cargo=cotCargoTxt(), emp=empresa();
+  const mk=()=>({cells:[],merges:[],h:{},cols:[]});
+  const put=(sh,rn,c,v,s,f)=>{ sh.cells.push({r:rn,c,v,s:S.get(s),f}); };
+  const span=(sh,rn,c1,c2,v,s,f)=>{ put(sh,rn,c1,v,s,f); for(let c=c1+1;c<=c2;c++) put(sh,rn,c,'',s); if(c2>c1) sh.merges.push(colName(c1)+rn+':'+colName(c2)+rn); };
+  const thin=[['thin',LINE]], bd=b=>({l:['thin',b],r:['thin',b],t:['thin',b],b:['thin',b]});
+  /* ---------- hoja 1 ---------- */
+  const A=mk(); A.cols=[5,52,11,8,17,17,19]; A.sel=1;
+  A.h[1]=36; A.h[2]=20; A.h[3]=5; A.h[4]=8;
+  span(A,1,0,4,'COTIZACIÓN DE SERVICIO',{b:1,sz:20,c:'FFFFFF',bg:NAVY,ind:1}); span(A,1,5,6,'No. '+no,{b:1,sz:13,c:'FFFFFF',bg:NAVY,al:'right',ind:1});
+  span(A,2,0,4,'Mantenimiento e instalación eléctrica'+(emp?' · '+emp:''),{sz:11,c:'C9D6E8',bg:NAVY,ind:1}); span(A,2,5,6,'Fecha: '+hoy+' · Válida '+(C.val||30)+' días',{sz:11,c:'C9D6E8',bg:NAVY,al:'right',ind:1});
+  span(A,3,0,6,'',{bg:AMB});
+  const lbl={b:1,sz:10,c:GRAY,bd:{b:['thin',LINE]}};
+  A.h[5]=20; span(A,5,0,2,'CLIENTE',lbl); span(A,5,3,6,'EMISOR',lbl);
+  A.h[6]=22; span(A,6,0,2,C.cli||'—',{b:1,sz:12}); span(A,6,3,6,emNom||'—',{b:1,sz:12});
+  span(A,7,0,2,'Proyecto: '+(C.proy||'—'),{}); span(A,7,3,6,cargo,{c:'334455'});
+  span(A,8,0,2,'Ubicación: '+(C.ubi||'—'),{}); span(A,8,3,6,emp||'República Dominicana',{c:'334455'});
+  A.h[9]=10; A.h[10]=30;
+  const th={b:1,c:'FFFFFF',bg:BLUE,al:'center',wrap:1,bd:{l:['thin',BLUE],r:['thin',BLUE],t:['thin',BLUE],b:['thick',AMB]}};
+  ['#','Descripción de la partida','Unidad','Cant.','M. de obra unit.','Materiales unit.','Importe RD$'].forEach((t,i)=>put(A,10,i,t,th));
+  let rn=11; const a=rn;
+  r.rows.forEach((x,i)=>{ const z=i%2?ZEB:'FFFFFF', b=bd(LINE);
+   A.h[rn]=Math.max(22,18*Math.ceil(String(x.it.n).length/50)+4);
+   put(A,rn,0,i+1,{al:'center',bg:z,bd:b}); put(A,rn,1,x.it.n,{bg:z,bd:b,wrap:1,ind:1}); put(A,rn,2,x.it.u,{al:'center',bg:z,bd:b}); put(A,rn,3,x.q,{al:'center',bg:z,bd:b});
+   put(A,rn,4,Math.round(x.pmo*100)/100,{al:'right',bg:z,bd:b,nf:'m'}); put(A,rn,5,Math.round(x.pmt*100)/100,{al:'right',bg:z,bd:b,nf:'m'});
+   put(A,rn,6,Math.round(x.t*100)/100,{al:'right',b:1,bg:z,bd:b,nf:'m'},'D'+rn+'*(E'+rn+'+F'+rn+')'); rn++; });
+  const e=rn-1; A.h[rn]=8; rn++;
+  const lab={b:1,al:'right',bg:ICE,ind:1}, val={b:1,al:'right',bg:ICE2,nf:'m',ind:1}, first=rn;
+  const trow=(t,v,f,neg)=>{ span(A,rn,0,2,'',{}); span(A,rn,3,5,t,lab); put(A,rn,6,Math.round(v*100)/100,neg?{b:1,al:'right',bg:ICE2,nf:'m',c:'B3261E',ind:1}:val,f); rn++; return rn-1; };
+  trow('Mano de obra',r.mo,'SUMPRODUCT(D'+a+':D'+e+',E'+a+':E'+e+')');
+  trow(C.mat?'Materiales':'Materiales (los suministra el cliente)',r.mt,C.mat?'SUMPRODUCT(D'+a+':D'+e+',F'+a+':F'+e+')':null);
+  if(r.rec) trow('Recargos',r.rec); if(r.minAdj) trow('Ajuste al cargo mínimo',r.minAdj); if(r.desc) trow('Descuento '+C.desc+' %',-r.desc,null,1);
+  const last=rn-1; const sub=trow('Subtotal',r.base,'SUM(G'+first+':G'+last+')');
+  let itb=0; if(C.itbis) itb=trow('ITBIS 18 %',r.tax,'G'+sub+'*0.18');
+  A.h[rn]=30; span(A,rn,0,2,'',{}); span(A,rn,3,5,'TOTAL RD$',{b:1,sz:15,c:'FFFFFF',bg:NAVY,al:'right',ind:1}); const tot=rn;
+  put(A,rn,6,Math.round(r.tot*100)/100,{b:1,sz:15,c:'FFFFFF',bg:NAVY,al:'right',nf:'m',ind:1},'G'+sub+(itb?'+G'+itb:'')); rn++;
+  A.h[rn]=24; span(A,rn,0,2,'Tasa de referencia RD$ '+f2(C.rate)+' por US$ 1 (editable en la hoja «'+SUP+'»)',{sz:10,c:'7A5200',bg:CREAM,i:1,ind:1}); span(A,rn,3,5,'TOTAL US$',{b:1,c:'7A5200',bg:CREAM,al:'right',ind:1});
+  put(A,rn,6,Math.round(r.usd*100)/100,{b:1,c:'7A5200',bg:CREAM,al:'right',nf:'m',ind:1},'G'+tot+'/\''+SUP+'\'!C4'); rn++;
+  A.h[rn]=12; rn++;
+  const ch={b:1,sz:11,bd:{b:['medium',AMB]}}; span(A,rn,0,6,'CONDICIONES',ch); rn++;
+  const cnd=cotConds();
+  cnd.forEach(t=>{ A.h[rn]=Math.max(20,18*Math.ceil(t.length/105)+2); span(A,rn,0,6,'•  '+t,{sz:10.5,c:'334455',ind:1,wrap:1,va:'top'}); rn++; });
+  const nts=cotNotas();
+  if(nts){ A.h[rn]=8; rn++; A.h[rn]=20; span(A,rn,0,6,'NOTAS DEL CLIENTE',{b:1,sz:10,c:BLUE,bg:ZEB,bd:{l:['thick',BLUE]},ind:1}); rn++; A.h[rn]=Math.max(24,18*Math.ceil(nts.length/100)+8); span(A,rn,0,6,nts,{c:'334455',bg:ZEB,bd:{l:['thick',BLUE]},ind:1,wrap:1,va:'top'}); rn++; }
+  A.h[rn]=44; rn++;
+  const sg={sz:10,c:GRAY,al:'center',bd:{t:['thin',NAVY]},wrap:1};
+  span(A,rn,0,2,'Firma del emisor'+(emNom?' · '+emNom:'')+(cargo?' · '+cargo:''),sg); span(A,rn,4,6,'Aceptado por el cliente',sg); A.h[rn]=30;
+  /* ---------- hoja 2 ---------- */
+  const B=mk(); B.cols=[3,36,52]; B.h[1]=30; B.h[2]=6;
+  span(B,1,0,2,'CONDICIONES Y SUPUESTOS',{b:1,sz:16,c:'FFFFFF',bg:NAVY,ind:1}); span(B,2,0,2,'',{bg:AMB});
+  B.h[3]=8; B.h[4]=22;
+  const kk={b:1,bg:ICE,bd:bd(LINE),ind:1}, vv={bd:bd(LINE),wrap:1,ind:1};
+  const prm=[['Tasa RD$ por US$ (editable)',+C.rate||0,{bd:bd(AMB),bg:CREAM,b:1,nf:'#,##0.00',al:'left',ind:1}],['Fuente de la tasa',tasaInfo(),vv],['Ajuste por inflación (IPC)',(+C.adj||0)+' %',vv],['Cargo mínimo por visita','RD$ '+f2(C.minv),vv],['Descuento',(+C.desc||0)+' %',vv],
+   ['Recargos aplicados',(COT_RECS.filter(q=>C.rec[q[0]]).map(q=>q[1]+' ('+q[2]+' %)').join(' · ')||'Ninguno')+(+C.dist?' · Traslado: RD$ '+f2(C.dist):''),vv],['Materiales',C.mat?'Incluidos':'Los suministra el cliente',vv],['ITBIS',C.itbis?'18 % incluido en el total':'No incluido',vv]];
+  prm.forEach((p,i)=>{ const n=4+i; B.h[n]=Math.max(22,18*Math.ceil(String(p[1]).length/48)+4); put(B,n,1,p[0],kk); put(B,n,2,p[1],p[2]); });
+  let m=4+prm.length+1; B.h[m]=8; m++;
+  span(B,m,1,2,'Notas',{b:1,bd:{b:['medium',AMB]}}); m++;
+  ['Los precios base de la lista son de referencia y deben verificarse antes de enviar la cotización al cliente.','Para recalcular el total en US$, cambia la tasa en la celda amarilla de esta hoja.','Cotización generada con la Guía del taller · versión '+APP_VER+'.'].forEach(t=>{ B.h[m]=34; span(B,m,1,2,t,{sz:10.5,c:'334455',wrap:1,ind:1}); m++; });
+  /* ---------- paquete ---------- */
+  const H='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>', sheets=[[A,'Cotización'],[B,SUP]];
+  const files=[{name:'[Content_Types].xml',data:H+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>'+sheets.map((s,i)=>'<Override PartName="/xl/worksheets/sheet'+(i+1)+'.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>').join('')+'</Types>'},
+   {name:'_rels/.rels',data:H+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'},
+   {name:'xl/workbook.xml',data:H+'<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><bookViews><workbookView activeTab="0"/></bookViews><sheets>'+sheets.map((s,i)=>'<sheet name="'+xe(s[1])+'" sheetId="'+(i+1)+'" r:id="rId'+(i+1)+'"/>').join('')+'</sheets><calcPr fullCalcOnLoad="1"/></workbook>'},
+   {name:'xl/_rels/workbook.xml.rels',data:H+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+sheets.map((s,i)=>'<Relationship Id="rId'+(i+1)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet'+(i+1)+'.xml"/>').join('')+'<Relationship Id="rId'+(sheets.length+1)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'}];
+  sheets.forEach((s,i)=>files.push({name:'xl/worksheets/sheet'+(i+1)+'.xml',data:cotSheetXml(s[0])}));
+  files.push({name:'xl/styles.xml',data:S.xml()});
+  const slug=String(C.cli||'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,30);
+  return {blob:zipStore(files),name:'Cotizacion-'+no+(slug?'-'+slug:'')+'.xlsx'};
+ }
+
+ async function cotCopia(t,msg){ try{ await navigator.clipboard.writeText(t); toast(msg); }catch(e){ const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); toast(msg); }catch(_){ toast('No se pudo copiar.'); } ta.remove(); } }
+ function cotSnap(){
+  const r=cotCalc();
+  pushSnap({modulo:'Cotización',titulo:'Cotización de servicio de mantenimiento'+(C.cli?' · '+C.cli:''),
+   entradas:[['Cliente',C.cli||'—'],['Proyecto o equipo',C.proy||'—'],['Ubicación',C.ubi||'—'],['Tasa del dólar','RD$ '+f2(C.rate)],['Validez',(C.val||30)+' días'],['Forma de pago',C.pago||'—']],
+   resultados:r.rows.map(x=>x.it.n+' · '+x.q+' '+x.it.u+' = RD$ '+f0(x.t)).concat(['Mano de obra: RD$ '+f0(r.mo),'Materiales: '+(C.mat?'RD$ '+f0(r.mt):'del cliente')].concat(r.rec?['Recargos: RD$ '+f0(r.rec)]:[]).concat(r.desc?['Descuento: −RD$ '+f0(r.desc)]:[]).concat(['Subtotal: RD$ '+f0(r.base),(C.itbis?'ITBIS 18 %: RD$ '+f0(r.tax):'Sin ITBIS'),'Total: RD$ '+f0(r.tot),'Total: US$ '+f2(r.usd)])),
+   veredictos:['Total de la cotización: RD$ '+f0(r.tot)+' · US$ '+f2(r.usd)],vcls:['ok'],graficas:[]});
+ }
+
+ /* ---- Cotizar ---- */
+ function vCotCot(v){
+  const r=cotCalc(), cat=catDe(cotUI.cat), q=cotUI.q.trim().toLowerCase();
+  const lista=cotAll().filter(i=>q?(i.n+' '+i.nt).toLowerCase().indexOf(q)>=0:i.c===cotUI.cat);
+  const T=(r.mo+r.mt+r.rec+r.minAdj+r.tax)||1;
+  v.innerHTML='<h2 class="vt">Cotización de servicio de mantenimiento</h2><p class="intro">Arma el presupuesto con el catálogo de servicios, de residencial a industrial. Calcula en RD$ y en US$ con la tasa del día.</p>'+
+  '<div class="kgrid"><button type="button" class="kcard t-azul" data-ck="tasa"><b>'+f2(C.rate)+'</b><span>Tasa US$ → RD$<br><small>'+esc(tasaInfo())+'</small></span></button>'+
+   '<button type="button" class="kcard t-amarillo" data-ck="cat"><b>'+(C.adj||0)+' %</b><span>Ajuste de precios (IPC)</span></button>'+
+   '<button type="button" class="kcard t-verde"><b class="cot-kb">'+f0(r.tot)+'</b><span>Total RD$</span></button>'+
+   '<button type="button" class="kcard t-gris"><b class="cot-kb">'+f2(r.usd)+'</b><span>Total US$</span></button></div>'+
+  '<h3 class="sec">Cliente y proyecto</h3><div class="grid">'+txtF('ct_cli','Cliente',C.cli,'Industrias del Caribe SRL')+txtF('ct_proy','Proyecto o equipo',C.proy,'Preventivo VFD línea 3')+txtF('ct_ubi','Ubicación',C.ubi,'Santo Domingo Oeste')+txtF('ct_val','Validez (días)',C.val,'30',false,'n')+txtF('ct_pago','Forma de pago',C.pago,'',true)+'</div><h3 class="sec">Emisor</h3><div class="grid">'+txtF('ct_emn','Nombre del emisor',C.emNom!=null?C.emNom:(repCfg.nombre||''),'Tu nombre')+'<div class="f"><label for="ct_car">Cargo del emisor</label><select id="ct_car">'+COT_CARGOS.map(c=>'<option value="'+c[0]+'"'+((C.cargo||'aut')===c[0]?' selected':'')+'>'+esc(c[1])+'</option>').join('')+'</select></div>'+((C.cargo||'aut')==='otro'?txtF('ct_cao','Cargo (escríbelo)',C.cargoOtro||'','Técnico de campo'):'')+'</div>'+
+  ''+cotCondForm()+'<h3 class="sec">Tasa del dólar</h3><div class="grid">'+txtF('ct_rate','Tasa RD$ por US$',f2(C.rate).replace(/,/g,''),'',false,'n')+'<div class="f"><label>&nbsp;</label><button class="btn sec" type="button" id="ct_tasa">Actualizar en línea</button></div></div><p class="hint">'+esc(tasaInfo())+'. Sin internet se usa la última tasa guardada; puedes escribirla a mano.</p>'+
+  '<h3 class="sec">Agregar servicios</h3><div class="seg cot-seg" role="group" aria-label="Categoría">'+COT_CATS.map(c=>'<button type="button" data-cc="'+c.k+'" aria-pressed="'+(c.k===cotUI.cat&&!q)+'">'+esc(c.n)+'</button>').join('')+'</div>'+
+  '<div class="f full" style="margin-bottom:.6rem"><label for="ct_q">Buscar servicio</label><input id="ct_q" type="search" placeholder="Tablero, VFD, megado, paneles…" value="'+esc(cotUI.q)+'"></div>'+
+  (q?'':'<div class="ig-card cot-ig"><div class="cot-igi">'+cat.ic+'</div><div><h3>'+esc(cat.n)+'</h3><p>'+esc(cat.d)+'</p></div></div>')+
+  '<div class="cot-list scr">'+(lista.length?lista.map(i=>{ const p=cotPrecio(i); return '<div class="cot-it"><div class="cot-in"><b>'+esc(i.n)+'</b><small>'+tag(i)+' MO '+f0(p.mo)+' · Mat. '+f0(p.mt)+' / '+esc(i.u)+(i.nt?' · '+esc(i.nt):'')+'</small></div><button class="cot-add" type="button" data-cadd="'+i.id+'" aria-label="Agregar '+esc(i.n)+'">+</button></div>'; }).join(''):'<p class="hint" style="padding:.7rem">No hay servicios con ese nombre. Créalo en Catálogo y precios.</p>')+'</div>'+
+  (q?'':'<div class="ig-err cot-e"><h3>¡Errores típicos!</h3><ul>'+cat.e.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>')+
+  '<h3 class="sec">Partidas de la cotización ('+r.rows.length+')</h3>'+
+  (r.rows.length?'<div class="cot-list">'+r.rows.map(x=>'<div class="cot-it"><div class="cot-in"><b>'+esc(x.it.n)+'</b><small>MO '+f0(x.pmo)+(x.pmt?' + Mat. '+f0(x.pmt):'')+' / '+esc(x.it.u)+'</small><div class="cot-q"><button type="button" data-cq="'+x.it.id+'" data-d="-1" aria-label="Menos">−</button><input inputmode="decimal" data-cqi="'+x.it.id+'" value="'+x.q+'" aria-label="Cantidad"><button type="button" data-cq="'+x.it.id+'" data-d="1" aria-label="Más">+</button><span>'+esc(x.it.u)+'</span></div></div><div class="cot-tt"><b>'+cotM(x.t)+'</b><button type="button" class="cot-rm" data-crm="'+x.it.id+'">Quitar</button></div></div>').join('')+'</div>'
+   :'<p class="hint">Toca + en los servicios de arriba para agregarlos a la cotización.</p>')+
+  '<h3 class="sec">Condiciones del trabajo</h3><div class="cot-chk">'+COT_RECS.map(x=>'<label class="cot-ch'+(C.rec[x[0]]?' on':'')+'"><input type="checkbox" data-crec="'+x[0]+'"'+(C.rec[x[0]]?' checked':'')+'> '+esc(x[1])+' +'+x[2]+' %</label>').join('')+'</div>'+
+  '<div class="grid" style="margin-top:.6rem">'+txtF('ct_dist','Traslado o distancia (RD$)',C.dist,'0',false,'n')+txtF('ct_minv','Cargo mínimo por visita (RD$)',C.minv,'2500',false,'n')+txtF('ct_desc','Descuento (%)',C.desc,'0',false,'n')+
+   '<div class="f"><label for="ct_cur">Moneda principal</label><select id="ct_cur"><option value="DOP"'+(C.cur==='DOP'?' selected':'')+'>RD$ (pesos)</option><option value="USD"'+(C.cur==='USD'?' selected':'')+'>US$ (dólares)</option></select></div></div>'+
+  '<label class="cot-sw"><input type="checkbox" id="ct_mat"'+(C.mat?' checked':'')+'> Incluir materiales (si el cliente no los suministra)</label><label class="cot-sw"><input type="checkbox" id="ct_itb"'+(C.itbis?' checked':'')+'> Aplicar ITBIS 18 %</label>'+
+  '<h3 class="sec">Resumen</h3><div class="cot-tot">'+
+   '<div><span>Mano de obra</span><b>'+cotM(r.mo)+'</b></div><div><span>Materiales'+(C.mat?'':' (del cliente)')+'</span><b>'+cotM(r.mt)+'</b></div>'+
+   (r.rec?'<div><span>Recargos'+(r.pct?' ('+r.pct+' % de MO)':'')+(C.dist?' y traslado':'')+'</span><b>'+cotM(r.rec)+'</b></div>':'')+
+   (r.minAdj?'<div><span>Ajuste al cargo mínimo</span><b>'+cotM(r.minAdj)+'</b></div>':'')+(r.desc?'<div><span>Descuento '+C.desc+' %</span><b>−'+cotM(r.desc)+'</b></div>':'')+
+   '<div><span>Subtotal</span><b>'+cotM(r.base)+'</b></div>'+(C.itbis?'<div><span>ITBIS 18 %</span><b>'+cotM(r.tax)+'</b></div>':'')+
+   '<div class="big"><span>Total</span><b>'+cotM(r.tot)+'</b></div><div class="usd"><span>'+(C.cur==='USD'?'Equivale en pesos':'Equivale en dólares')+'</span><b>'+(C.cur==='USD'?'RD$ '+f0(r.tot):'US$ '+f2(r.usd))+'</b></div>'+
+   '<div class="cot-bar" aria-hidden="true"><i style="width:'+(r.mo/T*100)+'%;background:#2B7FBF"></i><i style="width:'+(r.mt/T*100)+'%;background:#E8B23A"></i><i style="width:'+((r.rec+r.minAdj)/T*100)+'%;background:#E0554B"></i><i style="width:'+(r.tax/T*100)+'%;background:#8A97A5"></i></div>'+
+   '<div class="cot-leg"><span><i style="background:#2B7FBF"></i>Mano de obra</span><span><i style="background:#E8B23A"></i>Materiales</span><span><i style="background:#E0554B"></i>Recargos</span><span><i style="background:#8A97A5"></i>ITBIS</span></div></div>'+
+  '<div class="row"><button class="btn pri" type="button" id="ct_rep">Agregar al reporte</button><button class="btn sec" type="button" id="ct_wa">Copiar para WhatsApp</button><button class="btn pri" type="button" id="ct_xlsx">Exportar a Excel (.xlsx)</button><button class="btn sec" type="button" id="ct_xl">Copiar para Excel</button><button class="btn sec" type="button" id="ct_sv">Guardar en historial</button><button class="btn sec" type="button" id="ct_nw">'+(cotUI.conf==='nueva'?'Toca otra vez para vaciar':'Nueva cotización')+'</button></div>';
+  const re=()=>vCotCot(v);
+  const bindT=(id,k,isN)=>{ const e=v.querySelector('#'+id); if(e) e.addEventListener('change',()=>{ C[k]=isN?num(e.value):e.value; cotSave(); re(); }); };
+  bindT('ct_cli','cli'); bindT('ct_emn','emNom'); v.querySelectorAll('[data-cdt]').forEach(i=>i.addEventListener('change',()=>{ C.cdTxt=C.cdTxt||{}; const t=i.value.trim(), bs=cotCondBase().find(c=>c[0]===i.dataset.cdt); if(!t||(bs&&t===bs[1])) delete C.cdTxt[i.dataset.cdt]; else C.cdTxt[i.dataset.cdt]=t; cotSave(); })); v.querySelectorAll('[data-cdxt]').forEach(i=>i.addEventListener('change',()=>{ C.cdX[+i.dataset.cdxt].t=i.value; cotSave(); })); { const nt=v.querySelector('#ct_notas'); if(nt) nt.addEventListener('change',()=>{ C.notas=nt.value; cotSave(); }); } bindT('ct_cao','cargoOtro'); { const sc=v.querySelector('#ct_car'); if(sc) sc.addEventListener('change',()=>{ C.cargo=sc.value; cotSave(); re(); }); } bindT('ct_proy','proy'); bindT('ct_ubi','ubi'); bindT('ct_val','val',1); bindT('ct_pago','pago'); bindT('ct_dist','dist',1); bindT('ct_minv','minv',1); bindT('ct_desc','desc',1);
+  v.querySelector('#ct_rate').addEventListener('change',e=>{ const x=num(e.target.value); if(x>0){ C.rate=x; C.rateSrc='manual'; C.rateDate=Date.now(); cotSave(); re(); } });
+  v.querySelector('#ct_cur').addEventListener('change',e=>{ C.cur=e.target.value; cotSave(); re(); });
+  v.querySelector('#ct_mat').addEventListener('change',e=>{ C.mat=e.target.checked; cotSave(); re(); });
+  v.querySelector('#ct_itb').addEventListener('change',e=>{ C.itbis=e.target.checked; cotSave(); re(); });
+  const qi=v.querySelector('#ct_q'); qi.addEventListener('input',()=>{ cotUI.q=qi.value; clearTimeout(cotUI.t); cotUI.t=setTimeout(()=>{ re(); const n=v.querySelector('#ct_q'); if(n){ n.focus(); n.setSelectionRange(n.value.length,n.value.length); } },350); });
+  v.querySelectorAll('[data-cqi]').forEach(inp=>inp.addEventListener('change',()=>{ const l=C.lines.find(x=>x.id===inp.dataset.cqi); const n=Math.max(0,num(inp.value)); if(n) l.q=n; else C.lines=C.lines.filter(x=>x!==l); cotSave(); re(); }));
+  v.onclick=e=>{
+   const b=e.target.closest('button,input[type=checkbox]'); if(!b) return; const d=b.dataset;
+   if(d.cc){ cotUI.cat=d.cc; cotUI.q=''; re(); }
+   else if(d.cadd){ const l=C.lines.find(x=>x.id===d.cadd); if(l) l.q++; else C.lines.push({id:d.cadd,q:1}); cotSave(); toast('Agregado a la cotización'); re(); }
+   else if(d.cq){ const l=C.lines.find(x=>x.id===d.cq); l.q=Math.max(0,l.q+(+d.d)); if(!l.q) C.lines=C.lines.filter(x=>x!==l); cotSave(); re(); }
+   else if(d.crm){ C.lines=C.lines.filter(x=>x.id!==d.crm); cotSave(); re(); }
+   else if(d.cdk){ C.cdOff=C.cdOff||{}; if(b.checked) delete C.cdOff[d.cdk]; else C.cdOff[d.cdk]=1; cotSave(); re(); }
+   else if(d.cdxk){ C.cdX[+d.cdxk].on=b.checked; cotSave(); re(); }
+   else if(d.cdxd){ C.cdX.splice(+d.cdxd,1); cotSave(); re(); }
+   else if(b.id==='ct_cdadd'){ (C.cdX=C.cdX||[]).push({t:'',on:true}); cotSave(); re(); const l=v.querySelectorAll('[data-cdxt]'); if(l.length) l[l.length-1].focus(); }
+   else if(b.id==='ct_nton'){ C.notasOn=b.checked; cotSave(); re(); }
+   else if(d.crec){ C.rec[d.crec]=b.checked; cotSave(); re(); }
+   else if(d.ck==='tasa'){ cotTasa(true,v); }
+   else if(b.id==='ct_tasa'){ cotTasa(true,v); }
+   else if(b.id==='ct_rep'){ if(!C.lines.length){ toast('Agrega al menos un servicio.'); return; } cotSnap(); }
+   else if(b.id==='ct_wa'){ if(!C.lines.length){ toast('Agrega al menos un servicio.'); return; } cotCopia(cotTexto(),'Texto copiado. Pégalo en WhatsApp.'); }
+   else if(b.id==='ct_xlsx'){ if(!C.lines.length){ toast('Agrega al menos un servicio.'); return; } try{ const o=cotXlsx(); bajar(o.name,o.blob); }catch(e){ toast('No se pudo crear el archivo de Excel.'); } }
+   else if(b.id==='ct_xl'){ if(!C.lines.length){ toast('Agrega al menos un servicio.'); return; } cotCopia(cotTSV(),'Tabla copiada. Pégala en Excel.'); }
+   else if(b.id==='ct_sv'){ if(!C.lines.length){ toast('No hay partidas para guardar.'); return; } const r=cotCalc(); C.hist.push({at:Date.now(),cli:C.cli,proy:C.proy,ubi:C.ubi,tot:r.tot,usd:r.usd,lines:JSON.parse(JSON.stringify(C.lines)),rec:Object.assign({},C.rec),dist:C.dist,desc:C.desc,mat:C.mat,itbis:C.itbis,cdOff:Object.assign({},C.cdOff||{}),cdTxt:Object.assign({},C.cdTxt||{}),cdX:JSON.parse(JSON.stringify(C.cdX||[])),notas:C.notas||'',notasOn:C.notasOn!==false}); cotSave(); toast('Cotización guardada en el historial'); }
+   else if(b.id==='ct_nw'){ if(cotUI.conf!=='nueva'){ cotUI.conf='nueva'; re(); setTimeout(()=>{ if(cotUI.conf==='nueva'){ cotUI.conf=''; if(v.isConnected) re(); } },4000); return; } cotUI.conf=''; Object.assign(C,{lines:[],cli:'',proy:'',ubi:'',rec:{},dist:0,desc:0,cdX:[],notas:''}); cotSave(); toast('Cotización nueva'); re(); }
+  };
+  if(!C.rateDate||Date.now()-C.rateDate>3*3600e3){ C.rateDate=C.rateDate||null; cotTasa(false,v); }
+ }
+
+ /* ---- Catálogo y precios ---- */
+ function vCotCat(v){
+  const cat=catDe(cotUI.ccat), lista=cotAll().filter(i=>i.c===cotUI.ccat);
+  v.innerHTML='<h2 class="vt">Catálogo y precios</h2><p class="intro">'+cotAll().length+' servicios. Los marcados «Lista base» vienen de tu lista de precios; los marcados «Ref.» son referencias para ajustar a tu mercado. Los cambios se guardan en este dispositivo.</p>'+
+  '<h3 class="sec">Ajuste general por inflación</h3><div class="grid">'+txtF('cc_adj','Ajuste de todos los precios (%)',C.adj,'0',false,'n')+'</div><p class="hint">Usa el IPC del Banco Central o tu propio criterio. Se aplica sobre el precio base de cada servicio.</p>'+
+  '<h3 class="sec">Servicios por categoría</h3><div class="seg cot-seg" role="group" aria-label="Categoría">'+COT_CATS.map(c=>'<button type="button" data-ccc="'+c.k+'" aria-pressed="'+(c.k===cotUI.ccat)+'">'+esc(c.n)+' ('+cotAll().filter(i=>i.c===c.k).length+')</button>').join('')+'</div>'+
+  '<div class="ig-card cot-ig"><div class="cot-igi">'+cat.ic+'</div><div><h3>'+esc(cat.n)+'</h3><p>'+esc(cat.d)+'</p></div></div>'+
+  lista.map(i=>{ const o=C.over[i.id]||{mo:i.mo,mt:i.mt}; return '<details class="item"><summary><span class="tt">'+esc(i.n)+'</span></summary><div class="body"><p class="hint">'+tag(i)+' Precio base por '+esc(i.u)+(i.nt?'. '+esc(i.nt):'')+'</p><div class="grid">'+txtF('cm_'+i.id,'Mano de obra (RD$)',o.mo,'',false,'n')+txtF('ct_'+i.id,'Materiales (RD$)',o.mt,'',false,'n')+'</div><div class="row"><button class="btn pri" type="button" data-csv="'+i.id+'">Guardar precio</button>'+(C.over[i.id]?'<button class="btn sec" type="button" data-crs="'+i.id+'">Restaurar</button>':'')+(i.src==='mine'?'<button class="btn sec" type="button" data-cdl="'+i.id+'">'+(cotUI.conf==='del'+i.id?'Toca otra vez para eliminar':'Eliminar')+'</button>':'')+'</div></div></details>'; }).join('')+
+  '<h3 class="sec">Nueva partida propia</h3><div class="grid">'+txtF('cn_n','Descripción','','Cambio de contactor 3P 40 A',true)+
+   '<div class="f"><label for="cn_c">Categoría</label><select id="cn_c">'+COT_CATS.map(c=>'<option value="'+c.k+'"'+(c.k===cotUI.ccat?' selected':'')+'>'+esc(c.n)+'</option>').join('')+'</select></div>'+txtF('cn_u','Unidad','unidad')+txtF('cn_mo','Mano de obra (RD$)','','0',false,'n')+txtF('cn_mt','Materiales (RD$)','','0',false,'n')+'</div><p class="hint" id="cn_err" style="color:#E0554B"></p><div class="row"><button class="btn pri" type="button" id="cn_ok">Agregar al catálogo</button></div>';
+  const re=()=>vCotCat(v);
+  v.querySelector('#cc_adj').addEventListener('change',e=>{ C.adj=num(e.target.value); cotSave(); toast('Ajuste aplicado: '+C.adj+' %'); re(); });
+  v.onclick=e=>{
+   const b=e.target.closest('button'); if(!b) return; const d=b.dataset;
+   if(d.ccc){ cotUI.ccat=d.ccc; re(); }
+   else if(d.csv){ const it=cotFind(d.csv), mo=num(v.querySelector('#cm_'+d.csv).value), mt=num(v.querySelector('#ct_'+d.csv).value); if(it.src==='mine'){ Object.assign(C.custom.find(c=>c.id===d.csv),{mo,mt}); } else C.over[d.csv]={mo,mt}; cotSave(); toast('Precio guardado'); re(); }
+   else if(d.crs){ delete C.over[d.crs]; cotSave(); toast('Precio restaurado'); re(); }
+   else if(d.cdl){ if(cotUI.conf!=='del'+d.cdl){ cotUI.conf='del'+d.cdl; re(); return; } cotUI.conf=''; C.custom=C.custom.filter(c=>c.id!==d.cdl); C.lines=C.lines.filter(l=>l.id!==d.cdl); cotSave(); toast('Partida eliminada'); re(); }
+   else if(b.id==='cn_ok'){ const n=v.querySelector('#cn_n').value.trim(); if(!n){ v.querySelector('#cn_err').textContent='Escribe la descripción de la partida.'; return; }
+    const c=v.querySelector('#cn_c').value; C.custom.push({id:'u'+Date.now(),c,n,u:v.querySelector('#cn_u').value.trim()||'unidad',mo:num(v.querySelector('#cn_mo').value),mt:num(v.querySelector('#cn_mt').value)}); cotUI.ccat=c; cotSave(); toast('Partida agregada al catálogo'); re(); }
+  };
+ }
+
+ /* ---- Historial ---- */
+ function vCotHist(v){
+  const H=C.hist.slice().reverse();
+  v.innerHTML='<h2 class="vt">Historial de cotizaciones</h2><p class="intro">Cotizaciones guardadas en este dispositivo. Ábrelas para editarlas o volver a enviarlas.</p>'+
+  (H.length?'<div class="kgrid"><button type="button" class="kcard t-azul"><b>'+H.length+'</b><span>Cotizaciones</span></button><button type="button" class="kcard t-verde"><b class="cot-kb">'+f0(H.reduce((s,h)=>s+h.tot,0))+'</b><span>Total cotizado RD$</span></button></div>'+
+   '<div class="cot-list">'+H.map(h=>'<div class="cot-it"><div class="cot-in"><b>'+esc(h.cli||'Sin cliente')+'</b><small>'+esc(h.proy||'')+' · '+new Date(h.at).toLocaleDateString('es-DO')+' · '+h.lines.length+' partida'+(h.lines.length===1?'':'s')+'</small><small><b>RD$ '+f0(h.tot)+'</b> · US$ '+f2(h.usd||0)+'</small></div><div class="cot-tt"><button class="btn sec" type="button" data-cho="'+h.at+'">Abrir</button><button type="button" class="cot-rm" data-chd="'+h.at+'">'+(cotUI.conf==='h'+h.at?'Confirmar':'Borrar')+'</button></div></div>').join('')+'</div>'
+   :'<div class="ig-card cot-ig"><div><h3>Aún no hay cotizaciones guardadas</h3><p>En Cotizar, toca «Guardar en historial» para conservar una cotización.</p></div></div>');
+  v.onclick=e=>{
+   const b=e.target.closest('button'); if(!b) return; const d=b.dataset;
+   if(d.cho){ const h=C.hist.find(x=>String(x.at)===d.cho); Object.assign(C,{cli:h.cli,proy:h.proy,ubi:h.ubi||'',lines:JSON.parse(JSON.stringify(h.lines)),rec:Object.assign({},h.rec),dist:h.dist,desc:h.desc,mat:h.mat,itbis:h.itbis,cdOff:Object.assign({},h.cdOff||{}),cdTxt:Object.assign({},h.cdTxt||{}),cdX:JSON.parse(JSON.stringify(h.cdX||[])),notas:h.notas||'',notasOn:h.notasOn!==false}); cotSave(); toast('Cotización abierta en Cotizar'); const s=document.querySelector('.subs button[data-sub="cot"]'); if(s) s.click(); }
+   else if(d.chd){ if(cotUI.conf!=='h'+d.chd){ cotUI.conf='h'+d.chd; vCotHist(v); return; } cotUI.conf=''; C.hist=C.hist.filter(x=>String(x.at)!==d.chd); cotSave(); toast('Cotización borrada'); vCotHist(v); }
+  };
+ }
+
+ /* ---- Errores típicos ---- */
+ function vCotErr(v){
+  v.innerHTML='<h2 class="vt">Errores típicos al cotizar</h2><p class="intro">Lo que más encarece o complica un trabajo cuando no se tiene en cuenta en la cotización.</p>'+
+  '<div class="ig-err cot-e"><h3>¡Errores típicos en cualquier cotización!</h3><ul><li>No fijar un cargo mínimo por visita: un trabajo pequeño termina costando más de lo que se cobra.</li><li>Olvidar el traslado, el parqueo y el tiempo de espera para entrar a la planta.</li><li>No escribir qué incluye y qué no incluye la cotización (materiales, permisos, obra civil).</li><li>Mantener precios viejos: revisa la base cada trimestre con el IPC y la tasa del día.</li><li>Cotizar sin visitar el sitio cuando hay altura, espacios confinados o planta en operación.</li></ul></div>'+
+  COT_CATS.map(c=>'<div class="ig-card cot-ig"><div class="cot-igi">'+c.ic+'</div><div><h3>'+esc(c.n)+'</h3><p>'+esc(c.d)+'</p></div></div><div class="ig-err cot-e"><h3>¡Errores típicos!</h3><ul>'+c.e.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>').join('');
+ }
+
+ MODS.cot={subs:[['cot','Cotizar'],['cat','Catálogo y precios'],['hist','Historial'],['err','Errores típicos']]};
+ MODMETA.cot={label:'Cotización de servicio de mantenimiento',corto:'Cotización',color:'#C9921A',ico:'doc',desc:COT_BASE.length+' servicios, RD$ y US$ con tasa del día'};
+ EN_META.cot=['Service quotation','Quotation',COT_BASE.length+' services, DOP and USD with daily rate'];
+ MODLAB.cot='Cotización';
+ Object.assign(EN_SUBS,{'Cotizar':'Quote','Catálogo y precios':'Catalog and prices','Historial':'History','Errores típicos':'Typical mistakes'});
+ VIEWS['cot.cot']=vCotCot; VIEWS['cot.cat']=vCotCat; VIEWS['cot.hist']=vCotHist; VIEWS['cot.err']=vCotErr;
+ GRUPOS[0][1].push('cot');
+})();
 const QUICK=[
   ['Pedir a fabricar resistencia','cal','fab',''],
   ['Conversión de unidades','uni','',''],
@@ -19054,6 +19587,7 @@ const QUICK=[
   ['Vencimientos y alarmas','mant','venc',''],
   ['Exportar mantenimiento','mant','exp',''],
   ['Asignar órdenes a técnicos','mant','asig',''],
+  ['Cotizar servicio','cot','cot',''],
   ['Diccionario técnico','dic','dic',''],
   ['Contadores en ladder','plc','cnt',''],
   ['Armónicos','ene','arm','']
