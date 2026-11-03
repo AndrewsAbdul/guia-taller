@@ -201,6 +201,19 @@ header.top{display:flex;align-items:center;justify-content:space-between;gap:.7r
 .rd-tag.ok{background:rgba(30,123,70,.16);color:#1E7B46}
 .rd-tag.bad{background:rgba(179,38,30,.16);color:#B3261E}
 .rd-tag.rev{background:rgba(242,201,76,.4);color:#6B4700}
+.ed-row{display:flex;align-items:center;justify-content:space-between;gap:.6rem}.ed-main{flex:1;min-width:0}
+.ed-btn{font:inherit;font-size:.78rem;font-weight:800;color:var(--blue);background:var(--surface);border:1.5px solid var(--blue);border-radius:8px;padding:.3rem .6rem;white-space:nowrap;cursor:pointer}
+.ed-acts{display:flex;gap:.4rem;align-items:center}
+.cor{display:inline-block;font-size:.68rem;font-weight:800;background:#FFF3CC;color:#7A5200;border-radius:6px;padding:.05rem .4rem;margin-left:.4rem}
+.ed-box{border:2px solid #F2A900;border-radius:12px;padding:.7rem .8rem;margin:.6rem 0;background:var(--surface)}
+.ed-box h3{margin:0 0 .2rem;font-size:1rem;color:var(--navy)}
+.ed-h{margin:.8rem 0 .2rem;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--navy)}
+.was{font-size:.72rem;color:#9A6B00;margin-top:.15rem}
+.ed-ev{margin:.6rem 0;padding:.45rem .6rem;border-radius:8px;background:var(--bg);font-size:.85rem}
+.ed-seg{display:flex;gap:.4rem;margin-top:.2rem}.ed-seg button{flex:1;font:inherit;font-weight:800;padding:.5rem 0;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.ed-seg button[aria-pressed=true].ok{background:#d9f2e3;border-color:#2e9e5b;color:#176b3a}.ed-seg button[aria-pressed=true].rev{background:#fff0c2;border-color:#e0a800;color:#7a5a00}.ed-seg button[aria-pressed=true].bad{background:#fde0e0;border-color:#d64545;color:#a12626}
+.ed-undo{text-align:center;margin:.6rem 0 0}.ed-undo button{font:inherit;font-size:.82rem;font-weight:700;color:var(--blue);background:none;border:0;cursor:pointer;text-decoration:underline}
+input.mono{font-family:ui-monospace,monospace;font-weight:700}
 .rd-calc{border:1px solid #C6D1C8;border-left:5px solid #153A5B;border-radius:6px;padding:.55rem .7rem;margin:.6rem 0;break-inside:avoid;page-break-inside:avoid}
 .rd-ct{display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap;margin-bottom:.3rem}
 .rd-ct span{color:#52615A;font-size:.8rem}
@@ -3446,7 +3459,7 @@ function waLineaEq(r){
 function vIcon(s,i){ const k=s.vcls&&s.vcls[i]; return k==='ok'?'✅':(k==='bad'?'❌':'⚠️'); }
 function waCalc(s,i,full,ent){
   const L=[];
-  L.push((i<10?NUMEMO[i]:'🔹')+' *'+s.titulo+'*');
+  L.push((i<10?NUMEMO[i]:'🔹')+' *'+s.titulo+'*'+(s.cor&&s.corShow!==false?' _(corregido a mano)_':''));
   L.push('   _'+s.modulo+' · '+s.fecha+'_');
   if(full&&ent&&s.entradas.length) L.push('   📥 *Datos:* '+s.entradas.map(e=>e[0]+': '+e[1]).join(' · '));
   if(s.resultados.length){
@@ -3745,7 +3758,7 @@ function docHTML(d){
   }
   if(d.calc.length){
     h+='<h3>Cálculos</h3>'+d.calc.map(s=>
-      '<div class="rd-calc"><div class="rd-ct"><b>'+esc(s.titulo)+'</b><span>'+esc(s.modulo)+' · '+esc(s.fecha)+'</span></div>'+
+      '<div class="rd-calc"><div class="rd-ct"><b>'+esc(s.titulo)+'</b>'+(s.cor&&s.corShow!==false?' <small>(corregido a mano)</small>':'')+'<span>'+esc(s.modulo)+' · '+esc(s.fecha)+'</span></div>'+
       (s.entradas.length?'<table class="rd-in">'+s.entradas.map(e=>'<tr><td>'+esc(e[0])+'</td><td>'+esc(e[1])+'</td></tr>').join('')+'</table>':'')+
       (s.resultados.length?'<div class="rd-res">'+s.resultados.map(t=>'<span class="lcd sm">'+esc(t)+'</span>').join('')+'</div>':'')+
       s.veredictos.map((t,i)=>'<p class="rd-v '+((s.vcls&&s.vcls[i])||'')+'">'+esc(t)+'</p>').join('')+
@@ -3833,7 +3846,7 @@ function xlsxReporte(d){
   const reg={name:'Registro',widths:[18,24,34,16,16,12,22,36,24,8],wrap:true,hdr:0,rows:[['Fecha','Equipo o instrumento','Punto o señal','Esperado','Medido','Resultado','Responsable','Nota','Desviación o criterio','Fotos']].concat(
     d.reg.map(r=>[r.fecha,r.equipo,r.punto,r.esp||'',r.med||'',r.res,r.resp||'',r.nota||'',evalTxt(r),(r.fotos||[]).length||'']))};
   const cal={name:'Cálculos',widths:[18,16,34,48,48,44],wrap:true,hdr:0,rows:[['Fecha','Módulo','Cálculo','Datos de entrada','Resultados','Observaciones']].concat(
-    d.calc.map(s=>[s.fecha,s.modulo,s.titulo,s.entradas.map(e=>e[0]+': '+e[1]).join('\n'),s.resultados.join('\n'),s.veredictos.join('\n')]))};
+    d.calc.map(s=>[s.fecha,s.modulo,s.titulo+(s.cor&&s.corShow!==false?' (corregido a mano)':''),s.entradas.map(e=>e[0]+': '+e[1]).join('\n'),s.resultados.join('\n'),s.veredictos.join('\n')]))};
   return makeXlsx([resumen,reg,cal]);
 }
 
@@ -3911,8 +3924,8 @@ function formHTMLBase(){
     '<label><input type="checkbox" id="rp_inc_reg"'+(repCfg.incReg?' checked':'')+'><span>Registro de pruebas ('+registro.length+')</span></label>'+
     '<label><input type="checkbox" id="rp_inc_calc"'+(repCfg.incCalc?' checked':'')+'><span>Cálculos agregados ('+nCalc+')</span></label>'+
     '<label><input type="checkbox" id="rp_solo"'+(repCfg.soloProblemas?' checked':'')+'><span>Solo pruebas con falla o por revisar</span></label></div></div></details>'+
-    '<details class="item"'+(abrirCalc?' open':'')+'><summary><span class="tt">Cálculos agregados ('+nCalc+')<small>Quita los que no quieras en el reporte</small></span></summary><div class="body">'+
-    (nCalc?repCalc.map((s,i)=>'<div class="log"><div class="h"><span class="eq">'+esc(s.titulo)+'</span><button class="x" data-rmcalc="'+i+'">Quitar</button></div><div class="meta">'+esc(s.modulo)+' · '+esc(s.fecha)+'</div><div>'+esc(s.resultados.slice(0,3).join(' · '))+'</div></div>').join('')+
+    '<details class="item"'+((abrirCalc||edCal>=0)?' open':'')+'><summary><span class="tt">Cálculos agregados ('+nCalc+')<small>Edita datos y resultados, o quita</small></span></summary><div class="body">'+
+    (nCalc?repCalc.map((s,i)=>edCal===i?calEditHTML(s,i):calRowHTML(s,i,true)).join('')+
       '<div class="row"><button class="btn dng" id="rp_vaciar">'+(confirmVaciar?'Confirmar: vaciar cálculos':'Vaciar cálculos')+'</button></div>'
       :'<p class="empty">Todavía no hay cálculos. En cualquier calculadora toca «Agregar al reporte».</p>')+'</div></details>';
 }
@@ -3974,7 +3987,7 @@ function renderExp(){
 }
 function openExp(tab){
   if(tab) expTab=tab;
-  confirmVaciar=false; confirmAccion=null; abrirCalc=false;
+  confirmVaciar=false; confirmAccion=null; abrirCalc=false; edReg=-1; edCal=-1; histUnlock=false; abrirReg=false;
   document.getElementById('exp').hidden=false;
   document.body.style.overflow='hidden';
   renderExp();
@@ -3985,7 +3998,7 @@ function closeExp(){
     ['waFmt','waOrd','waPend','waEnt','waPie','incReg','incCalc','soloProblemas'].forEach(k=>{ repLive.cfg[k]=repCfg[k]; });
     repCfg=repLive.cfg; repHist=null; repLive=null; guardarRep();
   }
-  confirmAccion=null;
+  confirmAccion=null; edReg=-1; edCal=-1; histUnlock=false; abrirReg=false;
   document.getElementById('exp').hidden=true;
   document.body.style.overflow='';
 }
@@ -4404,8 +4417,8 @@ function guardarHistorial(){
     id:b.id, folio:b.folio, ts:Date.now(), iso:a.getFullYear()+'-'+p(a.getMonth()+1)+'-'+p(a.getDate()), fechaTxt:nowTxt(),
     empresa:repCfg.empresa||'', equipo:repCfg.equipo||'', area:repCfg.area||'', responsable:repCfg.responsable||'', cargo:repCfg.cargo||'', nombre:repCfg.nombre||'', obs:repCfg.obs||'',
     ok:c.ok, rev:c.rev, fal:c.fal,
-    reg:d.reg.map(r=>({fecha:r.fecha,equipo:r.equipo,punto:r.punto,esp:r.esp,med:r.med,res:r.res,resp:r.resp,nota:r.nota,fotos:(r.fotos||[]).slice()})),
-    calc:d.calc.map(s=>({modulo:s.modulo,titulo:s.titulo,fecha:s.fecha,entradas:s.entradas,resultados:s.resultados,veredictos:s.veredictos,vcls:s.vcls||[],specs:specsDe(s.graficas||[])}))
+    reg:d.reg.map(r=>({fecha:r.fecha,equipo:r.equipo,punto:r.punto,esp:r.esp,med:r.med,res:r.res,resp:r.resp,nota:r.nota,fotos:(r.fotos||[]).slice(),cor:r.cor,orig:r.orig})),
+    calc:d.calc.map(s=>({modulo:s.modulo,titulo:s.titulo,fecha:s.fecha,entradas:s.entradas,resultados:s.resultados,veredictos:s.veredictos,vcls:s.vcls||[],specs:specsDe(s.graficas||[]),cor:s.cor,corShow:s.corShow,orig:s.orig}))
   };
   const i=historial.findIndex(x=>x.id===b.id);
   if(i>=0) historial[i]=e; else historial.unshift(e);
@@ -4426,9 +4439,9 @@ function vaciaBorrador(){
   borr=null; guardarBorr(); guardarRep(); actBadge();
 }
 function pruebasHTML(){
-  const n=registro.length, tag=r=>r==='OK'?'ok':(r==='Falla'?'bad':'rev');
-  return '<details class="item"><summary><span class="tt">Pruebas del registro ('+n+')<small>Desmarca las que no quieras exportar</small></span></summary><div class="body">'+
-    (n?registro.map((r,i)=>'<label class="chk"><input type="checkbox" data-incl="'+i+'"'+(r.excl?'':' checked')+'><span><b>'+esc(r.equipo)+'</b> · '+esc(r.punto)+' <span class="rd-tag '+tag(r.res)+'">'+esc(r.res)+'</span></span></label>').join('')
+  const n=registro.length;
+  return '<details class="item"'+((abrirReg||edReg>=0)?' open':'')+'><summary><span class="tt">Pruebas del registro ('+n+')<small>Marca, edita o corrige antes de exportar</small></span></summary><div class="body">'+
+    (n?registro.map((r,i)=>edReg===i?regEditHTML(r,i):regRowHTML(r,i,true)).join('')
       :'<p class="empty">No hay pruebas en el registro.</p>')+'</div></details>';
 }
 function accionesHTML(){
@@ -4441,15 +4454,123 @@ function accionesHTML(){
 }
 function formHistHTML(){
   const e=repHist;
-  return '<div class="verdict warn" style="margin:0 0 .8rem">Reporte guardado <b>'+esc(e.folio)+'</b> del '+esc(e.fechaTxt)+'. Es de solo lectura: puedes exportarlo de nuevo.</div>'+
+  return '<div class="verdict warn" style="margin:0 0 .8rem">Reporte guardado <b>'+esc(e.folio)+'</b> del '+esc(e.fechaTxt)+'. Está protegido: puedes exportarlo de nuevo o desbloquearlo para corregirlo.</div>'+
     '<div class="log"><div class="meta">Equipo</div><div><b>'+esc(e.equipo||'—')+'</b></div><div class="meta" style="margin-top:.3rem">Área</div><div><b>'+esc(e.area||'—')+'</b></div><div class="meta" style="margin-top:.3rem">Responsable</div><div><b>'+esc(e.responsable||'—')+'</b></div></div>'+
-    (expTab==='wa'?waCtlHTML():'')+
+    (expTab==='wa'?waCtlHTML():'')+histCorrHTML()+
     '<details class="item"><summary><span class="tt">Contenido<small>Qué incluir al exportar</small></span></summary><div class="body"><div class="safety" style="border-left-color:var(--blue);margin:0"><h3>Incluir</h3>'+
     '<label><input type="checkbox" id="rp_inc_reg"'+(repCfg.incReg?' checked':'')+'><span>Registro de pruebas ('+e.reg.length+')</span></label>'+
     '<label><input type="checkbox" id="rp_inc_calc"'+(repCfg.incCalc?' checked':'')+'><span>Cálculos ('+e.calc.length+')</span></label>'+
     '<label><input type="checkbox" id="rp_solo"'+(repCfg.soloProblemas?' checked':'')+'><span>Solo pruebas con falla o por revisar</span></label></div></div></details>';
 }
+/* ---- v3.5: edición de pruebas, cálculos y revisión dentro del Centro de exportación ---- */
+let edReg=-1, edCal=-1, edRes='OK', histUnlock=false, abrirReg=false;
+const regSrc=()=>repHist?repHist.reg:registro;
+const calSrc=()=>repHist?repHist.calc:repCalc;
+function edGuardar(){
+  if(repHist){
+    const h=historial.find(x=>x.id===repHist.id);
+    if(h){
+      h.reg=repHist.reg;
+      h.calc=repHist.calc.map((s,i)=>{ const o=Object.assign({},s); delete o.graficas; o.specs=(h.calc[i]&&h.calc[i].specs)||s.specs||[]; return o; });
+      const c=conteo(h.reg); h.ok=c.ok; h.rev=c.rev; h.fal=c.fal;
+      guardarHist();
+    }
+  }else{ guardar(); guardarRep(); }
+}
+const edTag=r=>r==='OK'?'ok':(r==='Falla'?'bad':'rev');
+const edWas=(o,k,cur)=>(o&&o[k]!==undefined&&String(o[k]||'')!==String(cur||''))?'<div class="was">Antes: '+esc(o[k]||'—')+'</div>':'';
+function regRowHTML(r,i,chk){
+  const t=edTag(r.res);
+  return '<div class="log ed-row"><div class="ed-main">'+
+    (chk?'<label class="chk"><input type="checkbox" data-incl="'+i+'"'+(r.excl?'':' checked')+'><span><b>'+esc(r.equipo)+'</b> · '+esc(r.punto)+' <span class="rd-tag '+t+'">'+esc(r.res)+'</span>'+(r.cor?'<span class="cor">✎ corregido</span>':'')+'</span></label>'
+         :'<div><b>'+esc(r.equipo)+'</b> · '+esc(r.punto)+' <span class="rd-tag '+t+'">'+esc(r.res)+'</span>'+(r.cor?'<span class="cor">✎ corregido</span>':'')+'</div>')+
+    '<div class="meta">Esperado '+esc(r.esp||'—')+' · Medido '+esc(r.med||'—')+'</div></div>'+
+    '<button type="button" class="ed-btn" data-edreg="'+i+'">✎ Editar</button></div>';
+}
+function regEditHTML(r,i){
+  const o=r.orig, f=(id,lab,k)=>'<div class="f"><label for="'+id+'">'+lab+'</label><input id="'+id+'" value="'+esc(r[k]||'')+'">'+edWas(o,k,r[k])+'</div>';
+  return '<div class="ed-box"><h3>✎ Editando prueba</h3><p class="meta">'+esc(r.fecha||'')+'</p><div class="grid">'+
+    f('ed_eq','Equipo','equipo')+f('ed_pt','Punto o señal','punto')+f('ed_es','Valor esperado','esp')+f('ed_me','Medición (lectura)','med')+'</div>'+
+    '<div class="ed-ev" id="ed_ev"></div>'+
+    '<div class="f"><label>Revisión (resultado)</label><div class="ed-seg" id="ed_res">'+['OK','Revisar','Falla'].map(x=>'<button type="button" data-edres="'+x+'" class="'+edTag(x)+'" aria-pressed="'+(edRes===x)+'">'+x+'</button>').join('')+'</div>'+edWas(o,'res',r.res)+'</div>'+
+    f('ed_rs','Responsable de la prueba','resp')+
+    '<div class="f"><label for="ed_no">Nota de revisión</label><textarea id="ed_no" rows="3">'+esc(r.nota||'')+'</textarea>'+edWas(o,'nota',r.nota)+'</div>'+
+    '<div class="row"><button type="button" class="btn pri" id="ed_ok">Guardar cambios</button><button type="button" class="btn sec" id="ed_no_c">Cancelar</button></div>'+
+    (r.orig?'<p class="ed-undo"><button type="button" id="ed_undo">↩ Restaurar valores originales</button></p>':'')+'</div>';
+}
+function calRowHTML(s,i,quitar){
+  return '<div class="log"><div class="h"><span class="eq">'+esc(s.titulo)+(s.cor?'<span class="cor">✎ corregido</span>':'')+'</span><span class="ed-acts"><button type="button" class="ed-btn" data-edcal="'+i+'">✎ Editar</button>'+(quitar?'<button class="x" data-rmcalc="'+i+'">Quitar</button>':'')+'</span></div><div class="meta">'+esc(s.modulo)+' · '+esc(s.fecha)+'</div><div>'+esc((s.resultados||[]).slice(0,3).join(' · '))+'</div></div>';
+}
+function calEditHTML(s,i){
+  const o=s.orig||{};
+  const was=(a,j,cur)=>(a&&a[j]!==undefined&&String(a[j])!==String(cur))?'<div class="was">Antes: '+esc(a[j])+'</div>':'';
+  return '<div class="ed-box"><h3>✎ Editando cálculo</h3><p class="meta">'+esc(s.modulo)+' · '+esc(s.fecha)+'</p>'+
+    '<div class="f"><label for="ed_ct">Título</label><input id="ed_ct" value="'+esc(s.titulo)+'">'+(o.titulo!==undefined&&o.titulo!==s.titulo?'<div class="was">Antes: '+esc(o.titulo)+'</div>':'')+'</div>'+
+    (s.entradas.length?'<h4 class="ed-h">Datos de entrada</h4><div class="grid">'+s.entradas.map((e,j)=>'<div class="f"><label for="ed_ci'+j+'">'+esc(e[0])+'</label><input id="ed_ci'+j+'" value="'+esc(e[1])+'">'+was((o.entradas||[]).map(x=>x[1]),j,e[1])+'</div>').join('')+'</div>':'')+
+    (s.resultados.length?'<h4 class="ed-h">Resultados</h4><div class="grid">'+s.resultados.map((t,j)=>'<div class="f"><input id="ed_cr'+j+'" class="mono" value="'+esc(t)+'" aria-label="Resultado '+(j+1)+'">'+was(o.resultados,j,t)+'</div>').join('')+'</div>':'')+
+    (s.veredictos.length?'<h4 class="ed-h">Veredicto / observación</h4>'+s.veredictos.map((t,j)=>'<div class="f"><textarea id="ed_cv'+j+'" rows="2" aria-label="Veredicto '+(j+1)+'">'+esc(t)+'</textarea>'+was(o.veredictos,j,t)+'</div>').join(''):'')+
+    '<label class="chk"><input type="checkbox" id="ed_cs"'+(s.corShow===false?'':' checked')+'><span>Mostrar «corregido a mano» en el reporte<br><small class="meta">Los resultados editados no se recalculan solos.</small></span></label>'+
+    '<div class="row"><button type="button" class="btn pri" id="ed_cok">Guardar cambios</button><button type="button" class="btn sec" id="ed_cno">Cancelar</button></div>'+
+    (s.orig?'<p class="ed-undo"><button type="button" id="ed_cundo">↩ Restaurar valores originales</button></p>':'')+'</div>';
+}
+function histCorrHTML(){
+  const e=repHist, open=(histUnlock||edReg>=0||edCal>=0)?' open':'';
+  if(!histUnlock) return '<details class="item"><summary><span class="tt">Corregir contenido<small>Editar pruebas y cálculos de este reporte guardado</small></span></summary><div class="body"><p class="hint">Este reporte está protegido. Si desbloqueas, los cambios quedan guardados en el historial y se marcan como «corregido».</p><div class="row"><button type="button" class="btn sec" id="ed_unlock">Desbloquear para corregir</button></div></div></details>';
+  return '<details class="item"'+open+'><summary><span class="tt">Corregir contenido<small>Desbloqueado: los cambios se guardan en el historial</small></span></summary><div class="body">'+
+    '<h4 class="ed-h">Pruebas ('+e.reg.length+')</h4>'+(e.reg.length?e.reg.map((r,i)=>edReg===i?regEditHTML(r,i):regRowHTML(r,i,false)).join(''):'<p class="empty">Sin pruebas.</p>')+
+    '<h4 class="ed-h">Cálculos ('+e.calc.length+')</h4>'+(e.calc.length?e.calc.map((s,i)=>edCal===i?calEditHTML(s,i):calRowHTML(s,i,false)).join(''):'<p class="empty">Sin cálculos.</p>')+
+    '<div class="row"><button type="button" class="btn sec" id="ed_lock">Volver a proteger</button></div></div></details>';
+}
+function bindEd(){
+  const b=document.getElementById('expBody'); if(!b) return;
+  const rerender=()=>{ abrirReg=true; abrirCalc=true; renderExp(); };
+  b.querySelectorAll('[data-edreg]').forEach(x=>x.addEventListener('click',()=>{ const i=parseInt(x.getAttribute('data-edreg'),10); edCal=-1; edReg=i; edRes=regSrc()[i].res; rerender(); }));
+  b.querySelectorAll('[data-edcal]').forEach(x=>x.addEventListener('click',()=>{ edReg=-1; edCal=parseInt(x.getAttribute('data-edcal'),10); rerender(); }));
+  const ul=document.getElementById('ed_unlock'); if(ul) ul.addEventListener('click',()=>{ histUnlock=true; rerender(); });
+  const lk=document.getElementById('ed_lock'); if(lk) lk.addEventListener('click',()=>{ histUnlock=false; edReg=-1; edCal=-1; rerender(); });
+  if(edReg>=0){
+    const r=regSrc()[edReg];
+    if(!r){ edReg=-1; }
+    else{
+      const g=id=>document.getElementById(id), ev=()=>{ const t=evalTxt({esp:g('ed_es').value,med:g('ed_me').value}); g('ed_ev').innerHTML=t?'📊 Evaluación automática: <b>'+esc(t)+'</b>':'<span class="meta">Evaluación automática: escribe un esperado y una lectura numéricos.</span>'; };
+      ['ed_es','ed_me'].forEach(id=>g(id).addEventListener('input',ev)); ev();
+      b.querySelectorAll('[data-edres]').forEach(x=>x.addEventListener('click',()=>{ edRes=x.getAttribute('data-edres'); b.querySelectorAll('[data-edres]').forEach(y=>y.setAttribute('aria-pressed',String(y===x))); }));
+      g('ed_ok').addEventListener('click',()=>{
+        const n={equipo:g('ed_eq').value.trim(),punto:g('ed_pt').value.trim(),esp:g('ed_es').value.trim(),med:g('ed_me').value.trim(),res:edRes,resp:g('ed_rs').value.trim(),nota:g('ed_no').value.trim()};
+        if(!n.equipo||!n.punto){ toast('Escribe el equipo y el punto o señal.'); return; }
+        const old={equipo:r.equipo,punto:r.punto,esp:r.esp||'',med:r.med||'',res:r.res,resp:r.resp||'',nota:r.nota||''};
+        if(!Object.keys(n).some(k=>String(n[k])!==String(old[k]))){ edReg=-1; rerender(); return; }
+        if(!r.orig) r.orig=old;
+        Object.assign(r,n); r.cor=true; edGuardar(); edReg=-1; toast('Prueba corregida'); rerender();
+      });
+      g('ed_no_c').addEventListener('click',()=>{ edReg=-1; rerender(); });
+      const u=g('ed_undo'); if(u) u.addEventListener('click',()=>{ Object.assign(r,r.orig); delete r.orig; delete r.cor; edGuardar(); edReg=-1; toast('Valores originales restaurados'); rerender(); });
+    }
+  }
+  if(edCal>=0){
+    const s=calSrc()[edCal];
+    if(!s){ edCal=-1; }
+    else{
+      const g=id=>document.getElementById(id);
+      g('ed_cok').addEventListener('click',()=>{
+        const n={titulo:g('ed_ct').value.trim()||s.titulo,
+          entradas:s.entradas.map((e,j)=>[e[0],g('ed_ci'+j).value.trim()]),
+          resultados:s.resultados.map((t,j)=>g('ed_cr'+j).value.trim()),
+          veredictos:s.veredictos.map((t,j)=>g('ed_cv'+j).value.trim())};
+        const old={titulo:s.titulo,entradas:s.entradas.map(e=>[e[0],e[1]]),resultados:s.resultados.slice(),veredictos:s.veredictos.slice()};
+        const show=g('ed_cs').checked;
+        if(JSON.stringify(n)===JSON.stringify(old)){ s.corShow=show; edGuardar(); edCal=-1; rerender(); return; }
+        if(!s.orig) s.orig=old;
+        Object.assign(s,n); s.cor=true; s.corShow=show; edGuardar(); edCal=-1; toast('Cálculo corregido'); rerender();
+      });
+      g('ed_cno').addEventListener('click',()=>{ edCal=-1; rerender(); });
+      const u=g('ed_cundo'); if(u) u.addEventListener('click',()=>{ Object.assign(s,s.orig); delete s.orig; delete s.cor; edGuardar(); edCal=-1; toast('Valores originales restaurados'); rerender(); });
+    }
+  }
+}
+
 function bindAcciones(){
+  bindEd();
   document.querySelectorAll('[data-incl]').forEach(c=>c.addEventListener('change',()=>{
     const r=registro[parseInt(c.getAttribute('data-incl'),10)];
     if(r){ r.excl=!c.checked; guardar(); pintaPrev(); }
@@ -7477,7 +7598,7 @@ function vMantExp(v){
 
 
 /* ---------------- VERSIÓN DE LA GUÍA ---------------- */
-const APP_VER = '3.4';
+const APP_VER = '3.5';
 const APP_FECHA = '2026-11-02';
 const fechaCorta = iso => { const p=String(iso).split('-'); return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:iso; };
 function appVerHTML(){
@@ -7485,6 +7606,8 @@ function appVerHTML(){
 }
 const rdFoot = () => '<p class="rd-foot">Generado con la Guía del taller · versión '+APP_VER+' · '+fechaCorta(APP_FECHA)+'</p>';
 const CAMBIOS = [
+ {t:'Versión 3.5', lcd:'Corregir pruebas y cálculos en el Centro de exportación',
+  pasos:['Cada prueba y cada cálculo tiene el botón «Editar»: se corrigen equipo, punto, esperado, lectura, revisión (OK, Revisar o Falla), responsable y nota.','Los datos de entrada, los resultados y el veredicto de un cálculo también se editan. No se recalculan solos: lo corregido se marca «corregido a mano» (opcional).','Debajo de cada valor cambiado se ve «Antes: …» y hay un botón para restaurar los valores originales.','Los reportes guardados en el historial se pueden desbloquear para corregirlos.']},
  {t:'Versión 3.4', lcd:'Ajustes al Excel de la cotización',
   pasos:['El Excel ya no muestra la nota «editable en la hoja…» junto a la tasa de referencia; esa indicación queda solo en la hoja de supuestos.',
          'Las filas de totales tienen altura fija para que no se vean cortadas en Excel.']},
