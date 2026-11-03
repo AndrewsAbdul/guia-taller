@@ -7477,7 +7477,7 @@ function vMantExp(v){
 
 
 /* ---------------- VERSIÓN DE LA GUÍA ---------------- */
-const APP_VER = '3.3';
+const APP_VER = '3.4';
 const APP_FECHA = '2026-11-02';
 const fechaCorta = iso => { const p=String(iso).split('-'); return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:iso; };
 function appVerHTML(){
@@ -7485,6 +7485,9 @@ function appVerHTML(){
 }
 const rdFoot = () => '<p class="rd-foot">Generado con la Guía del taller · versión '+APP_VER+' · '+fechaCorta(APP_FECHA)+'</p>';
 const CAMBIOS = [
+ {t:'Versión 3.4', lcd:'Ajustes al Excel de la cotización',
+  pasos:['El Excel ya no muestra la nota «editable en la hoja…» junto a la tasa de referencia; esa indicación queda solo en la hoja de supuestos.',
+         'Las filas de totales tienen altura fija para que no se vean cortadas en Excel.']},
  {t:'Versión 3.3', lcd:'Condiciones editables y notas del cliente',
   pasos:['En la cotización, cada condición del documento se puede marcar, editar o quitar, y puedes agregar condiciones propias.',
          'Nuevo cuadro opcional de notas del cliente: sale en el Excel (recuadro antes de las firmas) y en el texto de WhatsApp.',
@@ -19395,7 +19398,7 @@ VIEWS['prog.cmp']=v=>vMarca(v,'Siemens y Rockwell','Equivalencias de conceptos p
    put(A,rn,6,Math.round(x.t*100)/100,{al:'right',b:1,bg:z,bd:b,nf:'m'},'D'+rn+'*(E'+rn+'+F'+rn+')'); rn++; });
   const e=rn-1; A.h[rn]=8; rn++;
   const lab={b:1,al:'right',bg:ICE,ind:1}, val={b:1,al:'right',bg:ICE2,nf:'m',ind:1}, first=rn;
-  const trow=(t,v,f,neg)=>{ span(A,rn,0,2,'',{}); span(A,rn,3,5,t,lab); put(A,rn,6,Math.round(v*100)/100,neg?{b:1,al:'right',bg:ICE2,nf:'m',c:'B3261E',ind:1}:val,f); rn++; return rn-1; };
+  const trow=(t,v,f,neg)=>{ A.h[rn]=21; span(A,rn,0,2,'',{}); span(A,rn,3,5,t,lab); put(A,rn,6,Math.round(v*100)/100,neg?{b:1,al:'right',bg:ICE2,nf:'m',c:'B3261E',ind:1}:val,f); rn++; return rn-1; };
   trow('Mano de obra',r.mo,'SUMPRODUCT(D'+a+':D'+e+',E'+a+':E'+e+')');
   trow(C.mat?'Materiales':'Materiales (los suministra el cliente)',r.mt,C.mat?'SUMPRODUCT(D'+a+':D'+e+',F'+a+':F'+e+')':null);
   if(r.rec) trow('Recargos',r.rec); if(r.minAdj) trow('Ajuste al cargo mínimo',r.minAdj); if(r.desc) trow('Descuento '+C.desc+' %',-r.desc,null,1);
@@ -19403,7 +19406,7 @@ VIEWS['prog.cmp']=v=>vMarca(v,'Siemens y Rockwell','Equivalencias de conceptos p
   let itb=0; if(C.itbis) itb=trow('ITBIS 18 %',r.tax,'G'+sub+'*0.18');
   A.h[rn]=30; span(A,rn,0,2,'',{}); span(A,rn,3,5,'TOTAL RD$',{b:1,sz:15,c:'FFFFFF',bg:NAVY,al:'right',ind:1}); const tot=rn;
   put(A,rn,6,Math.round(r.tot*100)/100,{b:1,sz:15,c:'FFFFFF',bg:NAVY,al:'right',nf:'m',ind:1},'G'+sub+(itb?'+G'+itb:'')); rn++;
-  A.h[rn]=24; span(A,rn,0,2,'Tasa de referencia RD$ '+f2(C.rate)+' por US$ 1 (editable en la hoja «'+SUP+'»)',{sz:10,c:'7A5200',bg:CREAM,i:1,ind:1}); span(A,rn,3,5,'TOTAL US$',{b:1,c:'7A5200',bg:CREAM,al:'right',ind:1});
+  A.h[rn]=24; span(A,rn,0,2,'Tasa de referencia RD$ '+f2(C.rate)+' por US$ 1',{sz:10,c:'7A5200',bg:CREAM,i:1,ind:1}); span(A,rn,3,5,'TOTAL US$',{b:1,c:'7A5200',bg:CREAM,al:'right',ind:1});
   put(A,rn,6,Math.round(r.usd*100)/100,{b:1,c:'7A5200',bg:CREAM,al:'right',nf:'m',ind:1},'G'+tot+'/\''+SUP+'\'!C4'); rn++;
   A.h[rn]=12; rn++;
   const ch={b:1,sz:11,bd:{b:['medium',AMB]}}; span(A,rn,0,6,'CONDICIONES',ch); rn++;
