@@ -130,7 +130,43 @@ nav.bar button[aria-current="page"]{color:var(--ink);border-top-color:var(--yell
 .hub-link .tt{flex:1}
 .hub-err{margin-top:.6rem;padding:.55rem .7rem;border-radius:8px;background:rgba(220,70,60,.12);border:1px solid rgba(220,70,60,.35);font-size:.88rem}
 .hub-err ul{margin:.3rem 0 0 1.1rem;padding:0}
+.hub-tbl{width:100%;display:grid;gap:.3rem;margin-top:.5rem}
+.hub-r{display:flex;justify-content:space-between;gap:.6rem;padding:.4rem .6rem;border:1px solid var(--line);border-radius:8px;font-size:.9rem}
+html.moderno .qk-b[aria-pressed=true]{background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
 .hub-fx{font-size:.88rem;margin-top:.5rem}
+
+
+.nh-pend{display:grid;grid-template-columns:repeat(3,1fr);width:100%;margin:.8rem 0 0;padding:.7rem .4rem;border-radius:18px;background:var(--surface);border:1px solid var(--line);color:var(--ink);font:inherit;cursor:pointer;text-align:center}
+.nh-pend span{display:block;font-size:.72rem;color:var(--muted)}.nh-pend b{display:block;font-size:1.45rem;line-height:1.1;color:var(--ink)}.nh-pend b.rojo{color:var(--danger)}.nh-pend b.verde{color:var(--ok)}.nh-pend b.amar{color:var(--warn)}
+.nh-fav{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.3rem;-webkit-overflow-scrolling:touch}.nh-fb{flex:none;border-radius:999px;padding:.5rem .8rem;background:var(--surface);border:1px solid var(--line);color:var(--ink);font:inherit;font-size:.82rem;font-weight:700;cursor:pointer;white-space:nowrap}
+.dock{overflow:visible}
+.dock button.dk-fab{margin-top:-1.55rem}
+.dock button.dk-fab .dk-i{width:3.5rem;height:3.5rem;border-radius:50%;background:var(--yellow);color:#14201A;display:grid;place-items:center;box-shadow:0 6px 16px rgba(242,201,76,.45);border:4px solid var(--bg)}
+.dock button.dk-fab .dk-i .ico{width:1.7rem;height:1.7rem;stroke-width:2.6}
+.dock button.dk-fab[aria-current="page"]{color:var(--ink)}
+.nh-search{display:flex;align-items:center;gap:.6rem;width:100%;height:3rem;margin:0 0 .8rem;padding:0 .9rem;border-radius:16px;background:var(--surface);border:1px solid var(--line);color:var(--muted);font:inherit;font-size:.95rem;cursor:pointer;text-align:left}
+.nh-search .ico{width:1.2rem;height:1.2rem;flex:none}
+.nh-hero{border-radius:22px;padding:1rem;background:linear-gradient(135deg,#14385A,#0C2234);color:#fff;border:1px solid rgba(255,255,255,.12);box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.nh-hi{opacity:.75;font-size:.9rem}.nh-hero h2{margin:.05rem 0 .15rem;font-size:1.7rem;line-height:1.1;color:#fff}.nh-d{opacity:.7;font-size:.82rem;margin-bottom:.7rem}
+.nh-cont{display:flex;align-items:center;gap:.7rem;width:100%;text-align:left;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:.65rem .7rem;color:#fff;font:inherit;cursor:pointer}
+.nh-ci{flex:none;width:2.6rem;height:2.6rem;border-radius:12px;background:var(--yellow);color:#14201A;display:grid;place-items:center}.nh-ci .ico{width:1.4rem;height:1.4rem}
+.nh-ct{flex:1;min-width:0}.nh-ct small{display:block;opacity:.75;font-size:.74rem}.nh-ct b{display:block;font-size:1rem;line-height:1.2}
+.nh-k{display:flex;flex-wrap:wrap;gap:.35rem 1rem;margin-top:.7rem;font-size:.8rem;opacity:.9}.nh-k b{font-size:1.05rem}
+.nh-qa{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:.8rem 0}
+.nh-qa button{display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.65rem .2rem;border-radius:16px;background:var(--surface);border:1px solid var(--line);color:var(--ink);font:inherit;font-size:.74rem;font-weight:700;cursor:pointer;line-height:1.15;text-align:center;min-height:4.4rem}
+.nh-qa button span{display:grid;place-items:center;width:2rem;height:2rem;border-radius:10px;background:color-mix(in srgb,var(--yellow) 28%,transparent);color:var(--ink)}.nh-qa .ico{width:1.2rem;height:1.2rem}
+.nlist{display:grid;gap:.5rem}
+.nrow{--acc:#2B7FBF;display:flex;align-items:center;gap:.7rem;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:.65rem .75rem;color:var(--ink);font:inherit;cursor:pointer;min-height:3.4rem}
+.nr-i{flex:none;width:2.6rem;height:2.6rem;border-radius:12px;display:grid;place-items:center;color:var(--acc);background:color-mix(in srgb,var(--acc) 16%,transparent)}.nr-i .ico{width:1.3rem;height:1.3rem}
+.nr-t{flex:1;min-width:0}.nr-t b{display:block;font-size:.95rem;line-height:1.2}.nr-t small{display:block;color:var(--muted);font-size:.78rem;margin-top:.1rem}.nr-c{color:var(--muted);font-size:1.4rem;line-height:1}
+.bt-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem}
+.bt{--acc:#2B7FBF;display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.7rem .3rem .6rem;border-radius:16px;background:var(--surface);border:1px solid var(--line);color:var(--ink);font:inherit;cursor:pointer;min-height:5.6rem;text-align:center}
+.bt i{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:12px;color:var(--acc);background:color-mix(in srgb,var(--acc) 16%,transparent);font-style:normal}.bt .ico{width:1.35rem;height:1.35rem}
+.bt b{font-size:.74rem;line-height:1.15;overflow-wrap:anywhere}
+.nrow:active,.bt:active,.nh-qa button:active,.nh-cont:active{transform:scale(.98)}
+#btnBack[hidden],#btnMenu[hidden]{display:none}
+.subs{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hh,4.6rem));z-index:4;background:var(--bg);margin-top:-.2rem;padding-top:.45rem}
+body.has-subs details.item[open]>summary{top:calc(env(safe-area-inset-top,0px) + var(--hh,4.6rem) + 3.4rem)}
 </style>
 <style>
 nav.bar{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -7607,7 +7643,7 @@ function vMantExp(v){
 
 
 /* ---------------- VERSIÓN DE LA GUÍA ---------------- */
-const APP_VER = '5.2';
+const APP_VER = '5.4';
 const APP_FECHA = '2026-11-02';
 const fechaCorta = iso => { const p=String(iso).split('-'); return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:iso; };
 function appVerHTML(){
@@ -7615,8 +7651,12 @@ function appVerHTML(){
 }
 const rdFoot = () => '<p class="rd-foot">Generado con la Guía del taller · versión '+APP_VER+' · '+fechaCorta(APP_FECHA)+'</p>';
 const CAMBIOS = [
+ {t:'Versión 5.4', lcd:'Inicio con pendientes y botón Registrar',
+  pasos:['Inicio con pendientes: órdenes con atraso, en proceso y cumplimiento arriba, y favoritos en una fila.','Botón central grande «Registrar» en la barra inferior. Aprender pasa al Inicio y a la Biblioteca.']},
+ {t:'Versión 5.3', lcd:'Nueva navegación y apariencia',
+  pasos:['Barra inferior nueva: Inicio, Biblioteca, Calcular, Aprender y Más.','Inicio más corto: «Continuar donde lo dejaste», cuatro accesos, favoritos y lo visto recientemente.','Biblioteca con todos los módulos, filtro por grupo y un color fijo por grupo.','Dentro de un módulo: botón Volver, título y ruta en la barra superior y secciones que se quedan visibles al bajar.','Buscar encuentra también las calculadoras nuevas y está siempre a un toque en la barra superior.','Más reúne registro, reportes, favoritos, QR, ajustes, tema y exportación.']},
  {t:'Versión 5.2', lcd:'Calculadoras en pestañas',
-  pasos:['Nuevo centro de Calculadoras con pestañas (Principal, Motor, Conversión, Recursos, Patillaje, Fórmulas y Favoritos), búsqueda y estrella para guardar favoritas en este teléfono.','11 calculadoras nuevas de cables y protecciones: sección por caída de tensión, caída de tensión, longitud máxima, cortocircuito en un punto, mínimo y de transformador, K²S², temperatura, pérdidas, cargas distribuidas y dispositivo de protección.','Cada calculadora trae su fórmula y los errores típicos.']},
+  pasos:['Nuevo centro de Calculadoras con pestañas (Principal, Motor, Conversión, Recursos, Patillaje, Fórmulas y Favoritos), búsqueda y estrella para guardar favoritas en este teléfono.','11 calculadoras nuevas de cables y protecciones y 7 de motor (6, 9 y 12 bornes con diagrama, estrella o triángulo según placa, clase de aislamiento, FLC del NEC y condensador de marcha). Cables: sección por caída de tensión, caída de tensión, longitud máxima, cortocircuito en un punto, mínimo y de transformador, K²S², temperatura, pérdidas, cargas distribuidas y dispositivo de protección.','Recursos y tablas: grados IP e IK, NEMA, sistemas TT/TN/IT, colores de conductores, prefijos SI, series E12/E24, resistividad, curvas de disparo, fusibles, termopares, números ANSI y ATEX. Patillaje: RJ-45 T568A/B con diagrama, RS-232, RS-485, USB, M12, IO-Link, CAN, Profibus, OBD-II, audio, LCD 16x2 y Raspberry Pi. Electrotecnia: corriente de empleo, corrección del factor de potencia, puesta a tierra y diferencial, LED, resonancia, divisor, serie/paralelo, impedancia, Joule y transformador. Conversión: triángulo-estrella, AWG-mm², Ah-kWh, RPM-rad/s, potencia, energía, par, gauss-tesla y ángulos. Componentes y otros: código SMD, código de condensadores, colores de inductores, antena (λ y dipolo), almacenamiento CCTV, campo de visión de la lente y resoluciones. Todo con errores típicos.']},
  {t:'Versión 5.1', lcd:'FactoryTalk View completo',
   pasos:['FactoryTalk View SE (4 lecciones): aplicación SE local, SE distribuida y servidores, redundancia de servidores, clientes y despliegue.','Evaluación final: examen por niveles y proyecto de HMI del sistema de presión constante con simulador de mando, falla enclavada y reset.','Con esto el curso de FactoryTalk View queda completo (52 lecciones).']},
  {t:'Versión 5.0', lcd:'FactoryTalk View · ISA-101, recetas y despliegue',
@@ -11680,7 +11720,7 @@ function buscarIndice(q,f,mod){
   const o=r.slice(0,50); o.aprox=r.aprox; return o;
 }
 function vBuscar(v){
-  const mods=Object.keys(MODS).filter(k=>MODMETA[k]&&k!=='home'&&k!=='buscar');
+  const mods=Object.keys(MODS).filter(k=>MODMETA[k]&&['home','buscar','bib','apr','mas'].indexOf(k)<0);
   v.innerHTML='<h2 class="vt">'+esc(L('Buscar','Search'))+'</h2><p class="intro">'+esc(L('Busca en todas las guías, láminas, mapas, fallas y calculadoras. Ejemplos: «4-20», «aislamiento», «rpm», «banda».','Search all guides, sheets, maps, faults and calculators.'))+'</p>'+
     '<div class="sbox">'+ico('search')+'<input id="bq" type="search" placeholder="¿Qué necesitas?" autocomplete="off" value="'+esc(busq.q)+'"></div>'+
     '<div class="seg" role="group" aria-label="Filtro" style="margin:.2rem 0 .5rem">'+[['','Todo'],['guia','Guías'],['mapa','Láminas y mapas'],['calc','Calculadoras'],['falla','Fallas']].map(f=>'<button type="button" data-bf="'+f[0]+'" aria-pressed="'+(busq.f===f[0])+'">'+f[1]+'</button>').join('')+'</div>'+
@@ -15396,7 +15436,7 @@ function vIn(v){
  const ord=[].concat.apply([],GRUPOS.map(g=>g[1])); let num=ord.indexOf(mod)+1; if(num<=0) num=Object.keys(MODS).filter(k=>k!=='home'&&k!=='buscar').indexOf(mod)+1;
  const st=inStats(mod), vf=mod==='vfd', LS=vf?null:lvSubs(mod);
  const act=(!vf&&NIV[mod]&&LS[NIV[mod]-1].length&&!IN_ALL[mod])?NIV[mod]:0;
- let h='<section class="lnd" style="--acc:'+mm.color+'"><div class="lnd-h"><span class="lnd-n">'+String(num).padStart(2,'0')+'</span><div><div class="lnd-c"><button type="button" data-go="home">'+L('Inicio','Home')+'</button> › '+esc(mm.corto)+'</div><h2>'+esc(mm.label)+'</h2><p>'+esc(mm.desc)+'</p></div></div>'+
+ let h='<section class="lnd" style="--acc:'+mm.color+'"><div class="lnd-h"><span class="lnd-n">'+String(num).padStart(2,'0')+'</span><div><div class="lnd-c"><button type="button" data-go="bib">'+L('Biblioteca','Library')+'</button> › '+esc(mm.corto)+'</div><h2>'+esc(mm.label)+'</h2><p>'+esc(mm.desc)+'</p></div></div>'+
   '<div class="lnd-s">'+st.map(s=>'<div><b>'+s[0]+'</b><span>'+esc(s[1])+'</span></div>').join('')+'</div></section>';
  h+='<h3 class="lnd-t2">'+L('Elige tu nivel','Choose your level')+'</h3><div class="lnd-lv">'+LVN.map((n,i)=>{ const k=i+1, c=vf?null:LS[i].length, off=!vf&&!c; return '<button type="button" class="lvb'+(NIV[mod]===k?' sel':'')+(off?' off':'')+'" data-lvin="'+k+'" style="--c:var(--l'+k+');--cn:var(--n'+k+');--cs:var(--n'+k+')"><b>'+k+'</b><em>'+[1,2,3,4].map(j=>'<i'+(j<=k?' class="f"':'')+'></i>').join('')+'</em>'+esc(n)+(c?'<small>'+c+'</small>':'')+'</button>'; }).join('')+'</div>'+
   '<p class="lnd-h2">'+(NIV[mod]?L('Tu nivel está marcado. ','Your level is marked. ')+'<button type="button" class="lnd-x" data-lvclear="1">'+L('Quitar','Clear')+'</button>':(vf?L('Toca un nivel para empezar. Se recuerda como «Tu nivel».','Tap a level to start. It is remembered as “Your level”.'):L('Toca un nivel para ver sus secciones (clasificación orientativa). Se recuerda como «Tu nivel».','Tap a level to see its sections. It is remembered as “Your level”.')))+'</p>';
@@ -19254,6 +19294,396 @@ const GRUPOS=[['Mantenimiento',['mant']],['Diagnóstico',['medir','inst','mot']]
  VIEWS['vfd.calc']=vVfdCalc;
  Object.assign(EN_SUBS,{'Conceptos':'Concepts','Guía de puesta en marcha':'Start-up guide','Códigos por marca':'Codes by brand','Mapas':'Maps','Calculadora':'Calculator','Medición':'Measurement','Fundamentos':'Fundamentals','Siemens TIA Portal':'Siemens TIA Portal','S7-300/400':'S7-300/400','Rockwell':'Rockwell','Siemens y Rockwell':'Siemens and Rockwell','Ejemplos de código':'Code examples','Siemens':'Siemens'});
  VIEWS['fml']=vFormulas;
+/* ===== v5.2 etapa 6 · Códigos de componentes, antenas y CCTV ===== */
+const XC_COL=[['Negro',0,'1'],['Marrón',1,'10'],['Rojo',2,'100'],['Naranja',3,'1000'],['Amarillo',4,'10000'],['Verde',5,'100000'],['Azul',6,'1000000'],['Violeta',7,''],['Gris',8,''],['Blanco',9,'']];
+function xcVal(x,u){ const a=[[1e-12,'pF'],[1e-9,'nF'],[1e-6,'µF']]; return x; }
+function hubCod(){
+ const G='Códigos de componentes';
+ return [
+ {grp:G,title:'Resistencias SMD: código de 3 y 4 cifras',sub:'Lee el número impreso en el componente',
+  hint:'Escribe el código tal como está impreso: 472, 1002 o 4R7 (la R es la coma decimal).',formula:'Las primeras cifras son el valor y la última es el multiplicador (potencia de 10)',
+  err:['Leer 103 como 103 Ω: son 10 kΩ.','Confundir un código 000 con una resistencia abierta: es un puente de 0 Ω.','Olvidar que los códigos con letras (96 series EIA-96) son otra tabla.'],
+  html:'<div class="grid">'+fld('xc1_c','Código impreso','472')+'</div><div class="out" id="xc1_o"></div>',
+  init:function(){ function f(){ let c=document.getElementById('xc1_c').value.trim().toUpperCase(),v=null;
+    if(/^\d*R\d+$|^\d+R\d*$/.test(c)) v=parseFloat(c.replace('R','.'));
+    else if(/^\d{3,4}$/.test(c)){ const m=parseInt(c.slice(0,-1),10),e=parseInt(c.slice(-1),10); v=m*Math.pow(10,e); }
+    if(v===null||!isFinite(v)){ cbOut('xc1_o',c?cbVerd('warn','Escribe un código de 3 o 4 cifras, o con R como 4R7.'):''); return; }
+    const t=v>=1e6?fmt(v/1e6,3)+' MΩ':v>=1e3?fmt(v/1e3,3)+' kΩ':fmt(v,2)+' Ω'; cbOut('xc1_o',lcd(t.replace(/(\d),?0+ /,'$1 '))+(v===0?'<p class="hint">Es un puente de 0 Ω.</p>':'')); } bind(['xc1_c'],f); f(); }},
+ {grp:G,title:'Condensadores: código de 3 cifras y letra',sub:'Valor en picofaradios y tolerancia',
+  hint:'Los condensadores cerámicos y de poliéster llevan un código como 104J: valor en pF y tolerancia.',formula:'Valor = cifras 1 y 2 × 10^(cifra 3) pF',
+  err:['Leer 104 como 104 pF: son 100 000 pF (100 nF = 0,1 µF).','No mirar la tensión impresa: no la sustituyas por una menor.','Confundir n con µ al pasar de nF a µF.'],
+  html:'<div class="grid">'+fld('xc2_c','Código impreso (ej. 104)','104')+sel('xc2_t','Letra de tolerancia',[['','Sin letra'],['±1 %','F · ±1 %'],['±2 %','G · ±2 %'],['±5 %','J · ±5 %'],['±10 %','K · ±10 %'],['±20 %','M · ±20 %']],3)+'</div><div class="out" id="xc2_o"></div>',
+  init:function(){ function f(){ const c=document.getElementById('xc2_c').value.trim(); if(!/^\d{3}$/.test(c)){ cbOut('xc2_o',c?cbVerd('warn','Escribe tres cifras, por ejemplo 104.'):''); return; }
+    const pf=parseInt(c.slice(0,2),10)*Math.pow(10,parseInt(c[2],10)), t=document.getElementById('xc2_t').value;
+    const u=x=>String(+x.toPrecision(4)).replace('.',','); cbOut('xc2_o',lcd(u(pf)+' pF')+lcd(u(pf/1000)+' nF')+lcd(u(pf/1e6)+' µF')+(t?'<p class="hint">Tolerancia '+t+'.</p>':'')); } bind(['xc2_c','xc2_t'],f); f(); }},
+ {grp:G,title:'Inductores: código de colores',sub:'Dos cifras, multiplicador y tolerancia en µH',
+  hint:'Se lee como una resistencia pero el resultado es en microhenrios (µH).',formula:'Valor = (banda 1 · 10 + banda 2) × multiplicador, en µH',
+  err:['Leer el valor en ohmios: son microhenrios.','Confundir la banda de tolerancia dorada con una cifra.','Usar el inductor sin revisar la corriente máxima.'],
+  html:'<div class="grid">'+sel('xc3_a','Banda 1',XC_COL.map((c,i)=>[String(c[1]),c[0]]),2)+sel('xc3_b','Banda 2',XC_COL.map((c,i)=>[String(c[1]),c[0]]),7)+sel('xc3_m','Multiplicador',[['1','Negro ×1'],['10','Marrón ×10'],['100','Rojo ×100'],['1000','Naranja ×1000'],['0.1','Dorado ×0,1'],['0.01','Plateado ×0,01']],1)+sel('xc3_t','Tolerancia',[['±20 %','Sin banda · ±20 %'],['±10 %','Plateado · ±10 %'],['±5 %','Dorado · ±5 %']],2)+'</div><div class="out" id="xc3_o"></div>',
+  init:function(){ function f(){ const a=+document.getElementById('xc3_a').value,b=+document.getElementById('xc3_b').value,m=+document.getElementById('xc3_m').value,t=document.getElementById('xc3_t').value,v=(a*10+b)*m;
+    cbOut('xc3_o',lcd(String(+v.toPrecision(4)).replace('.',',')+' µH')+'<p class="hint">Tolerancia '+t+'.</p>'); } bind(['xc3_a','xc3_b','xc3_m','xc3_t'],f); f(); }}
+ ];
+}
+function hubAnt(){
+ const G='Antenas y CCTV';
+ return [
+ {grp:G,title:'Antena: longitud de onda y dipolo',sub:'Largo del elemento para una frecuencia',
+  hint:'El factor de velocidad del conductor (0,95 es típico) acorta el elemento respecto al valor teórico.',formula:'λ = 299,79 / f(MHz) m;   λ/4 = 0,25 · λ · k;   λ/2 = 0,5 · λ · k',
+  err:['Dar la frecuencia en kHz o GHz con la fórmula en MHz.','No recortar y medir con analizador: el entorno cambia la resonancia.','Usar cable coaxial con impedancia distinta a la de la antena.'],
+  html:'<div class="grid">'+fld('an1_f','Frecuencia (MHz)','433')+fld('an1_k','Factor de velocidad','0,95')+'</div><div class="out" id="an1_o"></div>',
+  init:function(){ function f(){ const fr=num('an1_f'),k=num('an1_k'); if(!(fr>0&&k>0&&k<=1)){ cbOut('an1_o',''); return; } const l=299.79/fr;
+    cbOut('an1_o',lcd('λ = '+fmt(l*100,1)+' cm')+lcd('λ/4 = '+fmt(l*100*0.25*k,1)+' cm')+lcd('Dipolo λ/2 = '+fmt(l*100*0.5*k,1)+' cm')); } bind(['an1_f','an1_k'],f); f(); }},
+ {grp:G,title:'CCTV: almacenamiento de grabación',sub:'Terabytes para cámaras y días de retención',
+  hint:'Estimación con la tasa de bits de cada cámara (la ves en la configuración del flujo).',formula:'GB por cámara al día = Mbps × 3600 × horas / 8 / 1000',
+  err:['Contar con la tasa de bits nominal y no la real: con movimiento sube mucho.','Olvidar dejar un margen de 10 a 20 % en el disco.','Usar discos de escritorio en un grabador 24/7.'],
+  html:'<div class="grid">'+fld('cc1_n','Cámaras','8')+fld('cc1_b','Tasa de bits por cámara (Mbps)','4')+fld('cc1_h','Horas de grabación al día','24')+fld('cc1_d','Días de retención','30')+'</div><div class="out" id="cc1_o"></div>',
+  init:function(){ function f(){ const n=num('cc1_n'),b=num('cc1_b'),h=num('cc1_h'),d=num('cc1_d'); if(!(n>0&&b>0&&h>0&&d>0)){ cbOut('cc1_o',''); return; }
+    const gb=b*3600*h/8/1000, tot=gb*n*d/1000; cbOut('cc1_o',lcd(fmt(gb,1)+' GB por cámara al día')+lcd(fmt(tot,2)+' TB')+lcd(fmt(tot*1.15,2)+' TB con 15 % de margen')); } bind(['cc1_n','cc1_b','cc1_h','cc1_d'],f); f(); }},
+ {grp:G,title:'CCTV: campo de visión de la lente',sub:'Ángulo y ancho de la escena a una distancia',
+  hint:'Con el ancho del sensor, la focal de la lente y la distancia, calcula qué tan ancha es la escena.',formula:'FOV = 2 · atan(w / 2f);   Ancho de escena = distancia · w / f',
+  err:['Usar el tamaño del sensor en pulgadas en lugar del ancho real en mm.','Elegir una focal larga para una vista amplia: es al revés.','Ignorar que a más resolución se ve más detalle pero no más ángulo.'],
+  html:'<div class="grid">'+fld('cc2_w','Ancho del sensor (mm)','5,4')+fld('cc2_f','Focal de la lente (mm)','4')+fld('cc2_d','Distancia al objetivo (m)','10')+'</div><div class="out" id="cc2_o"></div>',
+  init:function(){ function f(){ const w=num('cc2_w'),fl=num('cc2_f'),d=num('cc2_d'); if(!(w>0&&fl>0)){ cbOut('cc2_o',''); return; }
+    cbOut('cc2_o',lcd(fmt(2*Math.atan(w/(2*fl))*180/Math.PI,1)+'° horizontal')+(d>0?lcd(fmt(d*w/fl,1)+' m de ancho a '+fmt(d,0)+' m'):'')); } bind(['cc2_w','cc2_f','cc2_d'],f); f(); }},
+ {grp:G,title:'CCTV: resoluciones comunes',sub:'Megapíxeles y tamaño de imagen',noRep:true,
+  hint:'Referencia rápida para escoger cámaras y grabador.',err:['Comprar una cámara de 8 MP con un grabador que solo admite 4 MP.','Esperar más alcance solo por subir la resolución sin cambiar la lente.'],
+  html:mtLeads([['720p','1280 × 720 · 1 MP'],['1080p','1920 × 1080 · 2 MP'],['4 MP','2560 × 1440'],['5 MP','2592 × 1944'],['4K / 8 MP','3840 × 2160']]),init:function(){}}
+ ];
+}
+
+/* ===== v5.2 etapa 5 · Principal ampliado y Conversión ===== */
+function ucConv(n,title,sub,units,i0,i1,err){
+ const id='cu'+n; return {grp:'Conversiones eléctricas y mecánicas',title:title,sub:sub,
+  hint:'Escribe el valor y elige las unidades.',formula:'valor destino = valor × (factor origen / factor destino)',err:err,
+  html:'<div class="grid">'+fld(id+'_v','Valor','1')+sel(id+'_a','Desde',units.map((u,i)=>[String(i),u[0]]),i0)+sel(id+'_b','Hasta',units.map((u,i)=>[String(i),u[0]]),i1)+'</div><div class="out" id="'+id+'_o"></div>',
+  init:function(){ function f(){ const v=num(id+'_v'); if(!isFinite(v)){ cbOut(id+'_o',''); return; } const a=units[+document.getElementById(id+'_a').value],b=units[+document.getElementById(id+'_b').value];
+    cbOut(id+'_o',lcd(String(+(v*a[1]/b[1]).toPrecision(6)).replace('.',',')+' '+b[0].split(' ')[0])); } bind([id+'_v',id+'_a',id+'_b'],f); f(); }}; }
+function hubPrin(){
+ const G='Electrotecnia básica', C='Conversiones eléctricas y mecánicas';
+ const E=[
+ {grp:G,title:'Corriente de empleo (corriente de diseño)',sub:'De la potencia de la carga a los amperios',
+  hint:'Corriente que toma una carga, con factor de potencia y rendimiento.',formula:'Ib = P / (k · V · cosφ · η)   (k = √3 trifásico, 1 monofásico)',
+  err:['Poner la potencia mecánica del eje y olvidar el rendimiento.','Usar la tensión de fase con la fórmula de línea.','Dimensionar con la placa del motor en lugar de la corriente real de trabajo cuando hay mucha holgura.'],
+  html:'<div class="grid">'+sel('pr1_s','Sistema',CB_SYS,0)+fld('pr1_p','Potencia (kW)','7,5')+fld('pr1_v','Tensión (V)','480')+fld('pr1_fp','Factor de potencia','0,85')+fld('pr1_e','Rendimiento','0,9')+'</div><div class="out" id="pr1_o"></div>',
+  init:function(){ function f(){ const P=num('pr1_p')*1000,V=num('pr1_v'),fp=num('pr1_fp'),e=num('pr1_e'),k=document.getElementById('pr1_s').value==='1'?1:Math.sqrt(3);
+    if(!(P>0&&V>0&&fp>0&&fp<=1&&e>0&&e<=1)){ cbOut('pr1_o',''); return; } const I=P/(k*V*fp*e);
+    cbOut('pr1_o',lcd(fmt(I,1)+' A')+lcd(fmt(P/(e*fp)/1000,2)+' kVA')); } bind(['pr1_s','pr1_p','pr1_v','pr1_fp','pr1_e'],f); f(); }},
+ {grp:G,title:'Corrección del factor de potencia',sub:'kvar y capacitores para llegar al factor deseado',
+  hint:'Calcula la potencia reactiva que debe aportar el banco de capacitores y su capacitancia por fase.',formula:'Qc = P · (tanφ1 − tanφ2);   C = Qc / (3·ω·V²) en triángulo',
+  err:['Corregir hasta 1,00: con armónicos puede entrar en resonancia. Se suele apuntar a 0,95.','Calcular con la tensión de fase en un banco conectado en triángulo.','Dejar el capacitor conectado con el motor parado: puede sobrecompensar.'],
+  html:'<div class="grid">'+fld('pr2_p','Potencia activa (kW)','100')+fld('pr2_a','Factor de potencia actual','0,78')+fld('pr2_b','Factor de potencia deseado','0,95')+fld('pr2_v','Tensión de línea (V)','480')+fld('pr2_f','Frecuencia (Hz)','60')+sel('pr2_c','Conexión del banco',[['d','Triángulo'],['y','Estrella']],0)+'</div><div class="out" id="pr2_o"></div>',
+  init:function(){ function f(){ const P=num('pr2_p'),a=num('pr2_a'),b=num('pr2_b'),V=num('pr2_v'),fr=num('pr2_f');
+    if(!(P>0&&a>0&&a<=1&&b>0&&b<=1&&V>0&&fr>0)){ cbOut('pr2_o',''); return; } if(b<=a){ cbOut('pr2_o',cbVerd('warn','El factor deseado debe ser mayor que el actual.')); return; }
+    const tg=x=>Math.tan(Math.acos(x)), Q=P*(tg(a)-tg(b)), w=2*Math.PI*fr, d=document.getElementById('pr2_c').value==='d', C=d?Q*1000/(3*w*V*V):Q*1000/(w*V*V);
+    cbOut('pr2_o',lcd(fmt(Q,1)+' kvar')+lcd(fmt(C*1e6,0)+' µF por fase')); } bind(['pr2_p','pr2_a','pr2_b','pr2_v','pr2_f','pr2_c'],f); f(); }},
+ {grp:G,title:'Puesta a tierra y diferencial (sistema TT)',sub:'Resistencia máxima de la tierra de protección',
+  hint:'En un sistema TT el diferencial debe actuar antes de que la masa llegue a una tensión peligrosa.',formula:'Rt ≤ UL / IΔn   (UL = 50 V, o 25 V en lugares húmedos)',
+  err:['Medir la tierra sin desconectar el conductor: la lectura sale falsa.','Usar un diferencial de 300 mA donde se pide protección de personas (30 mA).','Olvidar que la resistencia de la tierra cambia con la humedad del terreno.'],
+  html:'<div class="grid">'+sel('pr3_u','Tensión de contacto límite',[['50','50 V (normal)'],['25','25 V (húmedo)']],0)+sel('pr3_i','Diferencial IΔn',[['0.03','30 mA'],['0.1','100 mA'],['0.3','300 mA'],['0.5','500 mA'],['1','1 A']],2)+fld('pr3_r','Resistencia de tierra medida, Ω','20')+'</div><div class="out" id="pr3_o"></div>',
+  init:function(){ function f(){ const U=+document.getElementById('pr3_u').value,I=+document.getElementById('pr3_i').value,R=num('pr3_r'),Rm=U/I;
+    let h=lcd(fmt(Rm,0)+' Ω máximo'); if(R>0) h+=cbVerd(R<=Rm?'ok':'bad',R<=Rm?'La tierra medida ('+fmt(R,1)+' Ω) cumple.':'La tierra medida ('+fmt(R,1)+' Ω) no cumple: mejora la puesta a tierra o baja IΔn.'); cbOut('pr3_o',h); } bind(['pr3_u','pr3_i','pr3_r'],f); f(); }},
+ {grp:G,title:'Resistencia para un LED',sub:'Valor y potencia de la resistencia limitadora',
+  hint:'Calcula la resistencia en serie para limitar la corriente del LED.',formula:'R = (Vfuente − Vled) / Iled;   P = (Vfuente − Vled) · Iled',
+  err:['Conectar el LED sin resistencia directamente a la fuente.','Usar una resistencia de 1/4 W cuando la potencia calculada es mayor.','Ignorar que la tensión del LED depende del color.'],
+  html:'<div class="grid">'+fld('pr4_s','Tensión de la fuente (V)','24')+fld('pr4_f','Tensión del LED (V)','2')+fld('pr4_i','Corriente del LED (mA)','15')+'</div><div class="out" id="pr4_o"></div>',
+  init:function(){ function f(){ const Vs=num('pr4_s'),Vf=num('pr4_f'),I=num('pr4_i')/1000; if(!(Vs>Vf&&Vf>=0&&I>0)){ cbOut('pr4_o',cbVerd('warn','La fuente debe ser mayor que la tensión del LED.')); return; }
+    const R=(Vs-Vf)/I,P=(Vs-Vf)*I; let n=null; for(let d=Math.floor(Math.log10(R))-1;d<=Math.floor(Math.log10(R))+1&&!n;d++) RC_E12.forEach(m=>{ const x=m*Math.pow(10,d); if(x>=R&&(!n||x<n)) n=x; });
+    cbOut('pr4_o',lcd(fmt(R,0)+' Ω')+lcd(fmt(P*1000,0)+' mW')+(n?lcd('E12: '+rcFmtR(n)+' Ω')+'<p class="hint">Usa una resistencia con potencia al menos del doble del valor calculado.</p>':'')); } bind(['pr4_s','pr4_f','pr4_i'],f); f(); }},
+ {grp:G,title:'Resonancia LC',sub:'Frecuencia de resonancia e impedancia característica',
+  hint:'Frecuencia a la que un circuito con inductancia y capacitancia entra en resonancia.',formula:'f₀ = 1 / (2π·√(L·C));   Z₀ = √(L/C)',
+  err:['Mezclar mH con H o µF con F.','Olvidar la resistencia del circuito: limita la resonancia.','Instalar capacitores cerca de variadores sin estudiar armónicos.'],
+  html:'<div class="grid">'+fld('pr5_l','Inductancia (mH)','10')+fld('pr5_c','Capacitancia (µF)','10')+'</div><div class="out" id="pr5_o"></div>',
+  init:function(){ function f(){ const L=num('pr5_l')/1000,C=num('pr5_c')*1e-6; if(!(L>0&&C>0)){ cbOut('pr5_o',''); return; }
+    cbOut('pr5_o',lcd(fmt(1/(2*Math.PI*Math.sqrt(L*C)),1)+' Hz')+lcd(fmt(Math.sqrt(L/C),2)+' Ω')); } bind(['pr5_l','pr5_c'],f); f(); }},
+ {grp:G,title:'Divisor de tensión',sub:'Tensión de salida con dos resistencias',
+  hint:'Salida del divisor sin carga. Si conectas una carga, el valor baja.',formula:'Vout = Vin · R2 / (R1 + R2)',
+  err:['Conectar una carga de impedancia baja: cambia el divisor.','Usar resistencias de tolerancia grande en una medición precisa.'],
+  html:'<div class="grid">'+fld('pr6_v','Tensión de entrada (V)','24')+fld('pr6_1','R1 (kΩ)','10')+fld('pr6_2','R2 (kΩ)','4,7')+'</div><div class="out" id="pr6_o"></div>',
+  init:function(){ function f(){ const V=num('pr6_v'),a=num('pr6_1'),b=num('pr6_2'); if(!(V>0&&a>0&&b>0)){ cbOut('pr6_o',''); return; } cbOut('pr6_o',lcd(fmt(V*b/(a+b),2)+' V')+lcd(fmt(V/(a+b),2)+' mA')); } bind(['pr6_v','pr6_1','pr6_2'],f); f(); }},
+ {grp:G,title:'Resistencias y capacitores: serie y paralelo',sub:'Equivalente de hasta cuatro valores',
+  hint:'Deja vacíos los valores que no uses. Para resistencias, la unidad es la misma en todos los campos.',formula:'R serie = ΣR;  R paralelo = 1 / Σ(1/R);  con capacitores es al revés',
+  err:['Aplicar la fórmula de resistencias a capacitores sin invertirla.','Mezclar kΩ con Ω en los campos.'],
+  html:'<div class="grid">'+sel('pr7_t','Componente',[['r','Resistencias'],['c','Capacitores']],0)+sel('pr7_m','Conexión',[['s','Serie'],['p','Paralelo']],0)+fld('pr7_1','Valor 1','100')+fld('pr7_2','Valor 2','220')+fld('pr7_3','Valor 3','')+fld('pr7_4','Valor 4','')+'</div><div class="out" id="pr7_o"></div>',
+  init:function(){ function f(){ const v=[1,2,3,4].map(i=>num('pr7_'+i)).filter(x=>x>0); if(v.length<2){ cbOut('pr7_o',''); return; }
+    const t=document.getElementById('pr7_t').value, s=document.getElementById('pr7_m').value, suma=a=>a.reduce((x,y)=>x+y,0), inv=a=>1/suma(a.map(x=>1/x));
+    const r=(t==='r')===(s==='s')?suma(v):inv(v); cbOut('pr7_o',lcd(String(+r.toPrecision(5)).replace('.',','))+'<p class="hint">Mismo prefijo que los valores escritos.</p>'); } bind(['pr7_t','pr7_m','pr7_1','pr7_2','pr7_3','pr7_4'],f); f(); }},
+ {grp:G,title:'Impedancia en serie: R, L y C',sub:'Módulo, ángulo y factor de potencia',
+  hint:'Escribe la resistencia y las reactancias en ohmios.',formula:'Z = √(R² + (XL − XC)²);   cosφ = R / Z',
+  err:['Sumar R y X como números simples.','Olvidar que XC resta de XL.','Dar los valores en unidades distintas (mH con µF).'],
+  html:'<div class="grid">'+fld('pr8_r','Resistencia R (Ω)','10')+fld('pr8_l','Reactancia XL (Ω)','15')+fld('pr8_c','Reactancia XC (Ω)','5')+'</div><div class="out" id="pr8_o"></div>',
+  init:function(){ function f(){ const R=num('pr8_r'),XL=isNaN(num('pr8_l'))?0:num('pr8_l'),XC=isNaN(num('pr8_c'))?0:num('pr8_c'); if(!(R>=0)||(R===0&&XL===XC)){ cbOut('pr8_o',''); return; } const X=XL-XC,Z=Math.sqrt(R*R+X*X);
+    cbOut('pr8_o',lcd(fmt(Z,2)+' Ω')+lcd(fmt(Math.atan2(X,R)*180/Math.PI,1)+'°')+lcd('cosφ '+fmt(R/Z,3))+'<p class="hint">'+(X>0?'Carga inductiva (corriente atrasada).':X<0?'Carga capacitiva (corriente adelantada).':'Resonancia: carga resistiva.')+'</p>'); } bind(['pr8_r','pr8_l','pr8_c'],f); f(); }},
+ {grp:G,title:'Efecto Joule: calor generado',sub:'Energía en julios, kWh y kcal',
+  hint:'Calor que produce una corriente en una resistencia durante un tiempo.',formula:'Q = I² · R · t;   1 kcal = 4186 J',
+  err:['Mezclar minutos con segundos.','Olvidar que parte del calor se pierde en el ambiente.'],
+  html:'<div class="grid">'+fld('pr9_i','Corriente (A)','10')+fld('pr9_r','Resistencia (Ω)','12')+fld('pr9_t','Tiempo (min)','30')+'</div><div class="out" id="pr9_o"></div>',
+  init:function(){ function f(){ const I=num('pr9_i'),R=num('pr9_r'),t=num('pr9_t')*60; if(!(I>0&&R>0&&t>0)){ cbOut('pr9_o',''); return; } const Q=I*I*R*t;
+    cbOut('pr9_o',lcd(fmt(Q/1000,0)+' kJ')+lcd(fmt(Q/3.6e6,2)+' kWh')+lcd(fmt(Q/4186,0)+' kcal')); } bind(['pr9_i','pr9_r','pr9_t'],f); f(); }},
+ {grp:G,title:'Transformador: relación y corrientes',sub:'Secundario y primario con la potencia',
+  hint:'Transformador ideal: se desprecian las pérdidas.',formula:'a = Vp / Vs;   Is = S / (√3·Vs) en trifásico',
+  err:['Usar kVA del primario con la tensión del secundario.','Olvidar que la corriente sube cuando la tensión baja.'],
+  html:'<div class="grid">'+fld('pr10_s','Potencia (kVA)','75')+fld('pr10_p','Tensión primaria (V)','4160')+fld('pr10_q','Tensión secundaria (V)','480')+'</div><div class="out" id="pr10_o"></div>',
+  init:function(){ function f(){ const S=num('pr10_s')*1000,P=num('pr10_p'),Q=num('pr10_q'); if(!(S>0&&P>0&&Q>0)){ cbOut('pr10_o',''); return; } const k=Math.sqrt(3);
+    cbOut('pr10_o',lcd('a = '+fmt(P/Q,2))+lcd(fmt(S/(k*P),1)+' A primario')+lcd(fmt(S/(k*Q),1)+' A secundario')); } bind(['pr10_s','pr10_p','pr10_q'],f); f(); }},
+ {grp:C,title:'Resistencias: triángulo ↔ estrella',sub:'Transformación para simplificar redes',
+  hint:'Convierte tres resistencias en triángulo a estrella, o al revés.',formula:'Δ→Y: R1 = Rab·Rac / (Rab+Rbc+Rac)  ·  Y→Δ: Rab = (R1R2+R2R3+R3R1) / R3',
+  err:['Cambiar los terminales de nombre y obtener un resultado distinto.','Aplicar la fórmula a una red que no es triángulo ni estrella pura.'],
+  html:'<div class="grid">'+sel('cv1_m','Convertir',[['dy','De triángulo a estrella'],['yd','De estrella a triángulo']],0)+fld('cv1_a','Rab / R1 (Ω)','30')+fld('cv1_b','Rbc / R2 (Ω)','30')+fld('cv1_c','Rac / R3 (Ω)','30')+'</div><div class="out" id="cv1_o"></div>',
+  init:function(){ function f(){ const a=num('cv1_a'),b=num('cv1_b'),c=num('cv1_c'),m=document.getElementById('cv1_m').value; if(!(a>0&&b>0&&c>0)){ cbOut('cv1_o',''); return; }
+    if(m==='dy'){ const s=a+b+c; cbOut('cv1_o',mtLeads([['R1 (en a)',fmt(a*c/s,2)+' Ω'],['R2 (en b)',fmt(a*b/s,2)+' Ω'],['R3 (en c)',fmt(b*c/s,2)+' Ω']])); }
+    else { const s=a*b+b*c+c*a; cbOut('cv1_o',mtLeads([['Rab',fmt(s/c,2)+' Ω'],['Rbc',fmt(s/a,2)+' Ω'],['Rca',fmt(s/b,2)+' Ω']])); } } bind(['cv1_m','cv1_a','cv1_b','cv1_c'],f); f(); }},
+ {grp:C,title:'AWG ↔ milímetros cuadrados',sub:'Calibre americano y sección métrica',
+  hint:'Usa «0000» como −2, «000» como −1 y «00» como 0 en AWG, o escribe los milímetros cuadrados para hallar el AWG más cercano.',formula:'d = 0,127 · 92^((36 − AWG)/39) mm;   A = π·d²/4',
+  err:['Creer que un número AWG mayor es un cable más grueso: es al revés.','Comparar AWG con mm² sin revisar la ampacidad en la norma.','Usar la sección del conductor y no la del cable completo.'],
+  html:'<div class="grid">'+sel('cv2_m','Dato conocido',[['a','AWG'],['s','mm²']],0)+fld('cv2_v','Valor','10')+'</div><div class="out" id="cv2_o"></div>',
+  init:function(){ function f(){ const v=num('cv2_v'),m=document.getElementById('cv2_m').value; if(!isFinite(v)||v<=0&&m==='s'){ cbOut('cv2_o',''); return; }
+    let n,d; if(m==='a'){ n=v; d=0.127*Math.pow(92,(36-n)/39); } else { d=Math.sqrt(4*v/Math.PI); n=36-39*Math.log(d/0.127)/Math.log(92); }
+    const A=Math.PI*d*d/4; cbOut('cv2_o',lcd('AWG '+fmt(n,m==='a'?0:1))+lcd(fmt(A,2)+' mm²')+lcd(fmt(d,2)+' mm')+'<p class="hint">Valores calculados con la fórmula de definición; los cables reales traen sus propios datos.</p>'); } bind(['cv2_m','cv2_v'],f); f(); }},
+ {grp:C,title:'Ah ↔ kWh de una batería',sub:'Capacidad y energía',
+  hint:'Convierte capacidad en amperios-hora a energía y viceversa.',formula:'kWh = Ah · V / 1000',
+  err:['Comparar baterías de distinta tensión solo por Ah.','Usar toda la capacidad: la utilizable es menor.'],
+  html:'<div class="grid">'+fld('cv3_a','Capacidad (Ah)','100')+fld('cv3_v','Tensión (V)','12')+'</div><div class="out" id="cv3_o"></div>',
+  init:function(){ function f(){ const a=num('cv3_a'),v=num('cv3_v'); if(!(a>0&&v>0)){ cbOut('cv3_o',''); return; } cbOut('cv3_o',lcd(fmt(a*v/1000,2)+' kWh')+lcd(fmt(a*v,0)+' Wh')); } bind(['cv3_a','cv3_v'],f); f(); }},
+ {grp:C,title:'RPM ↔ rad/s ↔ velocidad lineal',sub:'Velocidad angular y de una banda o polea',
+  hint:'Con el radio, calcula la velocidad lineal en el borde.',formula:'ω = 2π·n / 60;   v = ω · r',
+  err:['Usar el diámetro en lugar del radio.','Mezclar mm con m al calcular la velocidad lineal.'],
+  html:'<div class="grid">'+fld('cv4_n','Velocidad (RPM)','1750')+fld('cv4_r','Radio (mm)','100')+'</div><div class="out" id="cv4_o"></div>',
+  init:function(){ function f(){ const n=num('cv4_n'),r=num('cv4_r'); if(!(n>0)){ cbOut('cv4_o',''); return; } const w=2*Math.PI*n/60;
+    cbOut('cv4_o',lcd(fmt(w,2)+' rad/s')+(r>0?lcd(fmt(w*r/1000,2)+' m/s')+lcd(fmt(w*r/1000*60,0)+' m/min'):'')); } bind(['cv4_n','cv4_r'],f); f(); }},
+ ucConv(5,'Potencia: kW, HP, CV y BTU/h','Unidades de potencia mecánica y térmica',[['W',1],['kW',1000],['HP (mecánico)',745.7],['CV (métrico)',735.499],['BTU/h',0.293071],['kcal/h',1.163]],1,2,['Confundir HP con CV: difieren cerca de 1 %.','Usar kW eléctricos y mecánicos como si fueran lo mismo.']),
+ ucConv(6,'Energía: J, kWh, kcal y BTU','Unidades de energía',[['J',1],['kJ',1000],['Wh',3600],['kWh',3.6e6],['kcal',4186.8],['BTU',1055.06]],3,4,['Mezclar kW (potencia) con kWh (energía).','Olvidar que la caloría de la comida es en realidad la kilocaloría.']),
+ ucConv(7,'Par: N·m, kgf·m y lb·ft','Unidades de torque',[['N·m',1],['kgf·m',9.80665],['lb·ft',1.35582],['lb·in',0.112985],['oz·in',0.00706155]],0,2,['Confundir lb·ft con lb·in en un apriete.','Aplicar el par de un tornillo lubricado a uno seco.']),
+ ucConv(8,'Campo magnético: gauss y tesla','Densidad de flujo',[['T (tesla)',1],['mT',1e-3],['µT',1e-6],['G (gauss)',1e-4],['kG',0.1]],3,0,['Confundir mT con µT.','Medir con el sensor lejos del imán: la lectura cae rápido.']),
+ ucConv(9,'Ángulo: grados, radianes y vueltas','Conversión de ángulos',[['° (grados)',1],['rad',180/Math.PI],['vueltas',360],['gon',0.9]],0,1,['Dejar la calculadora en grados al usar radianes.','Confundir vuelta (360°) con radián.'])
+ ];
+ return E;
+}
+
+/* ===== v5.2 etapa 4 · Patillaje ===== */
+const PT_COL={naranja:'#f08a24',verde:'#2e9e4f',azul:'#2f6fd0',marrón:'#8a5a2b'};
+function ptRj(mode){
+ const B=[['blanco/naranja'],['naranja'],['blanco/verde'],['azul'],['blanco/azul'],['verde'],['blanco/marrón'],['marrón']];
+ const A=[['blanco/verde'],['verde'],['blanco/naranja'],['azul'],['blanco/azul'],['naranja'],['blanco/marrón'],['marrón']];
+ const L=mode==='a'?A:B; let s='<svg viewBox="0 0 320 120" width="100%" style="max-width:360px" role="img" aria-label="Pines del RJ-45, 1 a 8"><rect x="4" y="4" width="312" height="112" rx="10" fill="none" stroke="currentColor" opacity=".35"/>';
+ L.forEach((c,i)=>{ const n=c[0], base=n.split('/').pop(), st=n.indexOf('/')>0, x=14+i*38;
+  s+='<rect x="'+x+'" y="14" width="30" height="64" rx="4" fill="'+(PT_COL[base]||'#888')+'"/>';
+  if(st) s+='<rect x="'+(x+11)+'" y="14" width="8" height="64" fill="#fff" opacity=".9"/>';
+  s+='<text x="'+(x+15)+'" y="100" font-size="12" font-weight="700" text-anchor="middle" fill="currentColor">'+(i+1)+'</text>'; });
+ return s+'</svg>';
+}
+function hubPat(){
+ const G='Conectores y patillajes';
+ return [
+ {grp:G,title:'RJ-45: T568A y T568B',sub:'Orden de colores y qué pares usa cada velocidad',
+  hint:'Mira el conector con el seguro hacia abajo y los contactos hacia ti: el pin 1 queda a la izquierda. Un cable directo lleva el mismo estándar en ambos extremos.',
+  err:['Usar T568A en un extremo y T568B en el otro sin quererlo: queda un cable cruzado.','Cambiar el orden del par 3-6: con el par partido hay pérdida de velocidad aunque «dé enlace».','Pelar demasiado la cubierta: el cable pierde protección contra interferencias.','Suponer que un cable Ethernet cualquiera sirve para PoE largo o Gigabit.'],
+  html:'<div class="grid">'+sel('pt1_m','Estándar',[['b','T568B (el más usado)'],['a','T568A']],0)+'</div><div class="out" id="pt1_o"></div>',
+  init:function(){ function f(){ const m=document.getElementById('pt1_m').value;
+    const B=['blanco/naranja','naranja','blanco/verde','azul','blanco/azul','verde','blanco/marrón','marrón'],A=['blanco/verde','verde','blanco/naranja','azul','blanco/azul','naranja','blanco/marrón','marrón'];
+    cbOut('pt1_o',ptRj(m)+mtLeads((m==='a'?A:B).map((c,i)=>['Pin '+(i+1),c]))+'<p class="hint">10/100 Mb usa los pines 1-2 y 3-6. Gigabit usa los cuatro pares. PoE: el modo A usa 1-2 y 3-6; el modo B usa 4-5 y 7-8.</p>'); } bind(['pt1_m'],f); f(); }},
+ {grp:G,title:'RS-232 con DB9',sub:'Pines, señales y cable nulo',noRep:true,
+  hint:'Pines del DB9 macho de un equipo tipo DTE (como un PC). Para unir dos DTE se usa un cable cruzado (módem nulo).',
+  err:['Unir TX con TX: hay que cruzar TX con RX entre equipos.','Olvidar la tierra (pin 5): la comunicación falla o se llena de errores.','Usar cables largos: RS-232 se limita a unos 15 m a velocidades normales.','Confundir RS-232 con RS-485 por usar el mismo DB9.'],
+  html:mtLeads([['1','DCD, detección de portadora'],['2','RXD, recepción'],['3','TXD, transmisión'],['4','DTR, terminal lista'],['5','GND, tierra de señal'],['6','DSR, equipo listo'],['7','RTS, solicitud de envío'],['8','CTS, listo para enviar'],['9','RI, indicador de llamada']])+'<p class="hint">Módem nulo mínimo: 2 con 3, 3 con 2 y 5 con 5.</p>',init:function(){}},
+ {grp:G,title:'RS-485: cableado de la red',sub:'Dos hilos, terminación y blindaje',noRep:true,
+  hint:'Los nombres A/B o D+/D− cambian según el fabricante. Si no hay comunicación, prueba invertir el par.',
+  err:['Cablear en estrella: debe ser en línea (bus) de equipo a equipo.','Terminar con 120 Ω en equipos del medio: solo van en los dos extremos.','Conectar el blindaje a tierra en ambos extremos con tierras distintas.','Mezclar la polaridad A/B entre equipos de marcas diferentes.'],
+  html:mtLeads([['Cable','Par trenzado con blindaje, impedancia cercana a 120 Ω'],['Topología','Bus en línea, derivaciones muy cortas'],['Terminación','120 Ω entre A y B solo en los extremos'],['Polarización','Resistencias de polarización en un solo punto del bus'],['Blindaje','A tierra en un solo extremo (según la práctica de la planta)'],['Distancia','Hasta 1200 m a velocidades bajas']]),init:function(){}},
+ {grp:G,title:'USB: tipo A, tipo B y micro',sub:'Alimentación y datos',noRep:true,
+  hint:'Patillaje de USB 2.0. En USB-C hay más pines y se negocia la alimentación.',
+  err:['Cables «solo carga» que no llevan datos: el equipo no se detecta.','Cables largos o muy delgados: la tensión cae y el dispositivo se reinicia.','Alimentar con USB un dispositivo que consume más de 500 mA sin fuente aparte.'],
+  html:'<b>Tipo A y B (4 pines)</b>'+mtLeads([['1','VBUS, +5 V (rojo)'],['2','D−, datos (blanco)'],['3','D+, datos (verde)'],['4','GND (negro)']])+'<b>Micro USB (5 pines)</b>'+mtLeads([['1','VBUS, +5 V'],['2','D−'],['3','D+'],['4','ID'],['5','GND']]),init:function(){}},
+ {grp:G,title:'M12 en sensores y en Ethernet',sub:'4 pines: colores y códigos',noRep:true,
+  hint:'Los conectores M12 de sensores y de red tienen formas de codificación distintas aunque se parezcan.',
+  err:['Conectar un M12 tipo A (sensor) en una toma D de Ethernet: no encaja o no funciona.','Suponer que los colores del cable del sensor siguen siempre el mismo orden.','No apretar la tuerca: el IP67 se pierde.'],
+  html:'<b>Sensor, M12 de 4 pines (codificación A)</b>'+mtLeads([['1','+24 V (marrón)'],['2','Segunda señal (blanco)'],['3','0 V (azul)'],['4','Salida principal (negro)']])+'<b>Ethernet, M12 de 4 pines (codificación D)</b>'+mtLeads([['1','TD+'],['2','RD+'],['3','TD−'],['4','RD−']]),init:function(){}},
+ {grp:G,title:'IO-Link',sub:'Conector de 4 y 5 pines',noRep:true,
+  hint:'Un puerto IO-Link usa cable de 3 conductores sin blindaje (hasta 20 m) y puede funcionar como entrada o salida normal.',
+  err:['Usar cable blindado largo y con capacitancia alta: baja la fiabilidad de la comunicación.','Cambiar el sensor sin cargar sus parámetros en el maestro.','Confundir el pin 4 (C/Q) con una salida digital cualquiera.'],
+  html:mtLeads([['1','L+, 24 V'],['2','I/Q, señal auxiliar'],['3','L−, 0 V'],['4','C/Q, comunicación o señal'],['5','Sin uso (en versiones de 5 pines)']]),init:function(){}},
+ {grp:G,title:'CAN con DB9',sub:'CAN_H, CAN_L y tierra',noRep:true,
+  hint:'Pines típicos del DB9 para CAN (CiA 303). Algunos equipos no usan el DB9; revisa su manual.',
+  err:['Cruzar CAN_H con CAN_L: el bus no responde.','Dejar sin terminación el bus o ponerla en tres puntos (120 Ω en cada extremo).','Mezclar velocidades de comunicación entre nodos.'],
+  html:mtLeads([['2','CAN_L'],['3','GND'],['5','Pantalla (según el equipo)'],['7','CAN_H']]),init:function(){}},
+ {grp:G,title:'Profibus DP con DB9',sub:'Pines de la conexión estándar',noRep:true,
+  hint:'Cable violeta de 2 hilos: verde y rojo.',
+  err:['Cruzar A con B: la red no arranca.','Olvidar la terminación activa en los dos extremos.','Usar cable de datos genérico en lugar del específico para Profibus.'],
+  html:mtLeads([['3','B (RxD/TxD-P), rojo'],['4','RTS'],['5','GND (M5V2)'],['6','VP, +5 V'],['8','A (RxD/TxD-N), verde']]),init:function(){}},
+ {grp:G,title:'OBD-II (conector de diagnóstico)',sub:'Pines principales de 16',noRep:true,
+  hint:'Conector del puerto de diagnóstico del vehículo. Varios pines dependen del protocolo del fabricante.',
+  err:['Conectar equipos de diagnóstico al pin equivocado: puedes dañar la unidad de control.','Dejar el adaptador conectado y descargar la batería.'],
+  html:mtLeads([['4','Masa de chasis'],['5','Masa de señal'],['6','CAN-H'],['14','CAN-L'],['7','Línea K'],['15','Línea L'],['16','+12 V de batería']]),init:function(){}},
+ {grp:G,title:'Audio: Jack 3,5 mm y XLR',sub:'Conectores de audio comunes',noRep:true,
+  hint:'Los conectores de 4 contactos (TRRS) tienen dos variantes de pines: revisa el equipo.',
+  err:['Mezclar tierra y señal en una conexión balanceada.','Usar un cable TRRS de otra variante: se pierde el micrófono.'],
+  html:'<b>Jack 3,5 mm (TRS)</b>'+mtLeads([['Punta','Canal izquierdo'],['Anillo','Canal derecho'],['Manguito','Tierra']])+'<b>XLR de 3 pines (balanceado)</b>'+mtLeads([['1','Pantalla / tierra'],['2','Señal + (caliente)'],['3','Señal − (fría)']]),init:function(){}},
+ {grp:G,title:'LCD 16×2 (controlador HD44780)',sub:'16 pines para Arduino y PLC',noRep:true,
+  hint:'Pines estándar del módulo; el bus de datos puede ir en modo de 4 u 8 bits.',
+  err:['No ajustar el contraste (pin 3): la pantalla parece apagada.','Olvidar alimentar la luz de fondo (pines 15 y 16).','Conectar el pin RW a un pin flotante.'],
+  html:mtLeads([['1','VSS (GND)'],['2','VDD (+5 V)'],['3','V0 (contraste)'],['4','RS (registro)'],['5','RW (lectura/escritura)'],['6','E (habilitación)'],['7 a 14','D0 a D7 (datos)'],['15','A (ánodo de luz)'],['16','K (cátodo de luz)']]),init:function(){}},
+ {grp:G,title:'Raspberry Pi: pines principales (40 pines)',sub:'Alimentación y puertos comunes',noRep:true,
+  hint:'Numeración física del conector. Los pines GPIO trabajan a 3,3 V y no toleran 5 V.',
+  err:['Conectar 5 V a un pin GPIO: se daña la placa.','Confundir la numeración física con la de GPIO.','Alimentar cargas grandes desde los pines de 3,3 V.'],
+  html:mtLeads([['1 y 17','3,3 V'],['2 y 4','5 V'],['3','SDA (I²C)'],['5','SCL (I²C)'],['6, 9, 14, 20','GND'],['8','TXD (UART)'],['10','RXD (UART)']]),init:function(){}}
+ ];
+}
+
+/* ===== v5.2 etapa 3 · Recursos y tablas ===== */
+const RC_IP1=['Sin protección','Objetos sólidos de 50 mm o más (dorso de la mano)','Objetos de 12,5 mm o más (dedos)','Objetos de 2,5 mm o más (herramientas, cables gruesos)','Objetos de 1 mm o más (alambres, tornillos)','Protegido contra el polvo (entra poco y sin dañar)','Estanco al polvo (no entra nada)'];
+const RC_IP2=['Sin protección','Gotas de agua en vertical','Gotas con la caja inclinada hasta 15°','Lluvia fina hasta 60° de la vertical','Salpicaduras desde cualquier dirección','Chorros de agua a baja presión','Chorros potentes de agua','Inmersión temporal (hasta 1 m, 30 min)','Inmersión continua (según el fabricante)','Chorros de agua a alta presión y temperatura (IPX9)'];
+const RC_E12=[1.0,1.2,1.5,1.8,2.2,2.7,3.3,3.9,4.7,5.6,6.8,8.2], RC_E24=[1.0,1.1,1.2,1.3,1.5,1.6,1.8,2.0,2.2,2.4,2.7,3.0,3.3,3.6,3.9,4.3,4.7,5.1,5.6,6.2,6.8,7.5,8.2,9.1];
+const RC_SI=[['T (tera)',1e12],['G (giga)',1e9],['M (mega)',1e6],['k (kilo)',1e3],['Unidad',1],['m (mili)',1e-3],['µ (micro)',1e-6],['n (nano)',1e-9],['p (pico)',1e-12]];
+function rcFmtR(x){ return String(+x.toPrecision(4)).replace('.',','); }
+function rcNear(v,ser){ const d=Math.floor(Math.log10(v)); const m=v/Math.pow(10,d); let best=null,bd=1e9; ser.concat([10]).forEach(s=>{ const e=Math.abs(Math.log(m/s)); if(e<bd){ bd=e; best=s; } }); return best*Math.pow(10,d); }
+function hubRec(){
+ const G='Tablas y referencias';
+ return [
+ {grp:G,title:'Grados IP: qué protege cada número',sub:'Polvo y agua, con el código de dos cifras',
+  hint:'Elige las dos cifras del código IP para ver qué significan. Una X significa que no se probó esa protección.',
+  formula:'IP + cifra de sólidos (0-6) + cifra de líquidos (0-9)',
+  err:['Creer que IP65 sirve para inmersión: no, solo chorros. Para sumergir se pide IP67 o IP68.','Pensar que IP68 incluye chorros de alta presión (IP69).','Olvidar que el grado IP vale con la tapa cerrada y los prensaestopas bien ajustados.','Comparar IP con NEMA como si fueran iguales.'],
+  html:'<div class="grid">'+sel('rc1_a','Primera cifra (sólidos)',RC_IP1.map((x,i)=>[String(i),String(i)+' · '+x.split(' (')[0]]),5)+sel('rc1_b','Segunda cifra (agua)',RC_IP2.map((x,i)=>[String(i),String(i)+' · '+x.split(' (')[0]]),5)+'</div><div class="out" id="rc1_o"></div>',
+  init:function(){ function f(){ const a=+document.getElementById('rc1_a').value,b=+document.getElementById('rc1_b').value;
+    cbOut('rc1_o',lcd('IP'+a+b)+mtLeads([['Sólidos',RC_IP1[a]],['Agua',RC_IP2[b]]])); } bind(['rc1_a','rc1_b'],f); f(); }},
+ {grp:G,title:'Grados IK: resistencia a impactos',sub:'De IK00 a IK10 con la energía en julios',noRep:true,
+  hint:'El código IK indica la energía del impacto que la envolvente soporta.',
+  err:['Elegir IK04 para una caja en pasillo de montacargas.','Pensar que IK mide la resistencia a vandalismo en general: solo mide el impacto de prueba.'],
+  html:mtLeads([['IK01','0,14 J'],['IK02','0,2 J'],['IK03','0,35 J'],['IK04','0,5 J'],['IK05','0,7 J'],['IK06','1 J'],['IK07','2 J'],['IK08','5 J'],['IK09','10 J'],['IK10','20 J']]),init:function(){}},
+ {grp:G,title:'Envolventes NEMA y su equivalencia aproximada',sub:'Tipos comunes en tableros y cajas',noRep:true,
+  hint:'La equivalencia con IP es aproximada: las normas ensayan cosas distintas y no son intercambiables.',
+  err:['Cambiar un NEMA 4X por una caja IP66 sin revisar la resistencia a la corrosión.','Instalar NEMA 12 a la intemperie: no está pensado para lluvia.','Usar una caja de uso general en área peligrosa: requiere NEMA 7 o 9, o equivalente certificado.'],
+  html:mtLeads([['NEMA 1','Interior general. Aprox. IP10'],['NEMA 3R','Lluvia y hielo exterior. Aprox. IP24'],['NEMA 4','Hermético al agua y chorros. Aprox. IP66'],['NEMA 4X','Igual que el 4, con resistencia a la corrosión (acero inoxidable o plástico)'],['NEMA 6','Inmersión temporal'],['NEMA 12','Industrial: polvo y goteo interior. Aprox. IP52'],['NEMA 13','Polvo, aceite y refrigerante. Aprox. IP54'],['NEMA 7 y 9','Áreas peligrosas (gas y polvo): requieren certificación']]),init:function(){}},
+ {grp:G,title:'Sistemas de puesta a tierra: TT, TN e IT',sub:'Cómo se conectan neutro y masas',noRep:true,
+  hint:'La primera letra dice cómo está el neutro de la fuente; la segunda, cómo están las masas.',
+  err:['Mezclar TN-C y TN-S sin un punto de separación claro.','Instalar solo un interruptor automático en un TT sin diferencial.','Pensar que IT no necesita vigilancia: requiere un monitor de aislamiento.'],
+  html:mtLeads([['TT','Neutro de la fuente a tierra; masas a una tierra propia. Se protege con diferencial.'],['TN-S','Neutro y tierra de protección separados en toda la instalación.'],['TN-C','Neutro y tierra de protección en un mismo conductor (PEN).'],['TN-C-S','PEN al inicio y separado más adelante.'],['IT','Neutro aislado o con impedancia alta; masas a tierra. Usa monitor de aislamiento. Se usa donde no se puede cortar con la primera falla.']]),init:function(){}},
+ {grp:G,title:'Colores de los conductores',sub:'IEC y NEC (referencia general)',noRep:true,
+  hint:'Los colores dependen de la norma del país y de la tensión. Usa siempre la norma o el plano de la planta.',
+  err:['Suponer que negro es siempre fase: en CC puede ser negativo.','Usar el verde o verde-amarillo para algo que no sea tierra.','Mezclar códigos IEC y NEC en el mismo tablero sin marcar.'],
+  html:'<b>IEC (referencia)</b>'+mtLeads([['L1 · L2 · L3','Marrón · negro · gris'],['Neutro','Azul'],['Tierra de protección','Verde-amarillo']])+'<b>NEC, 120/208 V (referencia)</b>'+mtLeads([['A · B · C','Negro · rojo · azul'],['Neutro','Blanco o gris'],['Tierra','Verde o desnudo']])+'<b>NEC, 277/480 V (referencia)</b>'+mtLeads([['A · B · C','Marrón · naranja · amarillo'],['Neutro','Gris'],['Tierra','Verde o desnudo']])+'<p class="hint">En control es común usar rojo para 120 V CA, azul para CC y naranja para tensión ajena al tablero. Confirma el estándar de tu planta.</p>',init:function(){}},
+ {grp:G,title:'Prefijos del SI: convertidor',sub:'Kilo, mega, mili, micro y más',
+  hint:'Convierte un valor entre prefijos. Útil con resistencias, capacitancias, frecuencias y corrientes pequeñas.',
+  formula:'valor destino = valor origen × (factor origen / factor destino)',
+  err:['Confundir m (mili) con M (mega): son 9 órdenes de diferencia.','Escribir µ como u y perder el sentido al leer un plano.'],
+  html:'<div class="grid">'+fld('rc2_v','Valor','4,7')+sel('rc2_a','Desde',RC_SI.map((x,i)=>[String(i),x[0]]),3)+sel('rc2_b','Hasta',RC_SI.map((x,i)=>[String(i),x[0]]),4)+'</div><div class="out" id="rc2_o"></div>',
+  init:function(){ function f(){ const v=num('rc2_v'); if(!isFinite(v)){ cbOut('rc2_o',''); return; } const a=RC_SI[+document.getElementById('rc2_a').value],b=RC_SI[+document.getElementById('rc2_b').value],r=v*a[1]/b[1];
+    cbOut('rc2_o',lcd(String(+r.toPrecision(6)).replace('.',',')+' '+b[0].split(' ')[0])); } bind(['rc2_v','rc2_a','rc2_b'],f); f(); }},
+ {grp:G,title:'Resistencias normalizadas E12 y E24',sub:'El valor comercial más cercano',
+  hint:'Escribe el valor calculado y obtén el valor comercial más cercano en las series E12 (10 %) y E24 (5 %).',
+  formula:'Se redondea al valor de la serie más cercano en escala logarítmica',
+  err:['Calcular 4,2 kΩ y pedir una resistencia de ese valor exacto: no existe en la serie E12.','Olvidar la tolerancia al sumar resistencias en un divisor.'],
+  html:'<div class="grid">'+fld('rc3_v','Valor calculado, Ω','4200')+'</div><div class="out" id="rc3_o"></div><p class="hint">Series: E12 '+RC_E12.join(' · ')+'</p>',
+  init:function(){ function f(){ const v=num('rc3_v'); if(!(v>0)){ cbOut('rc3_o',''); return; } const a=rcNear(v,RC_E12),b=rcNear(v,RC_E24);
+    cbOut('rc3_o',lcd('E12: '+rcFmtR(a)+' Ω')+lcd('E24: '+rcFmtR(b)+' Ω')+'<p class="hint">Diferencia con E24: '+fmt((b-v)/v*100,1)+' %.</p>'); } bind(['rc3_v'],f); f(); }},
+ {grp:G,title:'Resistividad de materiales',sub:'Conductores y resistencias de calefacción',noRep:true,
+  hint:'Valores aproximados a 20 °C, en Ω·mm²/m.',
+  err:['Usar la resistividad del cobre para un cable de aluminio.','Olvidar que la resistencia sube con la temperatura.'],
+  html:mtLeads([['Plata','0,0159'],['Cobre (recocido)','0,01724'],['Oro','0,0244'],['Aluminio','0,0283'],['Latón','≈ 0,07'],['Hierro','≈ 0,10'],['Constantán','≈ 0,49'],['Nicrom (calefacción)','≈ 1,10']])+'<p class="hint">Cobre: coeficiente de temperatura ≈ 0,00393 por °C. Aluminio: ≈ 0,00403 por °C.</p>',init:function(){}},
+ {grp:G,title:'Curvas de disparo de interruptores',sub:'B, C, D, K y Z',noRep:true,
+  hint:'Múltiplos de la corriente nominal en que actúa el disparo magnético (valores típicos de IEC).',
+  err:['Poner curva B en un motor con arranque directo: dispara al arrancar.','Poner curva D solo «para que no dispare» sin verificar la corriente mínima de cortocircuito.'],
+  html:mtLeads([['B','3 a 5 × In · cables largos, cargas resistivas'],['C','5 a 10 × In · uso general, algo inductivo'],['D','10 a 20 × In · transformadores y cargas con gran arranque'],['K','8 a 14 × In · motores (protección de cables)'],['Z','2 a 3 × In · electrónica sensible']]),init:function(){}},
+ {grp:G,title:'Clases de fusibles',sub:'gG, aM, aR y las clases UL más comunes',noRep:true,
+  hint:'La primera letra dice el rango de corte; la segunda, el uso.',
+  err:['Cambiar un fusible aR de semiconductores por uno gG: no protege el variador.','Usar un fusible aM como protección contra sobrecarga: solo cubre cortocircuito.'],
+  html:mtLeads([['gG','Uso general, cubre sobrecarga y cortocircuito'],['aM','Acompañamiento de motores, solo cortocircuito'],['aR','Ultrarrápido para semiconductores'],['gR','Semiconductores, cubre todo el rango'],['UL Clase J','Alto poder de corte, tamaño reducido'],['UL Clase RK5','Con retardo, uso general (tipo cartucho)'],['UL Clase CC','Pequeño, para control y motores pequeños'],['UL Clase L','Grandes corrientes de línea']]),init:function(){}},
+ {grp:G,title:'Termopares: tipos y rangos',sub:'K, J, T, E, N, R, S y B',noRep:true,
+  hint:'Rangos orientativos. El color del cable cambia entre IEC y ANSI: confírmalo con la etiqueta del fabricante.',
+  err:['Mezclar cable de extensión de un tipo con termopar de otro.','Invertir la polaridad: la lectura baja en vez de subir.','Pensar que el cable de cobre normal sirve para extender un termopar.'],
+  html:mtLeads([['K (Ni-Cr / Ni-Al)','-200 a 1350 °C · el más común'],['J (Fe / Cu-Ni)','-210 a 1200 °C'],['T (Cu / Cu-Ni)','-200 a 400 °C'],['E (Ni-Cr / Cu-Ni)','-200 a 1000 °C · señal alta'],['N (Ni-Cr-Si / Ni-Si)','-270 a 1300 °C'],['R y S (platino-rodio)','0 a 1600 °C'],['B (platino-rodio)','600 a 1700 °C']]),init:function(){}},
+ {grp:G,title:'Números de dispositivo ANSI/IEEE',sub:'Los de uso más frecuente en protección',noRep:true,
+  hint:'Los números se usan en planos unifilares y en relés de protección.',
+  err:['Confundir 50 (instantáneo) con 51 (temporizado).','Pensar que 86 dispara: bloquea el cierre hasta un reset manual.'],
+  html:mtLeads([['25','Verificación de sincronismo'],['27','Subtensión'],['32','Potencia inversa'],['46','Desbalance de corrientes'],['47','Secuencia de fases o tensión'],['49','Sobrecarga térmica'],['50','Sobrecorriente instantánea'],['51','Sobrecorriente temporizada'],['52','Interruptor de CA'],['59','Sobretensión'],['63','Presión o nivel de gas'],['64','Falla a tierra'],['79','Recierre'],['81','Frecuencia'],['86','Relé de bloqueo'],['87','Diferencial']]),init:function(){}},
+ {grp:G,title:'ATEX: zonas, categorías y temperatura',sub:'Atmósferas explosivas',noRep:true,
+  hint:'Guía rápida. La selección real la hace el responsable de la clasificación del área.',
+  err:['Instalar un equipo sin comprobar zona, grupo y clase de temperatura.','Pensar que Ex d vale en zona 0: normalmente se pide intrínseca.','Mezclar la clasificación NEC (Clase/División) con la ATEX (Zona).'],
+  html:'<b>Zonas</b>'+mtLeads([['Gas 0 · 1 · 2','Presente siempre · a veces en operación normal · rara vez y poco tiempo'],['Polvo 20 · 21 · 22','Igual, pero con polvo']])+'<b>Categoría del equipo</b>'+mtLeads([['1G · 2G · 3G','Aptos para zonas 0 · 1 · 2 (gas)'],['1D · 2D · 3D','Aptos para zonas 20 · 21 · 22 (polvo)']])+'<b>Clase de temperatura</b>'+mtLeads([['T1 · T2 · T3','450 · 300 · 200 °C'],['T4 · T5 · T6','135 · 100 · 85 °C']])+'<b>Modos de protección</b>'+mtLeads([['d','Envolvente antideflagrante'],['e','Seguridad aumentada'],['i','Seguridad intrínseca'],['p','Presurizada'],['n','Sin chispa (zona 2)'],['m','Encapsulado']]),init:function(){}}
+ ];
+}
+
+/* ===== v5.2 etapa 2 · Motor y conexiones ===== */
+function mtSvg6(mode){
+ const T=[['U1',40,30],['V1',110,30],['W1',180,30],['W2',40,110],['U2',110,110],['V2',180,110]];
+ let s='<svg viewBox="0 0 220 150" width="100%" style="max-width:300px" role="img" aria-label="Caja de bornes de 6 terminales"><rect x="8" y="8" width="204" height="134" rx="10" fill="none" stroke="currentColor" opacity=".35"/>';
+ if(mode==='y') s+='<rect x="30" y="118" width="170" height="10" rx="5" fill="#e8a33d"/><text x="110" y="145" font-size="10" text-anchor="middle" fill="currentColor">Puente que une W2, U2 y V2</text>';
+ else s+=[40,110,180].map((x,i)=>'<rect x="'+(x+((i===2)?-60:0)-5+(i===2?60:0))+'" y="38" width="10" height="64" rx="5" fill="#e8a33d" transform="'+(i===2?'rotate(0)':'')+'" display="none"/>').join('')+
+  '<rect x="75" y="38" width="10" height="64" rx="5" fill="#e8a33d" transform="rotate(25 80 70)" display="none"/>'+
+  '<g stroke="#e8a33d" stroke-width="9" stroke-linecap="round"><line x1="40" y1="42" x2="40" y2="98"/><line x1="110" y1="42" x2="110" y2="98"/><line x1="180" y1="42" x2="180" y2="98"/></g><text x="110" y="145" font-size="10" text-anchor="middle" fill="currentColor">Puentes verticales: U1-W2, V1-U2, W1-V2</text>';
+ T.forEach(t=>{ s+='<circle cx="'+t[1]+'" cy="'+t[2]+'" r="13" fill="var(--card,#1b242b)" stroke="currentColor"/><text x="'+t[1]+'" y="'+(t[2]+4)+'" font-size="10" text-anchor="middle" fill="currentColor">'+t[0]+'</text>'; });
+ return s+'</svg>';
+}
+const MT_AIS=[['A',105],['E',120],['B',130],['F',155],['H',180],['N',200],['R',220]];
+const MT_HP=[0.5,0.75,1,1.5,2,3,5,7.5,10,15,20,25,30,40,50,60,75,100,125,150,200];
+const MT_FLC={208:[2.4,3.5,4.6,6.6,7.5,10.6,16.7,24.2,30.8,46.2,59.4,74.8,88,114,143,169,211,273,343,396,528],230:[2.2,3.2,4.2,6,6.8,9.6,15.2,22,28,42,54,68,80,104,130,154,192,248,312,360,480],460:[1.1,1.6,2.1,3,3.4,4.8,7.6,11,14,21,27,34,40,52,65,77,96,124,156,180,240]};
+function mtLeads(rows){ return '<div class="hub-tbl">'+rows.map(r=>'<div class="hub-r"><b>'+esc(r[0])+'</b><span>'+esc(r[1])+'</span></div>').join('')+'</div>'; }
+function hubMotor(){
+ const G='Conexiones y datos del motor';
+ return [
+ {grp:G,title:'Motor de 6 bornes: estrella y triángulo',sub:'Dónde van los puentes y a qué tensión',noRep:true,
+  hint:'Elige la conexión para ver cómo se colocan los puentes en la caja de bornes. La L1, L2 y L3 van a U1, V1 y W1.',
+  formula:'Estrella: Vfase = Vlínea/√3 · Triángulo: Vfase = Vlínea',
+  err:['Poner los puentes de estrella en una caja que debía estar en triángulo: el motor se quema o queda sin par.','Conectar a la tensión alta de la placa cuando la red es la baja (o al revés).','Cambiar el orden de U1, V1 y W1 y no avisar: cambia el giro.','No apretar los puentes: el calentamiento en el borne parece falla del motor.'],
+  html:'<div class="grid">'+sel('mt1_c','Conexión',[['y','Estrella (Y)'],['d','Triángulo (Δ)']],0)+'</div><div id="mt1_o" class="out"></div>',
+  init:function(){ function f(){ const m=document.getElementById('mt1_c').value; document.getElementById('mt1_o').innerHTML=mtSvg6(m)+'<p class="hint">'+(m==='y'?'Estrella: la tensión de la placa más alta (por ejemplo 400 V en 230/400 V). Corriente de línea menor.':'Triángulo: la tensión de la placa más baja (por ejemplo 230 V en 230/400 V). Es la conexión de trabajo en arranque estrella-triángulo.')+'</p>'; } bind(['mt1_c'],f); f(); }},
+ {grp:G,title:'¿Estrella o triángulo con mi red?',sub:'Según la doble tensión de la placa',
+  hint:'Escribe las dos tensiones de la placa del motor (Δ / Y) y la tensión de la red.',
+  formula:'Si Vred = Δ de placa → triángulo · Si Vred = Y de placa → estrella',
+  err:['Leer la placa al revés: la tensión menor es la del triángulo.','Usar tensión nominal de red distinta a la medida (480 V frente a 440 V).','Olvidar que un motor 400 V en Δ solo sirve para arranque Y-Δ con red de 400 V.'],
+  html:'<div class="grid">'+fld('mt2_a','Placa, tensión menor (Δ), V','230')+fld('mt2_b','Placa, tensión mayor (Y), V','400')+fld('mt2_r','Tensión de la red (V)','400')+'</div><div class="out" id="mt2_o"></div>',
+  init:function(){ function f(){ const a=num('mt2_a'),b=num('mt2_b'),r=num('mt2_r'); if(!(a>0&&b>0&&r>0)){ cbOut('mt2_o',''); return; }
+    const t=r*0.06; let h='';
+    if(Math.abs(r-b)<=t) h=lcd('Estrella (Y)')+cbVerd('ok','La red ('+fmt(r,0)+' V) coincide con la tensión mayor de la placa. Para arranque Y-Δ, la red debería coincidir con la menor.');
+    else if(Math.abs(r-a)<=t) h=lcd('Triángulo (Δ)')+cbVerd('ok','La red ('+fmt(r,0)+' V) coincide con la tensión menor de la placa. Sirve para arranque estrella-triángulo.');
+    else h=cbVerd('bad','La red ('+fmt(r,0)+' V) no coincide con la placa. No conectes sin revisar: usa otro motor, un transformador o un variador.');
+    cbOut('mt2_o',h); } bind(['mt2_a','mt2_b','mt2_r'],f); f(); }},
+ {grp:G,title:'Motor de 9 bornes: doble tensión',sub:'Estrella doble: baja y alta tensión',noRep:true,
+  hint:'Bornes numerados del 1 al 9 (norma NEMA). Confirma siempre con el diagrama de la placa del motor.',
+  formula:'Alta: las bobinas quedan en serie · Baja: las bobinas quedan en paralelo',
+  err:['Dejar un borne suelto sin aislar: en alta tensión algunos quedan con tensión de línea.','Confundir 4-5-6 con 7-8-9.','Cambiar de baja a alta sin cambiar el relé térmico ni el contactor.'],
+  html:'<div class="grid">'+sel('mt3_c','Tensión',[['b','Baja tensión (ej. 230 V)'],['a','Alta tensión (ej. 460 V)']],0)+'</div><div class="out" id="mt3_o"></div>',
+  init:function(){ function f(){ const b=document.getElementById('mt3_c').value==='b';
+    cbOut('mt3_o',mtLeads(b?[['L1','1 y 7'],['L2','2 y 8'],['L3','3 y 9'],['Unir entre sí','4, 5 y 6']]:[['L1','1'],['L2','2'],['L3','3'],['Unir 4 con 7','4 + 7'],['Unir 5 con 8','5 + 8'],['Unir 6 con 9','6 + 9']])+'<p class="hint">Estrella doble ('+(b?'baja':'alta')+'). Los cables unidos se aíslan con terminal y cinta.</p>'); } bind(['mt3_c'],f); f(); }},
+ {grp:G,title:'Motor de 12 bornes: cuatro conexiones',sub:'Estrella y triángulo, a dos tensiones',noRep:true,
+  hint:'Bornes numerados 1 al 12 (NEMA). Es el motor más flexible: sirve para Y-Δ y para dos tensiones. Compáralo con el diagrama de la placa.',
+  formula:'Paralelo = tensión baja · Serie = tensión alta',
+  err:['Aplicar el diagrama de 9 bornes a un motor de 12.','Dejar los bornes 10, 11 y 12 mal agrupados en estrella.','Conectar el triángulo con una fase invertida: el motor vibra y consume mucho.'],
+  html:'<div class="grid">'+sel('mt4_c','Conexión',[['yb','Estrella, baja tensión'],['ya','Estrella, alta tensión'],['db','Triángulo, baja tensión'],['da','Triángulo, alta tensión']],0)+'</div><div class="out" id="mt4_o"></div>',
+  init:function(){ const M={yb:[['L1','1 y 7'],['L2','2 y 8'],['L3','3 y 9'],['Unir entre sí','4, 5, 6, 10, 11 y 12']],
+    ya:[['L1','1'],['L2','2'],['L3','3'],['Unir 4 con 7','4 + 7'],['Unir 5 con 8','5 + 8'],['Unir 6 con 9','6 + 9'],['Unir entre sí','10, 11 y 12']],
+    db:[['L1','1, 6, 7 y 12'],['L2','2, 4, 8 y 10'],['L3','3, 5, 9 y 11']],
+    da:[['L1','1 y 12'],['L2','2 y 10'],['L3','3 y 11'],['Unir 4 con 7','4 + 7'],['Unir 5 con 8','5 + 8'],['Unir 6 con 9','6 + 9']]};
+   function f(){ cbOut('mt4_o',mtLeads(M[document.getElementById('mt4_c').value])+'<p class="hint">Verifica contra la placa: algunos fabricantes numeran distinto.</p>'); } bind(['mt4_c'],f); f(); }},
+ {grp:G,title:'Marcado de bornes: IEC y NEMA',sub:'U1 V1 W1 frente a T1 T2 T3',noRep:true,
+  hint:'Equivalencias entre las dos nomenclaturas más comunes.',
+  err:['Mezclar nomenclaturas de dos fabricantes en el mismo motor.','Creer que el número del borne indica la fase: depende del puente.','Dejar sin marcar los cables al desmontar el motor.'],
+  html:mtLeads([['IEC: U1 · V1 · W1','NEMA: T1 · T2 · T3 (inicio de bobinas)'],['IEC: U2 · V2 · W2','NEMA: T4 · T5 · T6 (final de bobinas)'],['IEC: U3 · V3 · W3','NEMA: T7 · T8 · T9'],['Motor monofásico','Principal T1-T4 · Auxiliar T5-T8 (según fabricante)'],['Termistor / protección','Marcado TP1-TP2 o según el fabricante']]),init:function(){}},
+ {grp:G,title:'Clase de aislamiento del motor',sub:'Temperatura máxima por clase y margen real',
+  hint:'Compara la temperatura de trabajo (ambiente + elevación + punto caliente) con el límite de la clase de aislamiento.',
+  formula:'Ttotal = Tamb + ΔT + margen de punto caliente ≤ Tclase',
+  err:['Confundir la elevación de temperatura (ΔT) con la temperatura máxima.','No restar la altitud o el ambiente alto cuando el motor trabaja en caliente.','Pensar que una clase superior permite sobrecargar el motor.','Olvidar que cada 10 °C de más reduce a la mitad la vida del aislamiento (regla práctica).'],
+  html:'<div class="grid">'+sel('mt5_c','Clase',MT_AIS.map(x=>[String(x[1]),x[0]+' ('+x[1]+' °C)']),3)+fld('mt5_a','Temperatura ambiente, °C','40')+fld('mt5_d','Elevación de temperatura ΔT, °C','80')+fld('mt5_m','Margen de punto caliente, °C','10')+'</div><div class="out" id="mt5_o"></div>',
+  init:function(){ function f(){ const C=+document.getElementById('mt5_c').value,a=num('mt5_a'),d=num('mt5_d'),m=isNaN(num('mt5_m'))?0:num('mt5_m');
+    if(!isFinite(a)||!(d>0)){ cbOut('mt5_o',''); return; }
+    const T=a+d+m, res=C-T;
+    cbOut('mt5_o',lcd(fmt(T,0)+' °C total')+lcd(fmt(res,0)+' °C de margen')+cbVerd(res>=0?'ok':'bad',res>=0?'Dentro del límite de la clase.':'Supera la clase por '+fmt(-res,0)+' °C: baja la carga, mejora la ventilación o usa una clase mayor.')+(res>=0?'<p class="hint">Vida estimada frente a la de diseño: ~'+fmt(Math.pow(2,res/10),1)+'× (regla de 10 °C).</p>':'')); } bind(['mt5_c','mt5_a','mt5_d','mt5_m'],f); f(); }},
+ {grp:G,title:'Corriente a plena carga (tablas NEC)',sub:'FLC trifásica por HP y tensión',
+  hint:'Valores de la tabla de motores trifásicos de inducción del NEC (430.250). Para dimensionar protecciones se usa la FLC de la tabla, no la de la placa; para el sobrecarga se usa la de la placa.',
+  formula:'Conductor ≥ 125 % de FLC (NEC 430.22)',
+  err:['Dimensionar el térmico con la FLC de la tabla en lugar de la corriente de placa.','Aplicar la tabla de 230 V a un motor de 208 V.','Olvidar el 125 % para el conductor del motor.'],
+  html:'<div class="grid">'+sel('mt6_h','Potencia (HP)',MT_HP.map((h,i)=>[String(i),String(h)]),5)+sel('mt6_v','Tensión (V)',[['208','208'],['230','230'],['460','460']],2)+'</div><div class="out" id="mt6_o"></div>',
+  init:function(){ function f(){ const h=+document.getElementById('mt6_h').value,v=document.getElementById('mt6_v').value,I=MT_FLC[v][h];
+    cbOut('mt6_o',lcd(I+' A (FLC)')+lcd(fmt(I*1.25,1)+' A para el conductor')+'<p class="hint">Tabla de referencia: confirma con la edición del NEC que uses.</p>'); } bind(['mt6_h','mt6_v'],f); f(); }},
+ {grp:G,title:'Motor trifásico en red monofásica',sub:'Condensador de marcha aproximado',
+  hint:'Conexión Steinmetz: sirve para motores pequeños. El motor entrega alrededor de 70-80 % de su potencia nominal. Es un cálculo aproximado.',
+  formula:'C ≈ 66 µF por kW a 230 V (regla práctica) · Tensión del condensador ≥ 1,5 · Vred',
+  err:['Poner un condensador demasiado grande: el motor se calienta.','Usar un condensador de arranque como si fuera de marcha.','Olvidar que el condensador trabaja con tensión mayor a la de red.','Aplicarlo a cargas de arranque pesado sin condensador de arranque adicional.'],
+  html:'<div class="grid">'+fld('mt7_p','Potencia del motor (kW)','0,75')+fld('mt7_v','Tensión monofásica (V)','230')+'</div><div class="out" id="mt7_o"></div>',
+  init:function(){ function f(){ const P=num('mt7_p'),V=num('mt7_v'); if(!(P>0&&V>0)){ cbOut('mt7_o',''); return; }
+    const C=66*P*(230/V)*(230/V)/1; cbOut('mt7_o',lcd(fmt(C,0)+' µF')+lcd(fmt(1.5*V,0)+' V mínimo')+'<p class="hint">Probar con el motor en carga y vigilar la corriente: no debe pasar la de placa.</p>'); } bind(['mt7_p','mt7_v'],f); f(); }}
+ ];
+}
+
 /* ===== v5.2 · Hub de calculadoras: pestañas, búsqueda y favoritos ===== */
 const CB_MAT={cu:{r:0.017241,a:0.00393},al:{r:0.028264,a:0.00403}};
 function cbRho(m,T){ const x=CB_MAT[m]||CB_MAT.cu; return x.r*(1+x.a*((isFinite(T)?T:20)-20)); }
@@ -19403,6 +19833,12 @@ function hubTabs(){ return [['p',L('Principal','Main')],['m',L('Motor','Motor')]
 function hubCatalog(){
  const out=[], push=(tab,grp,c,srcn)=>out.push({id:(srcn||grp)+'|'+c.title,tab,grp,c});
  hubCables().forEach(c=>push('p',c.grp,c,'new'));
+ hubMotor().forEach(c=>push('m',c.grp,c,'new'));
+ hubRec().forEach(c=>push('r',c.grp,c,'new'));
+ hubPat().forEach(c=>push('t',c.grp,c,'new'));
+ hubPrin().forEach(c=>push(/^Conversiones/.test(c.grp)?'c':'p',c.grp,c,'new'));
+ hubCod().forEach(c=>push('r',c.grp,c,'new'));
+ hubAnt().forEach(c=>push('p',c.grp,c,'new'));
  const src=[['p','Electricidad general',calcsGenerales],['m','Motor',calcsMotores],['m','Motor con variador',calcsVdf],['m','Variadores y arrancadores',calcsVfd],['p','Calefacción',calcsCalefaccion],['p','Instrumentación',calcsInst],['p','Calidad de energía',calcsEne],['p','Neumática e hidráulica',calcsFluidos],['p','Redes industriales',calcsRed],['p','Mantenimiento',calcsKpi],['c','Conversiones',calcsTabla]];
  src.forEach(s=>{ let l=[]; try{ l=s[2](); }catch(e){} l.forEach(c=>{ let tab=s[0],grp=s[1];
    if(/^conversi[oó]n|convertidor|unidades/i.test(c.title)){ tab='c'; grp='Conversiones'; }
@@ -19472,12 +19908,130 @@ function vHub(v){
   if(!det.open){ if(body) body.innerHTML=''; return; }
   cerrarAbiertos(det);
   const it=cat[+det.getAttribute('data-hi')], c=it.c;
-  body.innerHTML=(c.hint?'<p class="hint">'+esc(c.hint)+'</p>':'')+c.html+(c.formula?'<p class="hub-fx"><b>'+esc(L('Fórmula','Formula'))+':</b> <code>'+esc(c.formula)+'</code></p>':'')+(c.err&&c.err.length?'<div class="hub-err"><b>'+esc(L('Errores típicos','Typical mistakes'))+'</b><ul>'+c.err.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>':'')+'<div class="row"><button class="btn sec" type="button" data-addrep="1">'+esc(L('Agregar al reporte','Add to report'))+'</button></div>';
+  body.innerHTML=(c.hint?'<p class="hint">'+esc(c.hint)+'</p>':'')+c.html+(c.formula?'<p class="hub-fx"><b>'+esc(L('Fórmula','Formula'))+':</b> <code>'+esc(c.formula)+'</code></p>':'')+(c.err&&c.err.length?'<div class="hub-err"><b>'+esc(L('Errores típicos','Typical mistakes'))+'</b><ul>'+c.err.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>':'')+(c.noRep?'':'<div class="row"><button class="btn sec" type="button" data-addrep="1">'+esc(L('Agregar al reporte','Add to report'))+'</button></div>');
   try{ c.init(); }catch(x){}
  },true);
  pinta();
+ if(typeof hubPend!=='undefined'&&hubPend){ const t=norm(hubPend); hubPend=null; setTimeout(()=>{ const d=Array.from(lista.querySelectorAll('details.item')).filter(x=>norm(x.querySelector('.tt').firstChild.textContent).indexOf(t)===0)[0]; if(d){ d.open=true; d.scrollIntoView({block:'start'}); } },60); }
 }
 VIEWS['calc']=vHub;
+/* ===== v5.3 · apariencia y navegación ===== */
+const NAVROOT=['home','bib','calc','apr','mas','buscar'];
+let navUltRaiz='home';
+ICON.grid='<rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/>';
+ICON.plus='<path d="M12 5v14M5 12h14"/>';
+ICON.back='<path d="M15 5l-7 7 7 7"/>';
+ICON.mas='<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>';
+ICON.fav2='<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>';
+MODS.bib={subs:[]}; MODS.apr={subs:[]}; MODS.mas={subs:[]};
+MODMETA.bib={label:'Biblioteca',corto:'Biblioteca',color:'#2B7FBF',ico:'grid',desc:'Todos los módulos'};
+MODMETA.apr={label:'Aprender',corto:'Aprender',color:'#2E9B5F',ico:'book',desc:'Cursos, ruta y cuestionarios'};
+MODMETA.mas={label:'Más',corto:'Más',color:'#5E6B7A',ico:'mas',desc:'Registro, ajustes y respaldo'};
+const BIB_OCULTOS=['reg','ajustes'];
+function grupoDe(k){ const g=GRUPOS.filter(x=>x[1].indexOf(k)>=0)[0]; return g?g[0]:''; }
+function dockDe(m){ if(['home','bib','calc','apr','mas'].indexOf(m)>=0) return m; if(m==='buscar') return ''; if(m==='fml') return 'calc';  if(m==='reg') return 'reg.reg'; if(['ajustes','compartir','acerca'].indexOf(m)>=0) return 'mas'; return 'bib'; }
+function nrow(go,t,s,ic,col,extra){ return '<button class="nrow" type="button" '+(go?'data-go="'+go+'"':'')+' '+(extra||'')+' style="--acc:'+col+'"><span class="nr-i">'+ico(ic)+'</span><span class="nr-t"><b>'+esc(t)+'</b>'+(s?'<small>'+esc(s)+'</small>':'')+'</span><span class="nr-c" aria-hidden="true">›</span></button>'; }
+function vHome2(v){
+ const hr=new Date().getHours(), saludo=hr<12?'Buenos días':(hr<19?'Buenas tardes':'Buenas noches');
+ const nombre=String(repCfg.nombre||'').trim().split(/\s+/)[0]||'';
+ const fecha=mayus1(new Date().toLocaleDateString('es-DO',{weekday:'long',day:'numeric',month:'long'}));
+ const rec=recientes[0], rm=rec?MODMETA[rec.mod]:null;
+ const cont=rec&&rm?'<button class="nh-cont" type="button" data-go="'+rec.mod+'.'+rec.sub+'" style="--acc:'+rm.color+'"><span class="nh-ci">'+ico(rm.ico)+'</span><span class="nh-ct"><small>'+esc(L('Continuar donde lo dejaste','Continue where you left off'))+'</small><b>'+esc(rm.corto+(rec.sub?' · '+subLabel(rec.mod,rec.sub):''))+'</b></span><span class="nr-c">›</span></button>':'<button class="nh-cont" type="button" data-go="bib" style="--acc:#2B7FBF"><span class="nh-ci">'+ico('grid')+'</span><span class="nh-ct"><small>'+esc(L('Empezar','Start'))+'</small><b>'+esc(L('Explorar la Biblioteca','Browse the Library'))+'</b></span><span class="nr-c">›</span></button>';
+ let pend=''; try{ const m=mantMetricas(), cu=isFinite(m.cumpl)?m.cumpl:null, meta=mant.cfg.metaCumpl;
+  pend=venAvisoHTML()+'<button class="nh-pend" type="button" data-go="mant.panel"><span><b class="'+(m.atraso?'rojo':'')+'">'+m.atraso+'</b>'+esc(L('OT con atraso','Overdue WOs'))+'</span><span><b>'+m.proceso+'</b>'+esc(L('En proceso','In progress'))+'</span><span><b class="'+(cu==null?'':(cu>=meta?'verde':'amar'))+'">'+(cu==null?'—':fmt(cu,0)+' %')+'</b>'+esc(L('Cumplimiento','Compliance'))+'</span></button>'; }catch(e){}
+ const fav=FAV.slice(0,8).map(f=>'<button type="button" class="nh-fb" data-go="'+f.mod+'.'+f.sub+'">★ '+esc(MODMETA[f.mod].corto+(f.sub?' · '+subLabel(f.mod,f.sub):''))+'</button>').join('');
+ const rcs=recientes.slice(1,4).map(r=>nrow(r.mod+'.'+r.sub,MODMETA[r.mod].corto+(r.sub?' · '+subLabel(r.mod,r.sub):''),MODMETA[r.mod].desc,MODMETA[r.mod].ico,MODMETA[r.mod].color)).join('');
+ v.innerHTML='<button class="nh-search" type="button" data-go="buscar">'+ico('search')+'<span>'+esc(L('Buscar fallas, láminas, cálculos…','Search faults, sheets, calculations…'))+'</span></button>'+
+  '<section class="nh-hero"><div class="nh-hi">'+saludo+(nombre?',':'')+'</div><h2>'+esc(nombre||'Taller')+'</h2><div class="nh-d">'+esc(fecha)+'</div>'+cont+'</section>'+
+  pend+
+  (fav?'<h3 class="sec">★ '+esc(L('Favoritos','Favorites'))+'</h3><div class="nh-fav">'+fav+'</div>':'')+
+  '<div class="nh-qa">'+[['calc','calc',L('Calcular','Calculate')],['reg.reg','reg',L('Registrar','Log test')],['apr','book',L('Aprender','Learn')]].map(a=>'<button type="button" data-go="'+a[0]+'"><span>'+ico(a[1])+'</span>'+esc(a[2])+'</button>').join('')+'<button type="button" id="hmExp"><span>'+ico('doc')+'</span>'+esc(L('Exportar','Export'))+'</button></div>'+
+  primerosPasos()+respaldoAvisoHTML()+
+  (rcs?'<h3 class="sec">'+esc(L('Visto recientemente','Recently viewed'))+'</h3><div class="nlist">'+rcs+'</div>':'')+
+  dicHomeHTML()+
+  '<h3 class="sec">'+esc(L('Accesos rápidos','Quick access'))+'</h3><div class="qk">'+QUICK.map((q,i)=>'<button type="button" class="qk-b" data-quick="'+i+'">'+ico('bolt')+esc(q[0])+'</button>').join('')+'</div>'+
+  '<p class="foot-n">Creado por: Andrews A. De los Santos Hernández</p>';
+ const he=document.getElementById('hmExp'); if(he) he.addEventListener('click',()=>openExp('wa'));
+}
+const bibSt={q:'',g:''};
+function vBib(v){
+ const gs=GRUPOS.map(g=>[g[0],g[1].filter(k=>BIB_OCULTOS.indexOf(k)<0&&MODMETA[k]&&MODS[k])]).filter(g=>g[1].length);
+ const total=gs.reduce((a,g)=>a+g[1].length,0);
+ v.innerHTML='<p class="intro">'+total+' '+esc(L('módulos. Filtra por grupo o escribe lo que buscas.','modules. Filter by group or type what you need.'))+'</p>'+
+  '<div class="sbox">'+ico('search')+'<input id="bb_q" type="search" placeholder="'+esc(L('Filtrar módulos…','Filter modules…'))+'" autocomplete="off" value="'+esc(bibSt.q)+'"></div>'+
+  '<div class="qk" id="bb_g" style="margin-top:.6rem"></div><div id="bb_l"></div>';
+ const lista=v.querySelector('#bb_l'), chips=v.querySelector('#bb_g'), q=v.querySelector('#bb_q');
+ function pinta(){
+  const t=norm(bibSt.q.trim());
+  chips.innerHTML='<button type="button" class="qk-b" data-bg="" aria-pressed="'+(!bibSt.g&&!t)+'">'+esc(L('Todos','All'))+'</button>'+gs.map((g,i)=>'<button type="button" class="qk-b" data-bg="'+i+'" aria-pressed="'+(bibSt.g===g[0]&&!t)+'">'+esc(g[0])+'</button>').join('');
+  chips.querySelectorAll('[data-bg]').forEach(b=>b.addEventListener('click',()=>{ const i=b.getAttribute('data-bg'); bibSt.g=i===''?'':gs[+i][0]; bibSt.q=''; q.value=''; pinta(); }));
+  let h='', n=0;
+  gs.forEach(g=>{ if(!t&&bibSt.g&&bibSt.g!==g[0]) return;
+   const ks=g[1].filter(k=>!t||norm(MODMETA[k].label+' '+MODMETA[k].corto+' '+MODMETA[k].desc).indexOf(t)>=0); if(!ks.length) return; n+=ks.length;
+   h+='<h3 class="sec">'+esc(g[0])+'</h3><div class="bt-g">'+ks.map(k=>{ const mm=MODMETA[k]; return '<button type="button" class="bt" data-go="'+k+'" style="--acc:'+mm.color+'" title="'+esc(mm.desc)+'"><i>'+ico(mm.ico)+'</i><b>'+esc(mm.corto)+'</b></button>'; }).join('')+'</div>'; });
+  lista.innerHTML=h||'<p class="empty">'+esc(L('Sin resultados. Prueba con otra palabra o usa Buscar.','No results. Try another word or use Search.'))+'</p>';
+ }
+ q.addEventListener('input',()=>{ bibSt.q=q.value; pinta(); });
+ pinta();
+}
+function vApr(v){
+ v.innerHTML='<p class="intro">'+esc(L('Cursos, ruta de aprendizaje, cuestionarios y diccionario técnico.','Courses, learning path, quizzes and technical dictionary.'))+'</p><div class="nlist">'+
+  nrow('ruta',MODMETA.ruta.label,MODMETA.ruta.desc,'ruta',MODMETA.ruta.color)+
+  nrow('cap.aca',L('Academia PLC','PLC Academy'),L('RSLogix 500, RSLogix 5000 y FactoryTalk View','RSLogix 500, RSLogix 5000 and FactoryTalk View'),'ladder','#0B7A75')+
+  nrow('cap.curso',L('Curso de automatización','Automation course'),L('Fundamentos paso a paso','Step-by-step basics'),'book','#2E9B5F')+
+  nrow('cap.quiz',L('Cuestionarios','Quizzes'),L('Repasa un tema y mira tu puntaje','Review a topic and see your score'),'hist','#D9731A')+
+  nrow('cap.res',L('Mis resultados','My results'),L('Tus intentos guardados','Your saved attempts'),'reg','#3B7DB5')+
+  nrow('dic',MODMETA.dic.label,MODMETA.dic.desc,MODMETA.dic.ico,MODMETA.dic.color)+'</div>';
+}
+function vMas(v){
+ const adm=typeof SES!=='undefined'&&SES&&ajSt&&ajSt.usr&&ajSt.usr.adm, osc=temaEfectivo()==='dark';
+ v.innerHTML='<p class="intro">'+esc(L('Registro, reportes, respaldo, ajustes y utilidades.','Log, reports, backup, settings and tools.'))+'</p><div class="nlist">'+
+  nrow('reg',L('Registro y reportes','Log and reports'),L('Pruebas, historial y exportación','Tests, history and export'),'reg','#3B7DB5')+
+  nrow('reg.hist',L('Reportes guardados','Saved reports'),String(historial.length)+' '+L('guardados','saved'),'hist','#3B7DB5')+
+  nrow('','★ '+L('Favoritos','Favorites'),String(FAV.length)+' '+L('guardados','saved'),'fav2','#C98A00','id="mas_fav"')+
+  nrow('compartir',L('Compartir con QR','Share with QR'),L('Código QR y acceso directo','QR code and shortcut'),'qr','#2E9B5F')+
+  nrow('ajustes',L('Ajustes y respaldo','Settings and backup'),L('Aspecto, copia de seguridad y acceso','Look, backup and access'),'save','#5E6B7A')+
+  nrow('acerca',L('Novedades y versión','News and version'),'v'+APP_VER,'doc','#7A5AD6')+
+  nrow('','',L(osc?'Cambiar a tema claro':'Cambiar a tema oscuro','Switch theme'),osc?'sun':'moon','#5E6B7A','id="mas_tema"')+
+  nrow('',L('Exportar reporte','Export report'),'WhatsApp, PDF, Excel…','doc','#3B7DB5','id="mas_exp"')+
+  (adm?nrow('',L('Cerrar sesión','Sign out'),'','reg','#B3261E','id="mas_out"'):'')+'</div>';
+ const on=(id,fn)=>{ const b=v.querySelector('#'+id); if(b) b.addEventListener('click',fn); };
+ on('mas_fav',abreFavs); on('mas_tema',()=>{ alternaTema(); vMas(v); }); on('mas_exp',()=>openExp('wa')); on('mas_out',salirSesion);
+}
+VIEWS.home=vHome2; VIEWS.bib=vBib; VIEWS.apr=vApr; VIEWS.mas=vMas;
+function navChrome(){
+ const raiz=NAVROOT.indexOf(state.mod)>=0; if(raiz) navUltRaiz=state.mod;
+ const back=document.getElementById('btnBack'), menu=document.getElementById('btnMenu'), h=document.querySelector('header.top h1'), sub=document.getElementById('ttlSub'), mm=MODMETA[state.mod];
+ if(back) back.hidden=raiz; if(menu) menu.hidden=!raiz;
+ const dk=dockDe(state.mod);
+ document.querySelectorAll('.dock button').forEach(b=>{ if(b.getAttribute('data-go')===dk) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
+ if(h&&sub){
+  if(state.mod==='home'){ h.textContent='Guía del taller'; sub.textContent=L('Panel del taller','Workshop dashboard'); }
+  else if(state.mod==='buscar'){ h.textContent=L('Buscar','Search'); sub.textContent=L('Fallas, láminas, cálculos y cursos','Faults, sheets, calculations and courses'); }
+  else if(mm){ h.textContent=raiz?mm.label:mm.corto; const g=grupoDe(state.mod), ruta=raiz?({bib:'Todos los módulos',calc:'Calcular y consultar',apr:'Cursos y ruta',mas:'Registro y ajustes'}[state.mod]||mm.desc):(L('Biblioteca','Library')+(g?' › '+g:'')+(state.sub&&state.sub!=='_in'?' › '+subLabel(state.mod,state.sub):'')); sub.textContent=ruta; }
+ }
+ document.body.classList.toggle('has-subs',!!document.querySelector('#app .subs'));
+ try{ medidaHdr(); }catch(e){}
+}
+(function(){
+ const d=document.querySelector('.dock'); if(!d) return;
+ const it=[['home','home',L('Inicio','Home')],['bib','grid',L('Biblioteca','Library')],['reg.reg','plus',L('Registrar','Log test')],['calc','calc',L('Calcular','Calculate')],['mas','mas',L('Más','More')]];
+ d.innerHTML=it.map(x=>'<button type="button" data-go="'+x[0]+'"'+(x[0]==='reg.reg'?' class="dk-fab"':'')+'><span class="dk-i">'+ico(x[1])+'</span>'+esc(x[2])+'</button>').join('');
+ const hd=document.querySelector('header.top'), mb=document.getElementById('btnMenu');
+ if(hd&&mb&&!document.getElementById('btnBack')){
+  const b=document.createElement('button'); b.className='ibtn'; b.id='btnBack'; b.type='button'; b.hidden=true; b.setAttribute('aria-label',L('Volver','Back')); b.innerHTML=ico('back'); hd.insertBefore(b,mb);
+  b.addEventListener('click',()=>{ const d2=document.querySelector('.idx'); if(d2){ cierraIdx(); return; } irA(navUltRaiz&&navUltRaiz!=='buscar'?navUltRaiz:'bib'); });
+  const s=document.createElement('button'); s.className='ibtn'; s.id='btnBuscar'; s.type='button'; s.setAttribute('aria-label',L('Buscar','Search')); s.setAttribute('data-go','buscar'); s.innerHTML=ico('search');
+  hd.insertBefore(s,document.getElementById('btnTema'));
+ }
+})();
+{ const _gi0=getIndice; let hecho=false;
+  getIndice=function(){ const I=_gi0(); if(!hecho){ hecho=true; try{ hubCatalog().filter(x=>!x.link&&/^new\|/.test(x.id)).forEach(x=>I.push({mod:'calc',sub:'',title:x.c.title,det:x.c.sub||'',tipo:'Calculadora',k:norm(x.c.title+' '+(x.c.sub||'')+' '+x.grp+' '+(x.c.hint||'')),kt:norm(x.c.title+' '+(x.c.sub||''))})); }catch(e){} } return I; }; }
+let hubPend=null;
+{ const _irA0=irA; irA=function(mod,sub,titulo){ if(mod==='calc'&&!titulo) hubSt.q=''; if(mod==='calc'&&titulo){ hubSt.q=titulo; hubSt.tab='p'; hubSt.g=''; hubPend=titulo; } _irA0(mod,sub,titulo); }; }
+
+window.navChrome=navChrome;
+
 
  VIEWS['prog.fund']=v=>vMarca(v,'Fundamentos de programación','Ciclo de scan, lenguajes, datos, estructura, seguridad y buenas prácticas para cualquier marca.',PRG_FUND);
  VIEWS['prog.sie']=v=>vMarca(v,'Siemens TIA Portal','S7-1200 y S7-1500: proyecto, bloques, direcciones, analógicas, comunicaciones y diagnóstico.',PRG_SIE);
@@ -20018,7 +20572,7 @@ function cargarNav(){ try{ const r=localStorage.getItem(NAVKEY); if(r){ const a=
 function guardarNav(){ try{ localStorage.setItem(NAVKEY,JSON.stringify(recientes)); }catch(e){} }
 function subLabel(mod,sub){ const s=(MODS[mod]||{subs:[]}).subs.filter(x=>x[0]===sub)[0]; return s?s[1]:''; }
 function marcaReciente(){
-  if(state.mod==='home'||state.mod==='buscar'||state.mod==='compartir'||state.mod==='acerca'||state.mod==='ajustes'||state.sub==='_in') return;
+  if(state.mod==='home'||state.mod==='bib'||state.mod==='apr'||state.mod==='mas'||state.mod==='buscar'||state.mod==='compartir'||state.mod==='acerca'||state.mod==='ajustes'||state.sub==='_in') return;
   recientes=recientes.filter(r=>!(r.mod===state.mod&&r.sub===state.sub));
   recientes.unshift({mod:state.mod,sub:state.sub});
   recientes=recientes.slice(0,6); guardarNav();
@@ -20159,7 +20713,7 @@ function drRow(go,t,d,ic,col,on){
   return '<button class="dr-row'+(on?' on':'')+'" type="button" data-go="'+go+'" style="--acc:'+col+'"><span class="dr-ic">'+ico(ic)+'</span><span class="dr-tx"><b>'+esc(t)+'</b><small>'+esc(d)+'</small></span></button>';
 }
 function drawerMenuHTML(){
-  let h=drRow('home',L('Panel del taller','Workshop dashboard'),L('Resumen y accesos rápidos','Overview and shortcuts'),'home','#3B7DB5',state.mod==='home')+drRow('buscar',L('Buscar en la guía','Search the guide'),L('Guías, fallas y calculadoras','Guides, faults and calculators'),'search','#2B7FBF',state.mod==='buscar')+drRow('compartir',L('Compartir con QR','Share with QR'),L('Código QR y acceso directo','QR code and shortcut'),'qr','#2E9B5F',state.mod==='compartir');
+  let h=drRow('home',L('Panel del taller','Workshop dashboard'),L('Resumen y accesos rápidos','Overview and shortcuts'),'home','#3B7DB5',state.mod==='home')+drRow('bib',L('Biblioteca','Library'),L('Todos los módulos','All modules'),'grid','#2B7FBF',state.mod==='bib')+drRow('buscar',L('Buscar en la guía','Search the guide'),L('Guías, fallas y calculadoras','Guides, faults and calculators'),'search','#2B7FBF',state.mod==='buscar')+drRow('compartir',L('Compartir con QR','Share with QR'),L('Código QR y acceso directo','QR code and shortcut'),'qr','#2E9B5F',state.mod==='compartir');
   GRUPOS.forEach(g=>{
     h+='<div class="dr-g">'+esc(g[0])+'</div>';
     g[1].forEach(k=>{
@@ -20206,7 +20760,7 @@ function bandaModulo(){
   const mm=MODMETA[state.mod]; if(!mm) return '';
   const s=state.sub?subLabel(state.mod,state.sub):'';
   const ord=[].concat.apply([],GRUPOS.map(g=>g[1])); let num=ord.indexOf(state.mod)+1; if(num<=0) num=Object.keys(MODS).filter(k=>k!=='home'&&k!=='buscar').indexOf(state.mod)+1;
-  return '<div class="modband" style="--acc:'+mm.color+'"><span class="mb-num">'+String(num).padStart(2,'0')+'</span><div class="mb-tx"><div class="mb-crumb"><button type="button" data-go="home">'+L('Inicio','Home')+'</button><span> › </span>'+(tieneIn(state.mod)&&s?'<button type="button" data-go="'+state.mod+'._in">'+esc(mm.corto)+'</button>':'<span>'+esc(mm.corto)+'</span>')+(s?'<span> › </span><span>'+esc(s)+'</span>':'')+'</div><h2 class="mb-t">'+esc(mm.label)+'</h2></div>'+favBtnHTML()+'<span class="mb-tag">'+L('Guía del taller','Workshop guide')+'</span></div>';
+  return '<div class="modband" style="--acc:'+mm.color+'"><span class="mb-num">'+String(num).padStart(2,'0')+'</span><div class="mb-tx"><div class="mb-crumb"><button type="button" data-go="bib">'+L('Biblioteca','Library')+'</button><span> › </span>'+(tieneIn(state.mod)&&s?'<button type="button" data-go="'+state.mod+'._in">'+esc(mm.corto)+'</button>':'<span>'+esc(mm.corto)+'</span>')+(s?'<span> › </span><span>'+esc(s)+'</span>':'')+'</div><h2 class="mb-t">'+esc(mm.label)+'</h2></div>'+favBtnHTML()+'<span class="mb-tag">'+L('Guía del taller','Workshop guide')+'</span></div>';
 }
 function actualizaCromo(){
   const sub=document.getElementById('ttlSub'), mm=MODMETA[state.mod];
@@ -20222,20 +20776,20 @@ function actualizaCromo(){
     const on=g ? g===state.mod : false;
     if(on) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current');
   });
-  pintaBtnTema(); actBadge(); pintaSalir();
+  pintaBtnTema(); actBadge(); pintaSalir(); if(window.navChrome) window.navChrome();
 }
 function render(){
   const m=MODS[state.mod];
   if(state.sub==='_in'&&!tieneIn(state.mod)) state.sub='';
   if(m.subs.length&&state.sub!=='_in'&&!m.subs.some(s=>s[0]===state.sub)) state.sub=m.subs[0][0];
   let h=roBanner()+idiomaAviso();
-  if(state.mod!=='home'&&state.mod!=='buscar'&&state.sub!=='_in') h+=bandaModulo();
+  if(['home','buscar','bib','apr','mas','calc'].indexOf(state.mod)<0&&state.sub!=='_in') h+=bandaModulo();
   if(m.subs.length&&state.sub!=='_in'){
     if(state.mod!=='home') h+=idxBarHTML();
     h+='<div class="subs" role="tablist">'+m.subs.map(s=>'<button data-sub="'+s[0]+'"'+(state.sub===s[0]?' aria-current="true"':'')+'>'+esc(s[1]+(s[0]==='hist'&&historial.length?' ('+historial.length+')':''))+'</button>').join('')+'</div>';
   }
   const mm2=MODMETA[state.mod], si=m.subs.findIndex(x=>x[0]===state.sub)+1;
-  const pie=(mm2&&state.mod!=='home'&&state.sub!=='_in')?'<footer class="lam-ft vf"><span>'+esc(L('GUÍA DEL TALLER','WORKSHOP GUIDE')+' · '+mm2.corto.toUpperCase()+(state.sub?' · '+subLabel(state.mod,state.sub).toUpperCase():''))+'</span><b>'+(si>0?String(si).padStart(2,'0'):'')+'</b></footer>':'';
+  const pie=(mm2&&['home','bib','apr','mas'].indexOf(state.mod)<0&&state.sub!=='_in')?'<footer class="lam-ft vf"><span>'+esc(L('GUÍA DEL TALLER','WORKSHOP GUIDE')+' · '+mm2.corto.toUpperCase()+(state.sub?' · '+subLabel(state.mod,state.sub).toUpperCase():''))+'</span><b>'+(si>0?String(si).padStart(2,'0'):'')+'</b></footer>':'';
   h+='<div id="view"></div>'+pie+appVerHTML();
   app.innerHTML=h;
   const key=m.subs.length?state.mod+'.'+state.sub:state.mod;
@@ -20276,7 +20830,6 @@ document.getElementById('drawer').addEventListener('input',e=>{
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') cierraDrawer(); });
 document.getElementById('btnMenu').addEventListener('click',abreDrawer);
 document.getElementById('btnOut').addEventListener('click',salirSesion);
-document.getElementById('dockFav').addEventListener('click',abreFavs);
 document.getElementById('btnTema').addEventListener('click',alternaTema);
 
 cargar();
